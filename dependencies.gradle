@@ -1,0 +1,19 @@
+
+		// implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+		// implementation 'org.springframework.boot:spring-boot-starter-web'
+		// compileOnly 'org.projectlombok:lombok'
+		// developmentOnly 'org.springframework.boot:spring-boot-devtools'
+		// annotationProcessor 'org.projectlombok:lombok'
+		// testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+ext.libs = [
+	'lombok' : 'org.projectlombok:lombok',
+	'springWeb' : 'org.springframework.boot:spring-boot-starter-web',
+	'mongodb' : 'org.springframework.boot:spring-boot-starter-data-mongodb',
+	'springDevtools' : 'org.springframework.boot:spring-boot-devtools'
+]
+
+ext.libsTests = [
+	'springBoot' : 'org.springframework.boot:spring-boot-starter-test'
+
+]
