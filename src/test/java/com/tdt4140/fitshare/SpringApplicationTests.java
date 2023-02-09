@@ -1,13 +1,17 @@
 package com.tdt4140.fitshare;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class FitshareApplicationTests {
+class SpringApplicationTests {
 
 	@Test
 	void contextLoads() {
+		assertTrue(true);
+		// assertTrue(false);
 	}
 
 }
