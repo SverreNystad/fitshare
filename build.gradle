@@ -2,6 +2,11 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.0.2'
 	id 'io.spring.dependency-management' version '1.1.0'
+
+	id 'checkstyle'
+}
+allprojects {
+	println "$project.name configuration phase"
 }
 
 group = 'com.tdt4140'
@@ -18,15 +23,24 @@ repositories {
 	mavenCentral()
 }
 
+// adds all dependencies from dependencies.gradle
+apply from: "$rootProject.projectDir/dependencies.gradle"
+
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	// implementation project(':persistence')
+	implementation libs.mongodb
+	implementation libs.springWeb
+	compileOnly libs.lombok
+	developmentOnly libs.springDevtools
+	annotationProcessor libs.lombok
+
+	testImplementation libsTests.springBoot
 }
 
-tasks.named('test') {
+test {
 	useJUnitPlatform()
+
 }
+// tasks.named('test') {
+// 	useJUnitPlatform()
+// }
