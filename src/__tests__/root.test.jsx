@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
-import App from "../App";
+import Root from "../routes/root";
 
-describe("App", () => {
+describe("Root", () => {
   it("should render as expected", () => {
-    render(<App />);
+    render(<Root />);
   });
 });
