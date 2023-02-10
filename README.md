@@ -1,7 +1,41 @@
 # FitShare
 
-## How to start React app
+## How to set up the project
 
-Run `npm start` in terminal
+Install the required packages with npm, make sure [node](https://nodejs.org/en/download/) is installed:
 
-This runs the app in development mode. Open [http://localhost:3000](http://localhost:3000) to run it in your browser.
+```bash
+npm install
+```
+
+## How to run the project for development
+
+To start the project in watch mode with vite run:
+
+```bash
+npm run dev
+```
+
+To open the project in a browser, press `o` in the terminal session. For other shortcuts press `h` in the terminal session.
+
+## How to run tests for the project
+
+To run test for the project use the following command:
+
+```bash
+npm run test
+```
+
+## How to build and view production build
+
+To build the project for production run:
+
+```bash
+npm run build
+```
+
+To view the production build run:
+
+```bash
+npm run preview
+```
