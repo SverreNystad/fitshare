@@ -1,4 +1,4 @@
-module com.tdt4140.fitshare {
+module com.pu.fitshare {
     requires spring.boot.autoconfigure;
     requires spring.boot.starter.web;
     requires spring.web;
@@ -6,5 +6,5 @@ module com.tdt4140.fitshare {
     requires spring.boot;
     requires spring.context;
 
-    // requires com.tdt4140.fitshare.persistence;
+    // requires com.pu.fitshare.persistence;
 }

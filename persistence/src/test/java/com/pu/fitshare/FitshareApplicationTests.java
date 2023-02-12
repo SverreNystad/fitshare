@@ -1,4 +1,4 @@
-package com.tdt4140.fitshare;
+package com.pu.fitshare;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

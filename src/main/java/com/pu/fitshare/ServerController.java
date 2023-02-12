@@ -1,4 +1,4 @@
-package com.tdt4140.fitshare;
+package com.pu.fitshare;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

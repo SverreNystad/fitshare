@@ -1,4 +1,4 @@
-package com.tdt4140.fitshare;
+package com.pu.fitshare;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

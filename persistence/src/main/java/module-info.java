@@ -1,3 +1,3 @@
-module com.tdt4140.fitshare.persistence {
+module com.pu.fitshare.persistence {
 	exports dao;
 }
