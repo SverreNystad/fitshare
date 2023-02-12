@@ -11,9 +11,14 @@ ext.libs = [
 	'springWeb' : 'org.springframework.boot:spring-boot-starter-web',
 	'mongodb' : 'org.springframework.boot:spring-boot-starter-data-mongodb',
 	'springDevtools' : 'org.springframework.boot:spring-boot-devtools'
+
 ]
 
 ext.libsTests = [
 	'springBoot' : 'org.springframework.boot:spring-boot-starter-test'
 
+]
+
+ext.libVersion = [
+	'jacoco' :'0.8.8'
 ]

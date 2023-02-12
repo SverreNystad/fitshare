@@ -3,13 +3,14 @@ plugins {
 	id 'org.springframework.boot' version '3.0.2'
 	id 'io.spring.dependency-management' version '1.1.0'
 
-	id 'checkstyle'
+	// id 'checkstyle'
+	id 'jacoco'
 }
 allprojects {
 	println "$project.name configuration phase"
 }
 
-group = 'com.tdt4140'
+group = 'com.pu'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
@@ -37,10 +38,25 @@ dependencies {
 	testImplementation libsTests.springBoot
 }
 
-test {
-	useJUnitPlatform()
+jacoco {
+	toolVersion = libVersion.jacoco
 
 }
+
+jacocoTestReport {
+	reports {
+		html.enabled = true
+		xml.enabled = false
+		csv.enabled = false
+		
+	}
+
+}
+
+test {
+	useJUnitPlatform()
+}
+test.finalizedBy jacocoTestReport
 // tasks.named('test') {
 // 	useJUnitPlatform()
 // }
