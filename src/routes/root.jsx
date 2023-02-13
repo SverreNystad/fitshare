@@ -14,9 +14,9 @@ export default function Root() {
           </li>
         </ul>
       </nav>
-      <div id="detail">
+      <main>
         <Outlet />
-      </div>
+      </main>
     </>
   );
 }
