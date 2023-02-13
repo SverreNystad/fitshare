@@ -2,18 +2,24 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./routes/root";
-import Hello from "./routes/hello";
-import "./index.css";
+import Friends from "./routes/friends";
 import ErrorPage from "./errorPage";
+import Profile from "./routes/profile";
+import Groups from "./routes/groups";
+import "./index.css";
 
 const router = createBrowserRouter([
-  // beginning of page routing 
+  // beginning of page routing
   // https://reactrouter.com/en/main/start/tutorial
   {
     path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
-    children: [{ path: "/hello", element: <Hello /> }],
+    children: [
+      { path: "/profile", element: <Profile /> },
+      { path: "/friends", element: <Friends /> },
+      { path: "/groups", element: <Groups /> },
+    ],
   },
 ]);
 

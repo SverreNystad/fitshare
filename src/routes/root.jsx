@@ -1,19 +1,11 @@
 import React from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import Nav from "../components/Nav";
 
 export default function Root() {
   return (
     <>
-      <nav>
-        <ul>
-          <li>
-            <Link to={"/"}>Home</Link>
-          </li>
-          <li>
-            <Link to={"/hello"}>Hello, World!</Link>
-          </li>
-        </ul>
-      </nav>
+      <Nav />
       <main>
         <Outlet />
       </main>
