@@ -1,0 +1,16 @@
+stages:
+  - build
+  - test
+  # - deploy
+
+test-all:
+  stage: test
+  except:
+    - main
+  script:
+    - gradlew test
+
+building:
+  stage: build
+  script: 
+    - gradlew build
