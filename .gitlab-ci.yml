@@ -1,3 +1,5 @@
+image: gradle:latest
+
 stages:
   - build
   - test
