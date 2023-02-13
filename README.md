@@ -3,10 +3,28 @@
 ## How to start the server
 Use the comand promt and change directly into fitshare-api folder.
 
-To start the server write the code: `gradlew bootRun`
+To start the server write the code: 
+```cmd
+gradlew bootRun
+```
 
 The server can now take http requests.
 
+## How to compile
+To compile the project 
+```cmd
+gradlew build
+```
+
 ## How to generate reports
 When using the running the unit tests the gradle test task will make the Jacoco test report for test coverage, and checkstyle for formating checking
-To only run the tests write the code: `gradlew test`.
+To only run the tests write the code:
+```cmd
+gradlew test
+```
+
+## To see all possible tasks one can run
+This will give all the taskes and corresponding discriptions.
+```cmd
+gradlew tasks
+```
