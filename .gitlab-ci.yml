@@ -10,9 +10,9 @@ test-all:
   except:
     - main
   script:
-    - gradlew test
+    - .\gradlew test
 
 building:
   stage: build
   script: 
-    - gradlew build
+    - .\gradlew build
