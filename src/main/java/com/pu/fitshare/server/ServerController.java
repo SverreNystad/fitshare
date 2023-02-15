@@ -37,7 +37,7 @@ public class ServerController {
         return getServerService().getHelloWorld();
     }
 
-    @GetMapping(path = "/{username}/{password}")
+    @GetMapping(path = "/users/{username}/{password}")
     public ResponseEntity<User> logIn(@PathVariable("username") String username,
             @PathVariable("password") String password) {
 
@@ -55,7 +55,7 @@ public class ServerController {
 
     // }
 
-    @PutMapping(path = "/{username}/{password}")
+    @PutMapping(path = "/users/{username}/{password}")
     public ResponseEntity<User> signUp(@PathVariable("username") String username,
             @PathVariable("password") String password) {
 
