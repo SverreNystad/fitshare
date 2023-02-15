@@ -23,13 +23,13 @@ public class LoginAttempt {
      * @throws IllegalArgumentException when there are bad input
      */
     private void sanitize(final String username, final String password) throws IllegalArgumentException {
-        if (isLargeEnough(password)) {
+        if (notLongEnough(password)) {
             throw new IllegalArgumentException("The password was to short.");
         }
     }
 
 
-    private boolean isLargeEnough(final String s) {
+    private boolean notLongEnough(final String s) {
         return s.length() >= minPasswordLength;
     }
 
