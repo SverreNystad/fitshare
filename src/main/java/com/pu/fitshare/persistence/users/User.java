@@ -1,5 +1,7 @@
 package com.pu.fitshare.persistence.users;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 
 public class User {
