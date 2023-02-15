@@ -7,6 +7,7 @@ package com.pu.fitshare.persistence.users;
 public class LoginAttampt {
     private String username;
     private String password;
+    private static int minPasswordLength = 8;
 
     public LoginAttampt(final String username, final String password) throws IllegalArgumentException {
         sanitize(username, password);
@@ -22,6 +23,15 @@ public class LoginAttampt {
      * @throws IllegalArgumentException when there are bad input
      */
     private void sanitize(final String username, final String password) throws IllegalArgumentException {
-        // TODO: must do tests on input
+        if (isLargeEnough(password)) {
+            throw new IllegalArgumentException("The password was to short.");
+        }
     }
+
+
+    private boolean isLargeEnough(final String s) {
+        return s.length() >= minPasswordLength;
+    }
+
+
 }
