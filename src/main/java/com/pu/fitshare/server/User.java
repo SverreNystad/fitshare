@@ -1,6 +1,6 @@
 package com.pu.fitshare.server;
 
-// import java.util.Date;
+import java.util.Date;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -19,12 +19,9 @@ public class User {
     private ObjectId id;
     private String name;
     private String password;
-
-    // private String firstName;
-    // private String lastName;
     
-    // private Date birthday;
-    // private String description;
+    private Date birthday;
+    private String description;
     // private List<TrainingGoal> goals;
 
 
