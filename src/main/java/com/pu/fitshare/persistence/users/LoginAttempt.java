@@ -1,4 +1,4 @@
-package com.pu.fitshare.server;
+package com.pu.fitshare.persistence.users;
 
 /**
  * LoginAttempt will take the input from the http request and sanitize it
@@ -24,10 +24,9 @@ public class LoginAttempt {
      */
     private void sanitize(final String username, final String password) throws IllegalArgumentException {
         if (notLongEnough(password)) {
-            throw new IllegalArgumentException("The password was to short.");
+            throw new IllegalArgumentException("The password was to shorter than 8 characters.");
         }
     }
-
 
     private boolean notLongEnough(final String s) {
         return s.length() <= minPasswordLength;
@@ -37,9 +36,8 @@ public class LoginAttempt {
         return this.username;
     }
 
-	public String getPassword() {
-		return this.password;
-	}
-
+    public String getPassword() {
+        return this.password;
+    }
 
 }

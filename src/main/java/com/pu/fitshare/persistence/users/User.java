@@ -1,4 +1,4 @@
-package com.pu.fitshare.server;
+package com.pu.fitshare.persistence.users;
 
 import java.util.Date;
 
@@ -10,6 +10,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * The {@code User} class represnts the Users of FitShare. It contains all the
+ * data about a user that will be sent over to the UI.
+ */
 @Document(collection = "user")
 @Data
 @AllArgsConstructor
@@ -19,10 +23,9 @@ public class User {
     private ObjectId id;
     private String username;
     private String password;
-    
+
     private Date birthday;
     private String description;
-    // private List<TrainingGoal> goals;
 
     public User(final String username, final String password) {
         this.username = username;
