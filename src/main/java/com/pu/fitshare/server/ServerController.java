@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,11 +32,6 @@ public class ServerController {
         return serverService;
     }
 
-    @GetMapping(path = "/")
-    public String getHelloString() {
-        return getUserService().getHelloWorld();
-    }
-
     @GetMapping(path = "/users/login/{username}/{password}")
     public ResponseEntity<User> getUser(@PathVariable("username") String username,
             @PathVariable("password") String password) {
@@ -51,28 +47,25 @@ public class ServerController {
             return new ResponseEntity(null, HttpStatus.BAD_REQUEST);
         }
     }
-    
-    private ResponseEntity<User> presentCheck(Optional<User> user){
+
+    private ResponseEntity<User> presentCheck(Optional<User> user) {
         if (user.isPresent()) {
             return new ResponseEntity(user, HttpStatus.OK);
-        }
-        else {
+        } else {
             return new ResponseEntity(null, HttpStatus.NOT_FOUND);
         }
     }
+
     @GetMapping(path = "/users")
     public ResponseEntity<List<User>> getAllUsers() {
         ResponseEntity<List<User>> response = new ResponseEntity(getUserService().getUsers(), HttpStatus.OK);
         return response;
     }
 
-
-
-
-    @PostMapping(path = "/users/signup/{username}/{password}")
+    @RequestMapping(path = "/users/signup/{username}/{password}")
+    // @PostMapping(path = "/users/signup/{username}/{password}")
     public ResponseEntity<User> putUser(@PathVariable("username") String username,
             @PathVariable("password") String password) {
-
         try {
             LoginAttempt loginAttempt = new LoginAttempt(username, password);
             Optional<User> createdUser = getUserService().signUp(loginAttempt);
@@ -84,4 +77,5 @@ public class ServerController {
             return new ResponseEntity(null, HttpStatus.BAD_REQUEST);
         }
     }
+
 }

@@ -9,20 +9,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+	@Autowired
+	private UserRepository userRepository;
 
+	public List<User> getUsers() {
+		return userRepository.findAll();
+	}
 
-    public String getHelloWorld() {
-        return "Hello world";
-    }
-
-
-    public List<User> getUsers() {
-        return userRepository.findAll();
-    }
-
-    public Optional<User> logIn(final LoginAttempt loginAttempt) {
+	public Optional<User> logIn(final LoginAttempt loginAttempt) {
 		return findUser(loginAttempt.getUsername(), loginAttempt.getPassword());
 	}
 
@@ -31,12 +25,11 @@ public class UserService {
 		if (useruserInDb.isPresent()) {
 			// shall not return a user
 			return Optional.empty();
-		}
-		else {
+		} else {
 			// shall create user and return User
-            User user = new User(loginAttempt.getUsername(), loginAttempt.getPassword());
+			User user = new User(loginAttempt.getUsername(), loginAttempt.getPassword());
 			userRepository.insert(user);
-            return Optional.of(user);
+			return Optional.of(user);
 		}
 	}
 
@@ -47,8 +40,7 @@ public class UserService {
 			if (user.equals(username, password)) {
 				matchingUser = Optional.of(user);
 			}
-		} 
+		}
 		return matchingUser;
 	}
-
 }
