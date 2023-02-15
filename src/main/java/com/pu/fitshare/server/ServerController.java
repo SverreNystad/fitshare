@@ -35,7 +35,7 @@ public class ServerController {
         return getUserService().getHelloWorld();
     }
 
-    @GetMapping(path = "/users/{username}/{password}")
+    @GetMapping(path = "/users/login/{username}/{password}")
     public ResponseEntity<User> getUser(@PathVariable("username") String username,
             @PathVariable("password") String password) {
 
@@ -51,11 +51,6 @@ public class ServerController {
         }
     }
     
-    // private HttpStatus loginStatus() {
-
-
-    // }
-
     private ResponseEntity<User> presentCheck(Optional<User> user){
         if (user.isPresent()) {
             return new ResponseEntity(user, HttpStatus.OK);
@@ -73,7 +68,7 @@ public class ServerController {
 
     
 
-    @PutMapping(path = "/users/{username}/{password}")
+    @PutMapping(path = "/users/signup/{username}/{password}")
     public ResponseEntity<User> putUser(@PathVariable("username") String username,
             @PathVariable("password") String password) {
 
