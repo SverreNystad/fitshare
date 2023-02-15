@@ -3,9 +3,9 @@ plugins {
 	id 'org.springframework.boot' version '3.0.2'
 	id 'io.spring.dependency-management' version '1.1.0'
 
-	// id 'checkstyle'
 	id 'jacoco'
 }
+
 allprojects {
 	println "$project.name configuration phase"
 }
@@ -28,7 +28,6 @@ repositories {
 apply from: "$rootProject.projectDir/dependencies.gradle"
 
 dependencies {
-	// implementation project(':persistence')
 	implementation libs.mongodb
 	implementation libs.springWeb
 	compileOnly libs.lombok
@@ -40,7 +39,6 @@ dependencies {
 
 jacoco {
 	toolVersion = libVersion.jacoco
-
 }
 
 jacocoTestReport {
@@ -48,15 +46,10 @@ jacocoTestReport {
 		html.enabled = true
 		xml.enabled = false
 		csv.enabled = false
-		
 	}
-
 }
 
 test {
 	useJUnitPlatform()
 }
 test.finalizedBy jacocoTestReport
-// tasks.named('test') {
-// 	useJUnitPlatform()
-// }

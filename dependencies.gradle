@@ -10,5 +10,5 @@ ext.libsTests = [
 ]
 
 ext.libVersion = [
-	'jacoco' :'0.8.8'
+	'jacoco' : '0.8.8',
 ]
