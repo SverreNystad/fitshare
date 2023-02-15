@@ -42,6 +42,21 @@ gradlew tasks
 ## How to add new dependency
 If you need to add a new dependecy to the project go to the 'dependencies.gradle' and add a new row with format 'nickname' : 'url'. The nickname is how one will access it in the rest of the project. Then add it to the dependencies in 'build.gradle'.
 
+## All Endpoints
+### Get all users (test)
+* api/v1/users
+
+### Login
+* api/v1/users/login/{username}/{password}
+
+### Signup
+* api/v1/users/signup/{username}/{password}
+  
+### Edit user (Not implemented)
+* api/v1/users/edit/{userId}
+
+### Delete user (Not implemented)
+* api/v1/users/delete/{userId}
 
 
 ## Reference Documentation
