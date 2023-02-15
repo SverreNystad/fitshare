@@ -1,0 +1,55 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.0.2'
+	id 'io.spring.dependency-management' version '1.1.0'
+
+	id 'jacoco'
+}
+
+allprojects {
+	println "$project.name configuration phase"
+}
+
+group = 'com.pu'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+// adds all dependencies from dependencies.gradle
+apply from: "$rootProject.projectDir/dependencies.gradle"
+
+dependencies {
+	implementation libs.mongodb
+	implementation libs.springWeb
+	compileOnly libs.lombok
+	developmentOnly libs.springDevtools
+	annotationProcessor libs.lombok
+
+	testImplementation libsTests.springBoot
+}
+
+jacoco {
+	toolVersion = libVersion.jacoco
+}
+
+jacocoTestReport {
+	reports {
+		html.enabled = true
+		xml.enabled = false
+		csv.enabled = false
+	}
+}
+
+test {
+	useJUnitPlatform()
+}
+test.finalizedBy jacocoTestReport
