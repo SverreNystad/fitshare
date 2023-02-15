@@ -30,7 +30,7 @@ public class LoginAttempt {
 
 
     private boolean notLongEnough(final String s) {
-        return s.length() >= minPasswordLength;
+        return s.length() <= minPasswordLength;
     }
 
     public String getUsername() {
