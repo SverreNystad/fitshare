@@ -1,5 +1,6 @@
 package com.pu.fitshare.server;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.pu.fitshare.persistence.users.LoginAttampt;
-import com.pu.fitshare.persistence.users.User;
 
 @RestController
 @RequestMapping(ServerController.API_SERVICE_PATH)
@@ -50,10 +48,17 @@ public class ServerController {
 
         return new ResponseEntity(null, null);
     }
-
     // private HttpStatus loginStatus() {
 
     // }
+    @GetMapping(path = "/users")
+    public ResponseEntity<List<User>> getAllUsers() {
+        ResponseEntity<List<User>> response = new ResponseEntity(getServerService().getUsers(), HttpStatus.OK);
+        return response;
+    }
+
+
+    
 
     @PutMapping(path = "/users/{username}/{password}")
     public ResponseEntity<User> signUp(@PathVariable("username") String username,
@@ -68,10 +73,4 @@ public class ServerController {
 
         return new ResponseEntity(null, null);
     }
-
-    // private HttpStatus loginStatus() {
-
-    // }
-
-    
 }
