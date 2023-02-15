@@ -1,4 +1,13 @@
+# FitShare API
 
+## Description
+Fitshare api is the an REST api for the application Fitshare. The API will provide the UI userinfo, training regiments, and data.
+To find more info about the FitShare application go to [Official FitShare documentation](https://gitlab.stud.idi.ntnu.no/tdt4140-2023/landsby-1/gruppe-14/fitshare-ui/-/blob/main/README.md). 
+The FitShare API uses the spring framework together with MongoDB to provide its service.
+
+
+
+# How to use the FitShare API
 
 ## How to start the server
 Use the comand promt and change directly into fitshare-api folder.
@@ -28,3 +37,47 @@ This will give all the taskes and corresponding discriptions.
 ```cmd
 gradlew tasks
 ```
+
+
+## How to add new dependency
+If you need to add a new dependecy to the project go to the 'dependencies.gradle' and add a new row with format 'nickname' : 'url'. The nickname is how one will access it in the rest of the project. Then add it to the dependencies in 'build.gradle'.
+
+
+
+## Reference Documentation
+For further reference, please consider the following sections:
+
+* [Official Gradle documentation](https://docs.gradle.org)
+* [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/3.0.2/gradle-plugin/reference/html/)
+* [Create an OCI image](https://docs.spring.io/spring-boot/docs/3.0.2/gradle-plugin/reference/html/#build-image)
+* [Spring Data MongoDB](https://docs.spring.io/spring-boot/docs/3.0.2/reference/htmlsingle/#data.nosql.mongodb)
+* [Spring Web](https://docs.spring.io/spring-boot/docs/3.0.2/reference/htmlsingle/#web)
+* [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/3.0.2/reference/htmlsingle/#using.devtools)
+
+### Guides
+The following guides illustrate how to use some features concretely:
+
+* [Accessing Data with MongoDB](https://spring.io/guides/gs/accessing-data-mongodb/)
+* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
+* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
+* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
+
+### Additional Links
+These additional references should also help you:
+
+* [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
+
+
+
+## Authors and acknowledgment
+The team whom created this api consists of:
+
+* Eirin Helseth
+* Håvard Solberg Nybøe
+* Martine Nilsen
+* Skage Klingstedt Reistad
+* Sverre Nystad
+* Vidar Selnes Lund
+
+## License
+Undecided
