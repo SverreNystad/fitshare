@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -53,4 +54,24 @@ public class ServerController {
     // private HttpStatus loginStatus() {
 
     // }
+
+    @PutMapping(path = "/{username}/{password}")
+    public ResponseEntity<User> signUp(@PathVariable("username") String username,
+            @PathVariable("password") String password) {
+
+        try {
+            LoginAttampt loginAttampt = new LoginAttampt(username, password);
+            Optional<User> createdUser = getServerService().putUser(loginAttampt);
+        } catch (IllegalArgumentException e) {
+            // TODO: handle exception
+        }
+
+        return new ResponseEntity(null, null);
+    }
+
+    // private HttpStatus loginStatus() {
+
+    // }
+
+    
 }

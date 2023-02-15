@@ -8,10 +8,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class ServerApplicationTests {
 
-	@Test
-	void contextLoads() {
-		assertTrue(true);
-		// assertTrue(false);
-	}
+    @Test
+    void contextLoads() {
+        assertTrue(true);
+        // assertTrue(false);
+    }
 
 }
