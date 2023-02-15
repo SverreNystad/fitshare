@@ -18,7 +18,7 @@ public class ServerController {
     public static final String API_SERVICE_PATH = "api/v1";
 
     @Autowired
-    private ServerService serverService;
+    private UserService serverService;
 
     /**
      * The {@code Serverservice} that provide the {@code ServerController} with
@@ -26,34 +26,47 @@ public class ServerController {
      * 
      * @return Serverservice
      */
-    public ServerService getServerService() {
+    public UserService getUserService() {
         return serverService;
     }
 
     @GetMapping(path = "/")
     public String getHelloString() {
-        return getServerService().getHelloWorld();
+        return getUserService().getHelloWorld();
     }
 
     @GetMapping(path = "/users/{username}/{password}")
-    public ResponseEntity<User> logIn(@PathVariable("username") String username,
+    public ResponseEntity<User> getUser(@PathVariable("username") String username,
             @PathVariable("password") String password) {
 
         try {
-            LoginAttampt loginAttampt = new LoginAttampt(username, password);
-            // Optional<User> user = getServerService().getUser(loginAttampt);
-        } catch (IllegalArgumentException e) {
-            // TODO: handle exception
-        }
+            LoginAttempt loginAttempt = new LoginAttempt(username, password);
+            Optional<User> user = getUserService().logIn(loginAttempt);
 
-        return new ResponseEntity(null, null);
+            return presentCheck(user);
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("The input was bad: " + e.getLocalizedMessage());
+            return new ResponseEntity(null, HttpStatus.BAD_REQUEST);
+        }
     }
+    
     // private HttpStatus loginStatus() {
 
+
     // }
+
+    private ResponseEntity<User> presentCheck(Optional<User> user){
+        if (user.isPresent()) {
+            return new ResponseEntity(user, HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity(null, HttpStatus.NOT_FOUND);
+        }
+    }
     @GetMapping(path = "/users")
     public ResponseEntity<List<User>> getAllUsers() {
-        ResponseEntity<List<User>> response = new ResponseEntity(getServerService().getUsers(), HttpStatus.OK);
+        ResponseEntity<List<User>> response = new ResponseEntity(getUserService().getUsers(), HttpStatus.OK);
         return response;
     }
 
@@ -61,16 +74,18 @@ public class ServerController {
     
 
     @PutMapping(path = "/users/{username}/{password}")
-    public ResponseEntity<User> signUp(@PathVariable("username") String username,
+    public ResponseEntity<User> putUser(@PathVariable("username") String username,
             @PathVariable("password") String password) {
 
         try {
-            LoginAttampt loginAttampt = new LoginAttampt(username, password);
-            Optional<User> createdUser = getServerService().putUser(loginAttampt);
-        } catch (IllegalArgumentException e) {
-            // TODO: handle exception
-        }
+            LoginAttempt loginAttempt = new LoginAttempt(username, password);
+            Optional<User> createdUser = getUserService().signUp(loginAttempt);
 
-        return new ResponseEntity(null, null);
+            return presentCheck(createdUser);
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("The input was bad: " + e.getLocalizedMessage());
+            return new ResponseEntity(null, HttpStatus.BAD_REQUEST);
+        }
     }
 }

@@ -17,20 +17,19 @@ import lombok.NoArgsConstructor;
 public class User {
     @Id
     private ObjectId id;
-    private String name;
+    private String username;
     private String password;
     
     private Date birthday;
     private String description;
     // private List<TrainingGoal> goals;
 
+    public User(final String username, final String password) {
+        this.username = username;
+        this.password = password;
+    }
 
-    // public User(final int id, final String firstName, final String lastName, final Date birthday) {
-    //     this.id = id;
-    //     this.firstName = firstName;
-    //     this.lastName = lastName;
-    //     this.birthday = birthday;
-    // }
-
-
+    public boolean equals(final String username, final String password) {
+        return this.getUsername().equals(username) && this.getPassword().equals(password);
+    }
 }

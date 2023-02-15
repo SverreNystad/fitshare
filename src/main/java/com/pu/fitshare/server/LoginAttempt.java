@@ -1,15 +1,15 @@
 package com.pu.fitshare.server;
 
 /**
- * LoginAttampt will take the input from the http request and sanitize it
+ * LoginAttempt will take the input from the http request and sanitize it
  * before letting it pass futher.
  */
-public class LoginAttampt {
+public class LoginAttempt {
     private String username;
     private String password;
     private static int minPasswordLength = 8;
 
-    public LoginAttampt(final String username, final String password) throws IllegalArgumentException {
+    public LoginAttempt(final String username, final String password) throws IllegalArgumentException {
         sanitize(username, password);
         this.username = username;
         this.password = password;
@@ -32,6 +32,14 @@ public class LoginAttampt {
     private boolean isLargeEnough(final String s) {
         return s.length() >= minPasswordLength;
     }
+
+    public String getUsername() {
+        return this.username;
+    }
+
+	public String getPassword() {
+		return this.password;
+	}
 
 
 }
