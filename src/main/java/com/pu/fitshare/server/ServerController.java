@@ -6,13 +6,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.pu.fitshare.persistence.users.LoginAttempt;
+import com.pu.fitshare.persistence.users.User;
+import com.pu.fitshare.server.services.UserService;
 
 @RestController
 @RequestMapping(ServerController.API_SERVICE_PATH)
@@ -20,22 +21,29 @@ public class ServerController {
     public static final String API_SERVICE_PATH = "api/v1";
 
     @Autowired
-    private UserService serverService;
+    private UserService userService;
 
     /**
-     * The {@code Serverservice} that provide the {@code ServerController} with
-     * logic for getting, updating, deleting and adding Users to data base.
+     * The {@code UserService} that provide the {@code ServerController} with
+     * logic for getting, updating, deleting and adding {@link User}s to database.
      * 
-     * @return Serverservice
+     * @return userService
      */
     public UserService getUserService() {
-        return serverService;
+        return userService;
     }
 
+    /**
+     * the getUser method will fetch the first {@link User} found in the database.
+     * This {@link User} will be sent with the corresponding HTTP staus code.
+     * 
+     * @param username to searche the database with
+     * @param password to searche the database with
+     * @return first user to correspond with given credentials
+     */
     @GetMapping(path = "/users/login/{username}/{password}")
     public ResponseEntity<User> getUser(@PathVariable("username") String username,
             @PathVariable("password") String password) {
-
         try {
             LoginAttempt loginAttempt = new LoginAttempt(username, password);
             Optional<User> user = getUserService().logIn(loginAttempt);
@@ -63,7 +71,6 @@ public class ServerController {
     }
 
     @RequestMapping(path = "/users/signup/{username}/{password}")
-    // @PostMapping(path = "/users/signup/{username}/{password}")
     public ResponseEntity<User> putUser(@PathVariable("username") String username,
             @PathVariable("password") String password) {
         try {
