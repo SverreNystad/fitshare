@@ -15,7 +15,20 @@
 }
 
 .shortcut {
+  display: inline-block;
   border-bottom: 1px solid black;
+  width: 100%;
+}
+
+.login {
+  width: 140px;
+  padding: 10px 0;
+  border-radius: 100px;
+  background: #ffffff61;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  text-decoration: none;
+  color: black;
+  text-align: center;
 }
 
 .ul {

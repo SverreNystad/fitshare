@@ -36,6 +36,9 @@ export default function Nav() {
             </li>
           </ul>
         </div>
+        <Link className={style.login} to={"/login"}>
+          Logg inn
+        </Link>
       </div>
     </nav>
   );
