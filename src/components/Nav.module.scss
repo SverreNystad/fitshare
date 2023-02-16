@@ -21,6 +21,7 @@
 }
 
 .login {
+  position: relative;
   width: 140px;
   padding: 10px 0;
   border-radius: 100px;
@@ -29,6 +30,10 @@
   text-decoration: none;
   color: black;
   text-align: center;
+  &:active {
+    top: 2px;
+    box-shadow: 0px 2px 2px 0px #00000040;
+  }
 }
 
 .ul {
