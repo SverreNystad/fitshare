@@ -7,6 +7,7 @@ import ErrorPage from "./errorPage";
 import Profile from "./routes/profile";
 import Groups from "./routes/groups";
 import Signin from "./routes/signin";
+import Login from "./routes/login";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/signin",
     element: <Signin />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
   }
 ]);
 
