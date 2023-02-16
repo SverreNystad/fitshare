@@ -2,6 +2,7 @@
 
 :root {
   --light-blue: #bfd0ea;
+  --navbar-width: 250px;
 }
 
 * {
@@ -19,19 +20,30 @@ body {
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: 250px 1fr 250px;
+  grid-template-columns: var(--navbar-width) 1fr var(--navbar-width);
   grid-template-rows: 1fr;
   gap: 0px 0px;
   grid-template-areas: ". . .";
 }
 
-/* main {
-  width: 100%;
-  height: 100%;
-} */
+main {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#error-page {
+  @extend main;
+  margin-top: 20vh;
+}
 
 #navigation {
-  width: 100%;
+  grid-column: 1;
+  height: 100vh;
+  width: var(--navbar-width);
+  position: fixed;
   background-color: var(--light-blue);
   display: flex;
   align-items: center;
