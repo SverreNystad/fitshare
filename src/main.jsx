@@ -7,6 +7,7 @@ import ErrorPage from "./errorPage";
 import Profile from "./routes/profile";
 import Groups from "./routes/groups";
 import Signin from "./routes/signin";
+import NewPlan from "./routes/plans/newplan";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -17,15 +18,19 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
-      { path: "/profile", element: <Profile /> },
-      { path: "/friends", element: <Friends /> },
-      { path: "/groups", element: <Groups /> },
+      { path: "profile", element: <Profile /> },
+      { path: "friends", element: <Friends /> },
+      { path: "groups", element: <Groups /> },
+      {
+        path: "plans",
+        children: [{ path: "new", element: <NewPlan /> }],
+      },
     ],
   },
   {
     path: "/signin",
     element: <Signin />,
-  }
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
