@@ -13,8 +13,6 @@ public class LoginAttemptTest {
 
 	private String toShortPassword;
 
-	private LoginAttempt loginAttempt;
-
 	@BeforeEach
 	public void setup() {
 		validUsername = "Ola Nordmann";
