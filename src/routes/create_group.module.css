@@ -32,3 +32,8 @@
     display: inline-block;
     margin: 10px;
   }
+
+.icon{
+    height: 50px;
+    width: 50px;
+}
