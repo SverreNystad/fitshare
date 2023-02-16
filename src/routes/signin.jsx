@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./signin.module.css"
 import image from "../img/logo.png"
+import { Link } from "react-router-dom";
 
 export default function Signin() {
   return (
@@ -13,7 +14,7 @@ export default function Signin() {
       <input type="password" placeholder="Passord" className={style.field}/>
       <input type="password" placeholder="Bekreft passord" className={style.field}/>
       <button type="submit" className={style.submitbutton}>Registrer deg</button>
-      <button className={style.button}>Allerede registrert? Logg inn her</button>
+      <Link  to={"/login"} className={style.button}>Allerede registrert? Logg inn her</Link>
       </form>
       </main>
     </>
