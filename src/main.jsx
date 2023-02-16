@@ -7,7 +7,6 @@ import ErrorPage from "./errorPage";
 import Profile from "./routes/profile";
 import Groups from "./routes/groups";
 import Signin from "./routes/signin";
-import NewPlan from "./routes/plans/newplan";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -21,10 +20,6 @@ const router = createBrowserRouter([
       { path: "profile", element: <Profile /> },
       { path: "friends", element: <Friends /> },
       { path: "groups", element: <Groups /> },
-      {
-        path: "plans",
-        children: [{ path: "new", element: <NewPlan /> }],
-      },
     ],
   },
   {
