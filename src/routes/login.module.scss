@@ -1,4 +1,4 @@
-.signin {
+.login {
   grid-column: 1;
   background-color: #bfd0ea;
   width: 100vw;
@@ -7,52 +7,66 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: -1;
+  position: relative;
+  isolation: isolate;
+  &::after {
+    content: "";
+    background-image: url("../img/logo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 85vh;
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.35;
+  }
 }
+
 .form {
   display: flex;
   flex-direction: column;
-  width: 35%;
+  width: clamp(200px, 50%, 400px);
   height: 45%;
   justify-content: space-evenly;
-  z-index: 1;
 }
+
 .headline {
-  z-index: 1;
   font-weight: 400;
   color: #23395d;
+  margin-bottom: 40px;
 }
+
 .field {
-  height: 35px;
-  z-index: 1;
+  padding: 12px 0;
   background-color: #51679c;
   margin-top: -10px;
   border-radius: 10px;
   border: none;
   padding-left: 15px;
-}
-.field::placeholder {
   color: #ffffff;
 }
+
 .image {
   position: absolute;
   opacity: 0.3;
   width: 530px;
   height: 530px;
-  z-index: 0;
 }
-.submitbutton {
-  background-color: #d0c8b6;
-  height: 30px;
-  margin-top: -5px;
-  border-radius: 10px;
-  border: none;
-}
+
 .button {
   background-color: #d0c8b6;
-  opacity: 0.5;
-  height: 30px;
-  margin-top: -15px;
+  padding: 10px 0;
   border-radius: 10px;
   border: none;
+  font-size: .8em;
+  cursor: pointer;
+  color: #000000;
+  text-align: center;
+  text-decoration: none;
 }
+
+.submitbutton {
+  @extend .button;
+  margin-top: 50px;
+}
+
