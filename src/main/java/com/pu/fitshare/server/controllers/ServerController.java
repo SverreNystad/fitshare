@@ -1,4 +1,4 @@
-package com.pu.fitshare.server;
+package com.pu.fitshare.server.controllers;
 
 import java.util.List;
 import java.util.Optional;

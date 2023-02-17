@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.pu.fitshare.persistence.users.LoginAttempt;
 import com.pu.fitshare.persistence.users.User;
-import com.pu.fitshare.persistence.users.UserRepository;
+import com.pu.fitshare.server.UserRepository;
 
 @Service
 public class UserService {
