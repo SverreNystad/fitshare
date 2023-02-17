@@ -1,0 +1,58 @@
+.signin{
+    background-color: #bfd0ea;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    height: 45%;
+    justify-content: space-evenly;
+    z-index: 1;
+}
+.headline{
+    z-index: 1;
+    font-weight: 400;
+    color: #23395d;
+}
+.field{
+    height: 35px;
+    z-index: 1;
+    background-color: #51679c;
+    margin-top: -10px;
+    border-radius: 10px;
+    border: none;
+    padding-left: 15px;
+    
+}
+.field::placeholder{
+    color: #ffffff;
+}
+.image{
+    position: absolute;
+    opacity: 0.3;
+    width: 530px;
+    height: 530px;
+    z-index: 0;
+}
+.submitbutton{
+    background-color: #d0c8b6;
+    height: 30px;
+    margin-top: -5px;
+    border-radius: 10px;
+    border: none;
+}
+.button{
+    background-color: #d0c8b6;
+    opacity: 0.5;
+    height: 30px;
+    margin-top: -15px;
+    border-radius: 10px;
+    border: none;
+}
