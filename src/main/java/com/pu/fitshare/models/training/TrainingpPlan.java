@@ -1,4 +1,4 @@
-package com.pu.fitshare.persistence.training;
+package com.pu.fitshare.models.training;
 
 import java.util.ArrayList;
 
@@ -20,11 +20,11 @@ public class TrainingpPlan {
     private String name;
     private ArrayList<TrainingSession> sessions;
 
-    public void removeSession(ObjectId id){
-        for (TrainingSession sesh: sessions) {
-            if (sesh.idEquals(id)){
+    public void removeSession(ObjectId id) {
+        for (TrainingSession sesh : sessions) {
+            if (sesh.idEquals(id)) {
                 sessions.remove(sesh);
             }
-          }
+        }
     }
 }

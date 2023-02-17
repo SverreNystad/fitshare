@@ -1,4 +1,4 @@
-package com.pu.fitshare.persistence.training;
+package com.pu.fitshare.models.training;
 
 import java.util.Date;
 
@@ -9,8 +9,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 /**
- * The {@code TrainingGoal} class shall keep a goal and the progression towards it and its duedate.
+ * The {@code TrainingGoal} class shall keep a goal and the progression towards
+ * it and its duedate.
  */
 @Document(collection = "trainingGoals")
 @Data

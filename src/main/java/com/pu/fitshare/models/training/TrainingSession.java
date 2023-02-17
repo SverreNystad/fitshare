@@ -1,4 +1,4 @@
-package com.pu.fitshare.persistence.training;
+package com.pu.fitshare.models.training;
 
 import org.bson.types.ObjectId;
 
