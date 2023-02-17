@@ -7,11 +7,11 @@ import ErrorPage from "./errorPage";
 import Profile from "./routes/profile";
 import Groups from "./routes/groups";
 import Create_Group from "./routes/create_group";
-import "./index.css";
+import Signin from "./routes/signin";
+import Login from "./routes/login";
+import "./index.scss";
 
 const router = createBrowserRouter([
-  // beginning of page routing
-  // https://reactrouter.com/en/main/start/tutorial
   {
     path: "/",
     element: <Root />,
@@ -22,6 +22,14 @@ const router = createBrowserRouter([
       { path: "groups", element: <Groups />},
       {path: "groups/new", element:<Create_Group/>},
     ],
+  },
+  {
+    path: "/signin",
+    element: <Signin />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
 ]);
 
