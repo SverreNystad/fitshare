@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class User {
     @Id
     private ObjectId id;
@@ -34,9 +35,5 @@ public class User {
 
     public boolean equals(final String username, final String password) {
         return this.getUsername().equals(username) && this.getPassword().equals(password);
-    }
-
-    public boolean equals(final User otherUser) {
-        return this.getId().equals(otherUser.getId());
     }
 }
