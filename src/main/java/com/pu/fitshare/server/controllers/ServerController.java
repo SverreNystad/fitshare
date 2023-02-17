@@ -1,4 +1,4 @@
-package com.pu.fitshare.server;
+package com.pu.fitshare.server.controllers;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pu.fitshare.persistence.users.LoginAttempt;
-import com.pu.fitshare.persistence.users.User;
+import com.pu.fitshare.models.users.LoginAttempt;
+import com.pu.fitshare.models.users.User;
 import com.pu.fitshare.server.services.UserService;
 
 @RestController

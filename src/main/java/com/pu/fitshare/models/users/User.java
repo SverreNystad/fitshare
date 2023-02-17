@@ -1,4 +1,4 @@
-package com.pu.fitshare.persistence.users;
+package com.pu.fitshare.models.users;
 
 import java.util.Date;
 

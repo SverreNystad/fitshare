@@ -7,6 +7,8 @@ import org.bson.types.ObjectId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.pu.fitshare.models.users.User;
+
 public class UserTest {
 
 	private User user1;
