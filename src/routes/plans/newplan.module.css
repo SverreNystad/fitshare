@@ -1,0 +1,15 @@
+.container {
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+}
+.activityForm {
+  width: 350px;
+}
