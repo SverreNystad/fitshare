@@ -1,18 +1,20 @@
 import React from "react";
-import style from "./newplan.module.css";
+import { Radio, Input, Button } from "../../components/Inputs";
+import style from "./newplan.module.scss";
+import logo from "../../img/logo.png";
 
 export default function NewPlan() {
   const intensity = [
-    { name: "intensity", value: "Lett" },
-    { name: "intensity", value: "Meduim" },
-    { name: "intensity", value: "Hard" },
+    { key: 0, name: "intensity", value: "Lett" },
+    { key: 1, name: "intensity", value: "Meduim" },
+    { key: 2, name: "intensity", value: "Hard" },
   ];
 
   const activity = [
-    { name: "activity", value: "Styrke" },
-    { name: "activity", value: "Løping" },
-    { name: "activity", value: "Sykling" },
-    { name: "activity", value: "Svømming" },
+    { key: 0, name: "activity", img: logo, value: "Styrke" },
+    { key: 1, name: "activity", img: logo, value: "Løping" },
+    { key: 2, name: "activity", img: logo, value: "Sykling" },
+    { key: 3, name: "activity", img: logo, value: "Svømming" },
   ];
 
   const handleSubmit = async (e) => {
@@ -23,40 +25,40 @@ export default function NewPlan() {
 
   return (
     <div className={style.container}>
-      <h2>Lag ny økt</h2>
+      <h1 className={style.header}>Lag ny økt</h1>
       <form className={style.activityForm} onSubmit={handleSubmit}>
-        <div className={style.inputContainer}>
-          <label htmlFor="Navn">Navn</label>
-          <input type="text" name="name" id="name" />
-        </div>
-        <div className={style.inputContainer}>
-          <label htmlFor="date">Varighet</label>
-          <input type="number" name="duration" id="duration" />
-        </div>
-
-        <div className={style.inputContainer}>
-          <label htmlFor="intensity">Intensitet:</label>
+        <Input type="text" name="name" id="name" placeholder="Navn" />
+        <Input
+          type="number"
+          name="duration"
+          id="duration"
+          placeholder="Varighet"
+        />
+        <div>
+          <div>Intensitet:</div>
           {intensity.map((item) => (
-            <Radio name={item.name} id={item.name} value={item.value} />
+            <Radio
+              key={item.key}
+              name={item.name}
+              id={item.name}
+              value={item.value}
+            />
           ))}
         </div>
-        <div className={style.inputContainer}>
-          <label htmlFor="activity">Type økt:</label>
+        <div>
+          <div>Type økt:</div>
           {activity.map((item) => (
-            <Radio name={item.name} id={item.name} value={item.value} />
+            <Radio
+              key={item.key}
+              name={item.name}
+              id={item.name}
+              value={item.value}
+              img={item.img}
+            />
           ))}
         </div>
-        <button type="submit">Send</button>
+        <Button type="submit">Send</Button>
       </form>
     </div>
-  );
-}
-
-function Radio(props) {
-  return (
-    <label>
-      <input type="radio" name={props.name} id={props.id} value={props.value} />
-      <span>{props.value}</span>
-    </label>
   );
 }
