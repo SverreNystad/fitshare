@@ -17,10 +17,10 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
-      { path: "/profile", element: <Profile /> },
-      { path: "/friends", element: <Friends /> },
-      { path: "/groups", element: <Groups /> },
-      { path: "/newgroup", element:<Create_Group/>},
+      { path: "profile", element: <Profile /> },
+      { path: "friends", element: <Friends /> },
+      { path: "groups", element: <Groups />},
+      {path: "groups/new", element:<Create_Group/>},
     ],
   },
 ]);
