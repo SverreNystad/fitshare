@@ -6,6 +6,7 @@ import Friends from "./routes/friends";
 import ErrorPage from "./errorPage";
 import Profile from "./routes/profile";
 import Groups from "./routes/groups";
+import Create_Group from "./routes/create_group";
 import Signin from "./routes/signin";
 import Login from "./routes/login";
 import "./index.scss";
@@ -18,7 +19,8 @@ const router = createBrowserRouter([
     children: [
       { path: "profile", element: <Profile /> },
       { path: "friends", element: <Friends /> },
-      { path: "groups", element: <Groups /> },
+      { path: "groups", element: <Groups />},
+      {path: "groups/new", element:<Create_Group/>},
     ],
   },
   {
