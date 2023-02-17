@@ -11,8 +11,6 @@ import Login from "./routes/login";
 import "./index.scss";
 
 const router = createBrowserRouter([
-  // beginning of page routing
-  // https://reactrouter.com/en/main/start/tutorial
   {
     path: "/",
     element: <Root />,
