@@ -12,8 +12,6 @@ import NewPlan from "./routes/plans/newplan";
 import "./index.css";
 
 const router = createBrowserRouter([
-  // beginning of page routing
-  // https://reactrouter.com/en/main/start/tutorial
   {
     path: "/",
     element: <Root />,
