@@ -5,6 +5,7 @@ import bike from "../img/bike.png"
 import swim from "../img/swim.png"
 import weight from "../img/weight.png"
 import shoe from "../img/shoe.png"
+import { Link } from "react-router-dom";
 
 export default function Create_Group() {
   
@@ -68,8 +69,10 @@ export default function Create_Group() {
             >
               <img src={swim} alt="Swimming" className={style.icon} />
             </button>
-          </div>
+        </div>
+        <Link to="/groups">
         <button type="submit" className={style.submitfield}>OPPRETT</button>
+        </Link>
         </form>
 
         </main>
