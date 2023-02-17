@@ -9,7 +9,7 @@ import Groups from "./routes/groups";
 import Signin from "./routes/signin";
 import Login from "./routes/login";
 import NewPlan from "./routes/plans/newplan";
-import "./index.css";
+import "./index.scss";
 
 const router = createBrowserRouter([
   {
