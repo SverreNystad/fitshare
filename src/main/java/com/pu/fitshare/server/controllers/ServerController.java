@@ -16,9 +16,7 @@ import com.pu.fitshare.models.users.User;
 import com.pu.fitshare.server.services.UserService;
 
 @RestController
-@RequestMapping(ServerController.API_SERVICE_PATH)
 public class ServerController {
-    public static final String API_SERVICE_PATH = "api/v1";
 
     @Autowired
     private UserService userService;
