@@ -39,7 +39,7 @@ public class TrainingService {
 		return planRepository.findAll();
 	}
 
-	public List<TrainingSession> Sessions() {
+	public List<TrainingSession> getSessions() {
 		return sessionRepository.findAll();
 	}
 }
