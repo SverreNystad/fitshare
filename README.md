@@ -43,21 +43,33 @@ gradlew tasks
 If you need to add a new dependecy to the project go to the 'dependencies.gradle' and add a new row with format 'nickname' : 'url'. The nickname is how one will access it in the rest of the project. Then add it to the dependencies in 'build.gradle'.
 
 ## All Endpoints
-### Get all users (test)
+### Users:
+#### Get all users (test)
 * api/v1/users
 
-### Login
+#### Login
 * api/v1/users/login/{username}/{password}
 
-### Signup
+#### Signup
 * api/v1/users/signup/{username}/{password}
   
-### Edit user (Not implemented)
+#### Edit user (Not implemented)
 * api/v1/users/edit/{userId}
 
-### Delete user (Not implemented)
+#### Delete user (Not implemented)
 * api/v1/users/delete/{userId}
-
+  
+### Training:
+#### Get all goals
+* api/v1/goals
+#### Get all plans
+* api/v1/plans
+#### Get all sessions
+* api/v1/sessions
+#### Get all exercises
+* api/v1/exercises
+#### Add exercise
+* api/v1/exercises/{exerciseName}
 
 ## Reference Documentation
 For further reference, please consider the following sections:
