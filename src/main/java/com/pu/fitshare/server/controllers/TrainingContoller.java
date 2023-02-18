@@ -1,5 +1,7 @@
 package com.pu.fitshare.server.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,33 +23,32 @@ public class TrainingContoller {
 	@Autowired
 	private TrainingService trainingService;
 
-	public TrainingService getUserService() {
+	public TrainingService getTrainingService() {
 		return trainingService;
 	}
 
 	@GetMapping(path = "/goals")
-	public ResponseEntity<TrainingGoal> getGoals() {
-		return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+	public ResponseEntity<List<TrainingGoal>> getGoals() {
+		return new ResponseEntity<>(getTrainingService().getGoals(), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 	@GetMapping(path = "/plans")
-	public ResponseEntity<TrainingPlan> getPlans() {
-		return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+	public ResponseEntity<List<TrainingPlan>> getPlans() {
+		return new ResponseEntity<>(getTrainingService().getPlans(), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 	@GetMapping(path = "/sessions")
-	public ResponseEntity<TrainingSession> getSessions() {
-		return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+	public ResponseEntity<List<TrainingSession>> getSessions() {
+		return new ResponseEntity<>(getTrainingService().getSessions(), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 	@GetMapping(path = "/exercises")
-	public ResponseEntity<TrainingExercise> getExercises() {
-		return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+	public ResponseEntity<List<TrainingExercise>> getExercises() {
+		return new ResponseEntity<>(getTrainingService().getExercises(), HttpStatus.OK);
 	}
 
 	@RequestMapping(path = "/exercises/{exerciseName}")
 	public ResponseEntity<TrainingExercise> addExercise(@PathVariable("exerciseName") String exerciseName) {
-
 		return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
