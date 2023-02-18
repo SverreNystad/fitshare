@@ -17,25 +17,29 @@ import com.pu.fitshare.server.TrainingSessionRepository;
 
 @Service
 public class TrainingService {
-    
-    private TrainingExerciseRepository exerciseRepository;
-    private TrainingGoalRepository goalRepository;
-    private TrainingPlanRepository planRepository;
-    private TrainingSessionRepository sessionRepository;
 
-    public List<TrainingExercise> getExercises() {
+	@Autowired
+	private TrainingExerciseRepository exerciseRepository;
+	@Autowired
+	private TrainingGoalRepository goalRepository;
+	@Autowired
+	private TrainingPlanRepository planRepository;
+	@Autowired
+	private TrainingSessionRepository sessionRepository;
+
+	public List<TrainingExercise> getExercises() {
 		return exerciseRepository.findAll();
 	}
 
-    public List<TrainingGoal> getGoals() {
+	public List<TrainingGoal> getGoals() {
 		return goalRepository.findAll();
 	}
 
-    public List<TrainingPlan> getPlans() {
+	public List<TrainingPlan> getPlans() {
 		return planRepository.findAll();
 	}
 
-    public List<TrainingSession> Sessions() {
+	public List<TrainingSession> Sessions() {
 		return sessionRepository.findAll();
 	}
 }
