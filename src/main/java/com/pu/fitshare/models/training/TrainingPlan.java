@@ -10,11 +10,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Document(collection = "trainingGoals")
+@Document(collection = "trainingPlan")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TrainingpPlan {
+public class TrainingPlan {
 
     @Id
     private ObjectId id;

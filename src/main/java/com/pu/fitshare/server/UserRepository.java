@@ -2,7 +2,6 @@ package com.pu.fitshare.server;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import com.pu.fitshare.models.users.User;
