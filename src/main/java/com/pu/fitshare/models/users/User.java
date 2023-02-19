@@ -48,7 +48,7 @@ public class User {
         this.plans.add(plan);
     }
 
-    public void addGoal(TrainingPlan plan) {
-        this.plans.add(plan);
+    public void addGoal(TrainingGoal plan) {
+        this.goals.add(plan);
     }
 }
