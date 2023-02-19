@@ -29,17 +29,17 @@ public class TrainingContoller {
 
 	@GetMapping(path = "/goals")
 	public ResponseEntity<List<TrainingGoal>> getGoals() {
-		return new ResponseEntity<>(getTrainingService().getGoals(), HttpStatus.INTERNAL_SERVER_ERROR);
+		return new ResponseEntity<>(getTrainingService().getGoals(), HttpStatus.OK);
 	}
 
 	@GetMapping(path = "/plans")
 	public ResponseEntity<List<TrainingPlan>> getPlans() {
-		return new ResponseEntity<>(getTrainingService().getPlans(), HttpStatus.INTERNAL_SERVER_ERROR);
+		return new ResponseEntity<>(getTrainingService().getPlans(), HttpStatus.OK);
 	}
 
 	@GetMapping(path = "/sessions")
 	public ResponseEntity<List<TrainingSession>> getSessions() {
-		return new ResponseEntity<>(getTrainingService().getSessions(), HttpStatus.INTERNAL_SERVER_ERROR);
+		return new ResponseEntity<>(getTrainingService().getSessions(), HttpStatus.OK);
 	}
 
 	@GetMapping(path = "/exercises")
