@@ -43,4 +43,12 @@ public class User {
     public boolean equals(final String username, final String password) {
         return this.getUsername().equals(username) && this.getPassword().equals(password);
     }
+
+    public void addPlan(TrainingPlan plan) {
+        this.plans.add(plan);
+    }
+
+    public void addGoal(TrainingPlan plan) {
+        this.plans.add(plan);
+    }
 }
