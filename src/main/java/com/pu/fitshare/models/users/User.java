@@ -1,10 +1,14 @@
 package com.pu.fitshare.models.users;
 
 import java.util.Date;
+import java.util.List;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.pu.fitshare.models.training.TrainingGoal;
+import com.pu.fitshare.models.training.TrainingPlan;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,6 +31,9 @@ public class User {
 
     private Date birthday;
     private String description;
+
+    private List<TrainingPlan> plans;
+    private List<TrainingGoal> goals;
 
     public User(final String username, final String password) {
         this.username = username;
