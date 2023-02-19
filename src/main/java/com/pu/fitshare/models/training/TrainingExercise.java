@@ -20,8 +20,13 @@ public class TrainingExercise {
     private String name;
     private TrainingType type;
 
-    public boolean idEquals(ObjectId id) {
+    public boolean idEquals(final ObjectId id) {
         return this.getId().equals(id);
+    }
+
+    public TrainingExercise(final String name, final String type) {
+        this.name = name;
+        this.type = TrainingType.valueOf(type);
     }
 
 }

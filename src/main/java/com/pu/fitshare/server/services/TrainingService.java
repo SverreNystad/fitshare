@@ -1,8 +1,10 @@
 package com.pu.fitshare.server.services;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,4 +44,45 @@ public class TrainingService {
 	public List<TrainingSession> getSessions() {
 		return sessionRepository.findAll();
 	}
+
+	public Optional<TrainingGoal> createGoal(final String name, final String description, final Date dueDate,
+			final String type) {
+		try {
+			TrainingGoal goal = new TrainingGoal(name, description, dueDate, type);
+			return Optional.of(goalRepository.insert(goal));
+		} catch (IllegalArgumentException e) {
+			return Optional.empty();
+		}
+	}
+
+	public Optional<TrainingPlan> createPlan(final String name, final List<ObjectId> sessionIds) {
+		try {
+			TrainingPlan plan = new TrainingPlan(name);
+			plan.setSessions(sessionRepository.findAllById(sessionIds));
+			return Optional.of(plan);
+		} catch (IllegalArgumentException e) {
+			return Optional.empty();
+		}
+	}
+
+	public Optional<TrainingSession> createSession(final String name, final int duration, final String intensity,
+			final List<ObjectId> excercieIds) {
+		try {
+			TrainingSession session = new TrainingSession(name, duration, intensity);
+			session.setExercises(exerciseRepository.findAllById(excercieIds));
+			return Optional.of(session);
+		} catch (IllegalArgumentException e) {
+			return Optional.empty();
+		}
+	}
+
+	public Optional<TrainingExercise> createExercise(final String name, final String type) {
+		try {
+			TrainingExercise exercise = new TrainingExercise(name, type);
+			return Optional.of(exerciseRepository.insert(exercise));
+		} catch (IllegalArgumentException e) {
+			return Optional.empty();
+		}
+	}
+
 }

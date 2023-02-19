@@ -1,6 +1,6 @@
 package com.pu.fitshare.models.training;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -19,7 +19,11 @@ public class TrainingPlan {
     @Id
     private ObjectId id;
     private String name;
-    private ArrayList<TrainingSession> sessions;
+    private List<TrainingSession> sessions;
+
+    public TrainingPlan(final String name) {
+        this.name = name;
+    }
 
     public void removeSession(ObjectId id) {
         for (TrainingSession sesh : sessions) {
@@ -28,4 +32,5 @@ public class TrainingPlan {
             }
         }
     }
+
 }

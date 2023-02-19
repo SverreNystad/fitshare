@@ -1,6 +1,6 @@
 package com.pu.fitshare.models.training;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -18,9 +18,16 @@ public class TrainingSession {
 
     @Id
     private ObjectId id;
+    private String name;
     private int duration;
     private TrainingIntensity intensity;
-    private ArrayList<TrainingExercise> exercises;
+    private List<TrainingExercise> exercises;
+
+    public TrainingSession(final String name, final int duration, final String intensity) {
+        this.name = name;
+        this.duration = duration;
+        this.intensity = TrainingIntensity.valueOf(intensity);
+    }
 
     public boolean idEquals(ObjectId id) {
         return this.getId().equals(id);
