@@ -2,5 +2,8 @@ package com.pu.fitshare.models.training;
 
 public enum TrainingType {
 	endurance,
-	power
+	power,
+	group,
+	swimming,
+	running
 }
