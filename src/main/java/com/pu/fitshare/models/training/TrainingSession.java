@@ -18,7 +18,8 @@ public class TrainingSession {
 
     @Id
     private ObjectId id;
-    private Integer duration;
+    private int duration;
+    private TrainingIntensity intensity;
     private ArrayList<TrainingExercise> exercises;
 
     public boolean idEquals(ObjectId id) {
