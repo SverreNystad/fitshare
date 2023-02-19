@@ -19,7 +19,7 @@ public class UserTest {
 	public void setup() {
 		user1 = new User("Ola", "password");
 		user2 = new User("Kari", "password");
-		userWithObjectID = new User(new ObjectId(), "Ola", "password", null, null);
+		userWithObjectID = new User(new ObjectId(), "Ola", "password", null, null, null, null);
 
 	}
 
