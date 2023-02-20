@@ -7,6 +7,8 @@ import org.bson.types.ObjectId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.pu.fitshare.models.users.User;
+
 public class UserTest {
 
 	private User user1;
@@ -17,7 +19,7 @@ public class UserTest {
 	public void setup() {
 		user1 = new User("Ola", "password");
 		user2 = new User("Kari", "password");
-		userWithObjectID = new User(new ObjectId(), "Ola", "password", null, null);
+		userWithObjectID = new User(new ObjectId(), "Ola", "password", null, null, null, null);
 
 	}
 

@@ -6,19 +6,19 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pu.fitshare.persistence.users.LoginAttempt;
-import com.pu.fitshare.persistence.users.User;
+import com.pu.fitshare.models.users.LoginAttempt;
+import com.pu.fitshare.models.users.User;
 import com.pu.fitshare.server.services.UserService;
 
 @RestController
-@RequestMapping(ServerController.API_SERVICE_PATH)
+@CrossOrigin(origins = "http://localhost:5173")
 public class ServerController {
-    public static final String API_SERVICE_PATH = "api/v1";
 
     @Autowired
     private UserService userService;

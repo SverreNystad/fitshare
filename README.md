@@ -43,23 +43,53 @@ gradlew tasks
 If you need to add a new dependecy to the project go to the 'dependencies.gradle' and add a new row with format 'nickname' : 'url'. The nickname is how one will access it in the rest of the project. Then add it to the dependencies in 'build.gradle'.
 
 ## All Endpoints
-### Get all users (test)
-* api/v1/users
 
-### Login
-* api/v1/users/login/{username}/{password}
+### Users
 
-### Signup
-* api/v1/users/signup/{username}/{password}
+#### Get all users (test)
+
+[api/v1/users](http://localhost:8080/api/v1/users)
+
+#### Login
+
+[api/v1/users/login/{username}/{password}](http://localhost:8080/api/v1/users/login/)
+
+#### Signup
+
+[api/v1/users/signup/{username}/{password}](http://localhost:8080/api/v1/users/signup/)
   
-### Edit user (Not implemented)
-* api/v1/users/edit/{userId}
+#### Edit user (Not implemented)
 
-### Delete user (Not implemented)
-* api/v1/users/delete/{userId}
+[api/v1/users/edit/{userId}](http://localhost:8080/api/v1/users/edit/)
 
+#### Delete user (Not implemented)
+
+[api/v1/users/delete/{userId}](http://localhost:8080/api/v1/users/delete/)
+  
+### Training
+
+#### Get all goals
+
+[api/v1/goals](http://localhost:8080/api/v1/goals)
+
+#### Get all plans
+
+[api/v1/plans](http://localhost:8080/api/v1/plans)
+
+#### Get all sessions
+
+[api/v1/sessions](http://localhost:8080/api/v1/sessions)
+
+#### Get all exercises
+
+[api/v1/exercises](http://localhost:8080/api/v1/exercises)
+
+#### Add exercise
+
+[api/v1/exercises/{exerciseName}](http://localhost:8080/api/v1/exercises/)
 
 ## Reference Documentation
+
 For further reference, please consider the following sections:
 
 * [Official Gradle documentation](https://docs.gradle.org)

@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.pu.fitshare.models.users.LoginAttempt;
+
 public class LoginAttemptTest {
 
 	private String validUsername;

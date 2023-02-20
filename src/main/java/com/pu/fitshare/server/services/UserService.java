@@ -6,8 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.pu.fitshare.persistence.users.LoginAttempt;
-import com.pu.fitshare.persistence.users.User;
+import com.pu.fitshare.models.training.TrainingGoal;
+import com.pu.fitshare.models.training.TrainingPlan;
+import com.pu.fitshare.models.users.LoginAttempt;
+import com.pu.fitshare.models.users.User;
 import com.pu.fitshare.server.UserRepository;
 
 @Service
@@ -44,5 +46,15 @@ public class UserService {
 			}
 		}
 		return matchingUser;
+	}
+
+	public User addPlanToUser(User user, TrainingPlan plan) {
+		user.addPlan(plan);
+		return userRepository.save(user);
+	}
+
+	public User addGoalToUser(User user, TrainingGoal goal) {
+		user.addGoal(goal);
+		return userRepository.save(user);
 	}
 }

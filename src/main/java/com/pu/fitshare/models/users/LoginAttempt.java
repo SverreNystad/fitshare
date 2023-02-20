@@ -1,4 +1,4 @@
-package com.pu.fitshare.persistence.users;
+package com.pu.fitshare.models.users;
 
 /**
  * LoginAttempt will take the input from the http request and sanitize it

@@ -1,10 +1,14 @@
-package com.pu.fitshare.persistence.users;
+package com.pu.fitshare.models.users;
 
 import java.util.Date;
+import java.util.List;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.pu.fitshare.models.training.TrainingGoal;
+import com.pu.fitshare.models.training.TrainingPlan;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,6 +31,9 @@ public class User {
     private Date birthday;
     private String description;
 
+    private List<TrainingPlan> plans;
+    private List<TrainingGoal> goals;
+
     public User(final String username, final String password) {
         this.username = username;
         this.password = password;
@@ -36,7 +43,11 @@ public class User {
         return this.getUsername().equals(username) && this.getPassword().equals(password);
     }
 
-    public boolean equals(final User otherUser) {
-        return this.getId().equals(otherUser.getId());
+    public void addPlan(TrainingPlan plan) {
+        this.plans.add(plan);
+    }
+
+    public void addGoal(TrainingGoal plan) {
+        this.goals.add(plan);
     }
 }
