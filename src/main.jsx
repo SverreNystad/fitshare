@@ -9,6 +9,7 @@ import Groups from "./routes/groups";
 import Create_Group from "./routes/create_group";
 import Signin from "./routes/signin";
 import Login from "./routes/login";
+import Plans from "./routes/former_plans";
 import "./index.scss";
 
 const router = createBrowserRouter([
@@ -19,6 +20,8 @@ const router = createBrowserRouter([
     children: [
       { path: "profile", element: <Profile /> },
       { path: "friends", element: <Friends /> },
+      { path: "groups", element: <Groups /> },
+      { path: "plans", element: <Plans />},
       { path: "groups", element: <Groups />},
       {path: "groups/new", element:<Create_Group/>},
     ],
