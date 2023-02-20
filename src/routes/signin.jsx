@@ -7,7 +7,6 @@ export default function Signin() {
   return (
     <>
       <main className={style.signin}>
-      <img className={style.image} src={image} alt=""/>
       <h1 className={style.headline}>Registrer deg</h1>
       <form method="post" className={style.form}>
       <input type="text" placeholder="Brukernavn" className={style.field}/>
