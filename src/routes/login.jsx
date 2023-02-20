@@ -1,22 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import style from "./login.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../UserContext";
 
 export default function Login() {
+  const { user, setUser } = useContext(UserContext);
 
-  async function postLogInData(event, url="api/v1/users/login/{username}/{password}"){
+  const navigate = useNavigate();
+
+  async function postLogInData(event) {
     event.preventDefault();
-    console.log(event.target[1].value);
-    let username = event.target[0].value;
-    let password = event.target[1].value;
+    const username = event.target[0].value;
+    const password = event.target[1].value;
 
-    const response = await fetch(`http://localhost:8080/api/v1/users/login/${username}/${password}`, {
-      method: 'GET', // *GET, POST, PUT, DELETE, etc.
-      mode: 'no-cors',
-    })
-    console.log(response);
+    const response = await fetch(
+      `http://localhost:8080/api/v1/users/login/${username}/${password}`
+    );
+    const userRes = await response.json();
+    setUser(userRes);
+    console.log(userRes);
+    navigate("/");
   }
-
 
   return (
     <>

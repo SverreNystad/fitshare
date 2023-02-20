@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { UserContext } from "./UserContext";
 import Root from "./routes/root";
 import Friends from "./routes/friends";
 import ErrorPage from "./errorPage";
@@ -19,8 +20,8 @@ const router = createBrowserRouter([
     children: [
       { path: "profile", element: <Profile /> },
       { path: "friends", element: <Friends /> },
-      { path: "groups", element: <Groups />},
-      {path: "groups/new", element:<Create_Group/>},
+      { path: "groups", element: <Groups /> },
+      { path: "groups/new", element: <Create_Group /> },
     ],
   },
   {
@@ -33,8 +34,25 @@ const router = createBrowserRouter([
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
-);
+export default function Main() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("USER"));
+    if (storedUser) setUser(storedUser);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("USER", JSON.stringify(user));
+  }, [user, setUser]);
+
+  return (
+    <React.StrictMode>
+      <UserContext.Provider value={{ user, setUser }}>
+        <RouterProvider router={router} />
+      </UserContext.Provider>
+    </React.StrictMode>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<Main />);
