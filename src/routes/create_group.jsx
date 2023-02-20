@@ -20,7 +20,7 @@ export default function Create_Group() {
     <>
         {/* Alle andre felter enn knappene */}
         
-        <main className={style.create_group}>
+        <div className={style.create_group}>
         
         <h1>Opprett Gruppe</h1>
         <form method="post" className={style. form}>
@@ -75,7 +75,7 @@ export default function Create_Group() {
         </Link>
         </form>
 
-        </main>
+        </div>
     </>
   );
 }
