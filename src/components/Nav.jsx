@@ -19,7 +19,7 @@ export default function Nav() {
             <Link to={"/friends"}>Venner</Link>
           </li>
           <li className={style.li}>
-            <Link to={"/groups"}>Grupper</Link>
+            <Link to={"/groups/mygroups"}>Grupper</Link>
           </li>
           <li className={style.li}>
             <Link to={"/plans/new"}>Ny trening</Link>
