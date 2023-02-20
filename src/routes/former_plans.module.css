@@ -5,29 +5,37 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 90px;
+    padding-left: 65px;
 }
+
 .form{
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 50%;
     justify-content: space-evenly;
+    padding-top: 40px;
 }
 .headline{
-    z-index: 1;
+    justify-content: center;
     font-weight: 400;
     color: #23395d;
+    position: absolute;
+    top: 20px;
 }
 .field{
-    height: 50px;
-    width: 400px;
+    height: 60px;
+    width: 820px;
     background-color: #ffffff;
-    margin-top: 0px;
     border-radius: 10px;
+    cursor: pointer;
     border: none;
-    padding-left: 15px;
-    
+    text-decoration: none;
+    color: black;
+    padding-left: 25px;
 }
+
 .field::placeholder{
     color: #ffffff;
 }
@@ -36,11 +44,11 @@
     border-radius: 100%;
     height: 100px;
     width: 100px;
-    margin-top: 10px;
+    margin-top: 30px;
+    position: flex;
+    
 }
 .rows{
-    display: flex;
-
-
+    display: flex;  
 }
 
