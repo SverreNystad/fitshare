@@ -38,12 +38,12 @@ export default function Main() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("USER"));
+    const storedUser = JSON.parse(sessionStorage.getItem("USER"));
     if (storedUser) setUser(storedUser);
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("USER", JSON.stringify(user));
+    sessionStorage.setItem("USER", JSON.stringify(user));
   }, [user, setUser]);
 
   return (

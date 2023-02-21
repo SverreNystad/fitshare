@@ -5,30 +5,33 @@ import { UserContext } from "../UserContext";
 
 export default function Login() {
   const { user, setUser } = useContext(UserContext);
-
   const navigate = useNavigate();
 
-  async function postLogInData(event) {
+  async function getLogInData(event) {
     event.preventDefault();
-    const username = event.target[0].value;
-    const password = event.target[1].value;
-
-    const response = await fetch(
-      `http://localhost:8080/api/v1/users/login/${username}/${password}`
+    const { username, password } = Object.fromEntries(
+      new FormData(event.target)
     );
-    const userRes = await response.json();
-    setUser(userRes);
-    console.log(userRes);
-    navigate("/");
+    const res = await fetch(
+      `http://localhost:8080/api/v1/users/login/${username}/${password}`
+    ).then((user) => user.json());
+    setUser(res);
+    navigate("/profile");
   }
 
   return (
     <>
       <main className={style.login}>
         <h1 className={style.headline}>Logg inn</h1>
-        <form onSubmit={postLogInData} className={style.form}>
-          <input type="text" placeholder="Brukernavn" className={style.field} />
+        <form onSubmit={getLogInData} className={style.form}>
           <input
+            name="username"
+            type="text"
+            placeholder="Brukernavn"
+            className={style.field}
+          />
+          <input
+            name="password"
             type="password"
             placeholder="Passord"
             className={style.field}
