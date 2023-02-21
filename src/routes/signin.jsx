@@ -18,9 +18,9 @@ export default function Signin() {
     const response = await fetch(
       `http://localhost:8080/api/v1/users/signup/${username}/${password}`
     );
-    // const userRes = await response.json();
-    // setUser(userRes);
-    // console.log(userRes);
+    const userRes = await response.json();
+    setUser(userRes);
+    console.log(userRes);
     navigate("/");
 
 
