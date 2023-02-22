@@ -52,6 +52,23 @@ public class TrainingContoller {
 		return new ResponseEntity<>(getTrainingService().getExercises(), HttpStatus.OK);
 	}
 
+	@RequestMapping(path = "/exercises/{name}/{duration}/{intesity}/{description}")
+	public ResponseEntity<TrainingExercise> createSession(@PathVariable("name") String name, @PathVariable("duration") int duration, @PathVariable("description") String description, @PathVariable("intesity") String intesity) {
+		try {
+			
+			Optional<TrainingSession> session = getTrainingService().createSession(name, duration, intesity, null, description);
+			if (session.isPresent()) {
+				return new ResponseEntity(session.get(), HttpStatus.OK);
+			}
+			else {
+				return new ResponseEntity(session.empty(), HttpStatus.BAD_REQUEST);
+			}
+		} catch (IllegalArgumentException e) {
+			System.out.println("The input was bad: " + e.getLocalizedMessage());
+            return new ResponseEntity(null, HttpStatus.BAD_REQUEST);
+		}
+	}
+
 	@RequestMapping(path = "/goal/{userId}/{goalName}/{description}/{dueDate}/{type}")
 	public ResponseEntity<TrainingGoal> addGoal(@PathVariable("userId") ObjectId userId, @PathVariable("goalName") String goalName, @PathVariable("description") String description, @PathVariable("dueDate") Date dueDate, @PathVariable("type") String type) {
 
