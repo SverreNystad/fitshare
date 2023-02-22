@@ -1,0 +1,63 @@
+.create_group {
+  background-color: #d9d9d9;
+  width: 100%;
+  height: 100%;
+  padding-left: var(--padding_left);
+}
+.form {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 60%;
+  justify-content: space-evenly;
+}
+
+.submitfield {
+  background-color: #d0c8b6;
+  color: black;
+  width: 500px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.header1 {
+  margin-bottom: 10px;
+}
+
+.field {
+  height: 50px;
+  size: 50px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: none;
+  padding-left: 15px;
+}
+
+.dot {
+  height: 80px;
+  width: 80px;
+  background-color: #bfd0ea;
+  border-radius: 100%;
+  display: inline-block;
+  margin: 10px;
+  border: none;
+}
+
+.dotselected {
+  background-color: #23395d;
+  height: 80px;
+  width: 80px;
+  border-radius: 100%;
+  display: inline-block;
+  margin: 10px;
+  border: none;
+}
+
+.icon {
+  height: 50px;
+  width: 50px;
+}
