@@ -4,28 +4,45 @@ import weight from "../img/weight.png"
 import shoe from "../img/shoe.png"
 import bike from "../img/bike.png"
 import swim from "../img/swim.png"
-import { Link } from "react-router-dom";
 
-export default function Strength_plans() {
+export function Activity(props){
+  return (
+    <img 
+      className={style.icon}
+      type={props.type}
+      src={props.image}  
+      alt=""
+    />
+  );
+}
+
+export default function Strength_plans(){
+
+  // fetch("localhost:8080/api/v1/sessions", {
+  //   method: "GET" 
+
+  // })
+  
+  async function postLogInData(event, url="localhost:8080/api/v1/sessions"){
+    event.preventDefault();
+  }
+    
+  
+      
+
   return (
     <>
-      <main className={style.former_plans}>
-        <h1 className={style.headline}>Styrke</h1>
-        <form method="post" className={style.form}>
-        <div className={style.rows}>
-          <img src={weight} alt="Strength" className={style.icon}/><Link to={"/plans/strength"} className={style.field}> Styrketrening </Link>
-        </div>
-        <div className={style.rows}>
-          <img src={shoe} alt="Running" className={style.icon}/><Link to={"/plans/running"} className={style.field}> Løping </Link>
-        </div>
-        <div className={style.rows}>
-          <img src={bike} alt="Cycling" className={style.icon}/><Link to={"/plans/cycling"} className={style.field}> Sykling </Link>
-        </div>
-        <div className={style.rows}>
-          <img src={swim} alt="Swimming" className={style.icon}/><Link to={"/plans/swimming"} className={style.field}> Svømming </Link>
-        </div>
-        </form>
-      </main>
+      <div className={style.former_plans}>
+      <h1 className={style.headline}>Tidligere økter</h1>
+      <form method="post" className={style.form}>
+      </form>
+      </div>
+      <Activity type={"power"} image={weight} alt="Weight"/>
+      <Activity type={"power"} image={swim} alt="Swim"/>
+      <Activity type={"power"} image={bike} alt="Bike"/>
+      <Activity type={"power"} image={shoe} alt="Shoe"/>
     </>
   );
 }
+
+// export default Strength_plans

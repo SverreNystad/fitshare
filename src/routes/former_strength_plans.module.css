@@ -12,12 +12,12 @@
 
 .form{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
     height: 100%;
     justify-content: space-evenly;
     padding-top: 40px;
-}
+} 
 .headline{
     justify-content: center;
     font-weight: 400;
@@ -26,34 +26,13 @@
     top: 20px;
     font-size: 50px;
 }
-.field{
-    height: 70px;
-    width: 820px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    cursor: pointer;
-    border: none;
-    text-decoration: none;
-    color: black;
-    padding-left: 25px;
-    text-align: center;
-    padding-top: 15px;
-    font-size:x-large;
-}
 
-.field::placeholder{
-    color: #ffffff;
-}
 .icon{
     background-color: #BFD0EA;
     border-radius: 100%;
     height: 100px;
     width: 100px;
-    position: flex;
+    position: absolute;
     
-}
-.rows{
-    display: flex;  
-    align-items: center;
 }
 
