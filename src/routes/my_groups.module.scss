@@ -23,6 +23,7 @@
   
   .header1 {
     margin-bottom: 10px;
+    padding-left: 10px;
   }
   
   .field {
@@ -68,12 +69,13 @@
   flex-direction: row;
   width: 500px;
   height: 20%;
-  justify-content: space-evenly;
+  justify-content: center;
+  padding-inline-start: 150px;
 }
 
 .topbutton{
     height: 40px;
-    width: auto;
+    width: 150px;
     background-color: #BFD0EA;
     padding-top: 7px;
     padding-bottom: 7px;
@@ -81,6 +83,7 @@
     border-radius: 10px;
     border: none;
     text-align: center;
+    margin-right: 40px;
   }
 
 .newgrouprow{
@@ -107,7 +110,7 @@
 
 .selectedbutton{
   height: 40px;
-    width: auto;
+    width: 150px;
     background-color: #23395D;
     padding-top: 7px;
     padding-bottom: 7px;
@@ -115,8 +118,38 @@
     border-radius: 10px;
     border: none;
     text-align: center;
+    margin-right: 40px;
 
 }
+
+.activitybutton{
+  background-color: #5E6879;
+  display: flex;
+  height: 200px;
+  width: 100%;
+  font-size: 60px;
+  align-items:row;
+  
+  text-align:left;
+  padding-right: 150px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.challengeicon{
+  height: 180px;
+  width: 180px;
+  margin-top: 7px;
+  margin-left: 100px;
+
+}
+
+.opprettgruppetext{
+  padding-left: 10px;
+  align-items: center;
+}
+
+
 
 
 
