@@ -22,11 +22,19 @@ public class TrainingSession {
     private int duration;
     private TrainingIntensity intensity;
     private List<TrainingExercise> exercises;
+    private String description;
 
     public TrainingSession(final String name, final int duration, final String intensity) {
         this.name = name;
         this.duration = duration;
         this.intensity = TrainingIntensity.valueOf(intensity);
+    }
+
+    public TrainingSession(final String name, final int duration, final String intensity, final String description) {
+        this.name = name;
+        this.duration = duration;
+        this.intensity = TrainingIntensity.valueOf(intensity);
+        this.description = description;
     }
 
     public boolean idEquals(ObjectId id) {
