@@ -21,6 +21,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GroupUserRelation {
+    
     private ObjectId userId;
     private ObjectId groupId;
 

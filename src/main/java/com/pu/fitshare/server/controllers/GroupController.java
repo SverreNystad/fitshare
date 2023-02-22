@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pu.fitshare.models.group.Group;
+import com.pu.fitshare.models.training.TrainingType;
 import com.pu.fitshare.server.services.GroupService;
 
 @RestController
@@ -33,11 +34,32 @@ public class GroupController {
         return groupService;
     }
 
+    private ResponseEntity<Group> presentCheck(Optional<Group> group) {
+        if (group.isPresent()) {
+            return new ResponseEntity(group, HttpStatus.OK);
+        } else {
+            return new ResponseEntity(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
     @GetMapping(path = "/groups")
     public ResponseEntity<List<Group>> getAllGroups(){
         ResponseEntity<List<Group>> response = new ResponseEntity(getGroupService().getGroups(), HttpStatus.OK);
         return response;
     }
 
+    @RequestMapping(path = "/groups/{name}/{goal}/{type}")
+    public ResponseEntity<Group> createGroup(@PathVariable("name") String name, @PathVariable("goal") String goal, @PathVariable("type") String type){
+        try {
+            
+            Optional<Group> createdGroup = getGroupService().createGroup(name, goal, type);
+
+            return presentCheck(createdGroup);
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("The input was bad: " + e.getLocalizedMessage());
+            return new ResponseEntity(null, HttpStatus.BAD_REQUEST);
+        }
+    }
     
 }
