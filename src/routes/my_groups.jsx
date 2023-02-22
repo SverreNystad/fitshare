@@ -9,18 +9,21 @@ export default function Groups() {
   
   
   useEffect(() => {
-    getGroups();
+    const res = fetch(
+      `http://localhost:8080/api/v1/groups`
+    ).then((groups) => groups.json());
+    setGroups(res);
     console.log(groups);
   }, []);
 
   // api/v1/groups
 
-  async function getGroups() {
-    const res = await fetch(
-      `http://localhost:8080/api/v1/groups`
-    ).then((groups) => groups.json());
-    setGroups(res);
-  }
+  // async function getGroups() {
+  //   const res = await fetch(
+  //     `http://localhost:8080/api/v1/groups`
+  //   ).then((groups) => groups.json());
+  //   setGroups(res);
+  // }
 
 
 
