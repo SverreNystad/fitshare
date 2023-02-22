@@ -9,6 +9,8 @@ import My_Groups from "./routes/my_groups";
 import Create_Group from "./routes/create_group";
 import Signin from "./routes/signin";
 import Login from "./routes/login";
+import Groups_Activities from "./routes/activities";
+import Groups_Challenges from './routes/challenges'
 import "./index.scss";
 
 const router = createBrowserRouter([
@@ -21,6 +23,9 @@ const router = createBrowserRouter([
       { path: "friends", element: <Friends /> },
       { path: "groups/mygroups", element: <My_Groups />},
       {path: "groups/new", element:<Create_Group/>},
+      {path: "groups/activities", element:<Groups_Activities/>},
+      {path: "groups/challenges", element:<Groups_Challenges/>},
+
     ],
   },
   {
