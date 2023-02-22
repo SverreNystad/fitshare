@@ -5,17 +5,16 @@ import { Link } from 'react-router-dom';
 
 export default function Groups() {
 
-  const [groups, setGroups] = useState();
+  const [groups, setGroups] = useState([]);
 
 
   useEffect(() => {
     const res = fetch(
-      `http://localhost:8080/api/v1/groups`
-    ).then(
-      (groups) => groups.json());
-    setGroups(res);
-
-  }, []);
+      `http://localhost:8080/api/v1/groups`)
+      .then(res => res.json())
+      .then(data => setGroups(data))
+      .catch(error => console.error(error));
+}, []);
 
   useEffect(() => {
     console.log(groups);
