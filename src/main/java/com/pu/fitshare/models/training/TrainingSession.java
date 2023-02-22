@@ -21,7 +21,7 @@ public class TrainingSession {
     private String name;
     private int duration;
     private TrainingIntensity intensity;
-    private String exercise;
+    private String type;
     // private List<TrainingExercise> exercises;
     private String description;
 
@@ -31,11 +31,11 @@ public class TrainingSession {
         this.intensity = TrainingIntensity.valueOf(intensity);
     }
 
-    public TrainingSession(final String name, final int duration, final String intensity, final String exercise, final String description) {
+    public TrainingSession(final String name, final int duration, final String intensity, final String type, final String description) {
         this.name = name;
         this.duration = duration;
         this.intensity = TrainingIntensity.valueOf(intensity);
-        this.exercise = exercise;
+        this.type = type;
         this.description = description;
     }
 

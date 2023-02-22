@@ -5,5 +5,6 @@ public enum TrainingType {
 	power,
 	group,
 	swimming,
-	running
+	running,
+    cycling
 }
