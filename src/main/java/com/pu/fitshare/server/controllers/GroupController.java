@@ -1,6 +1,9 @@
 package com.pu.fitshare.server.controllers;
 
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,4 +32,12 @@ public class GroupController {
     public GroupService getGroupService() {
         return groupService;
     }
+
+    @GetMapping(path = "/groups")
+    public ResponseEntity<List<Group>> getAllGroups(){
+        ResponseEntity<List<Group>> response = new ResponseEntity(getGroupService().getGroups(), HttpStatus.OK);
+        return response;
+    }
+
+    
 }
