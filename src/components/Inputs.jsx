@@ -23,13 +23,21 @@ export function Input(props) {
 
 export function Radio(props) {
   return (
-    <label>
+    <label className={style.radioContainer}>
       <input type="radio" name={props.name} id={props.id} value={props.value} />
       {props.img ? (
-        <img width="32px" src={props.img} alt="ikon" />
+        <img width="40px" src={props.img} alt={props.alt} />
       ) : (
-        <span>{props.value}</span>
+        <span>{props.label}</span>
       )}
     </label>
+  );
+}
+
+export function Textarea(props) {
+  return (
+    <textarea className={style.textarea} name={props.name} id={props.id}>
+      {props.children}
+    </textarea>
   );
 }
