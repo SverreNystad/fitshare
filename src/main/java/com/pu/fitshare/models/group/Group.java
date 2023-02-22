@@ -1,6 +1,7 @@
 package com.pu.fitshare.models.group;
 
 import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.pu.fitshare.models.training.TrainingGoal;
@@ -16,6 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Group {
     
+    @Id
     private ObjectId id;
     private String name;
     private TrainingGoal goal;
