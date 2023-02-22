@@ -52,11 +52,11 @@ public class TrainingContoller {
 		return new ResponseEntity<>(getTrainingService().getExercises(), HttpStatus.OK);
 	}
 
-	@RequestMapping(path = "/sessions/{name}/{duration}/{intesity}/{description}")
-	public ResponseEntity<TrainingExercise> createSession(@PathVariable("name") String name, @PathVariable("duration") int duration, @PathVariable("description") String description, @PathVariable("intesity") String intesity) {
+	@RequestMapping(path = "/sessions/{name}/{duration}/{intesity}/{exercise}/{description}")
+	public ResponseEntity<TrainingExercise> createSession(@PathVariable("name") String name, @PathVariable("duration") int duration, @PathVariable("intesity") String intesity, @PathVariable("exercise") String exercise, @PathVariable("description") String description){
 		try {
 			
-			Optional<TrainingSession> session = getTrainingService().createSession(name, duration, intesity, null, description);
+			Optional<TrainingSession> session = getTrainingService().createSession(name, duration, intesity, exercise, description);
 			if (session.isPresent()) {
 				return new ResponseEntity(session.get(), HttpStatus.OK);
 			}
