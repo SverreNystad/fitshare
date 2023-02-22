@@ -9,11 +9,11 @@ export default function Profile() {
   const { user, setUser } = useContext(UserContext);
   const convetDate = new Date(user.birthday);
   const year = convetDate.getFullYear().toString();
-  let month = (convetDate.getMonth() +1).toString();
+  let month = (convetDate.getMonth() + 1).toString();
   const date = convetDate.getDate().toString();
 
-  if(month.length > 0){
-    month = "0" + (convetDate.getMonth() +1).toString();
+  if (month.length > 0) {
+    month = "0" + (convetDate.getMonth() + 1).toString();
   }
 
 
@@ -25,15 +25,15 @@ export default function Profile() {
         <tr className={style.fields}>
           <tr>
             <td>Navn</td>
-            <td><input type="text" className={style.field} placeholder={user.username}/></td>
+            <td><input type="text" disabled className={style.field} value={user.username} /></td>
           </tr>
           <tr>
             <td>Fødselsdato</td>
-            <td><input type="text" className={style.field} placeholder={ year +"-"+ month +"-"+ date}/></td>
+            <td><input type="text" disabled className={style.field} value={year + "-" + month + "-" + date} /></td>
           </tr>
           <tr>
             <td>Biografi</td>
-            <td><input type="text" className={style.field} placeholder={user.description}/></td>
+            <td><input type="text" disabled className={style.field} value={user.description} /></td>
           </tr>
         </tr>
       </div>

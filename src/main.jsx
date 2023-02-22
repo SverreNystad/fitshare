@@ -22,9 +22,9 @@ const router = createBrowserRouter([
       { path: "profile", element: <Profile /> },
       { path: "friends", element: <Friends /> },
       { path: "groups", element: <Groups /> },
-      { path: "plans", element: <Plans />},
-      { path: "groups", element: <Groups />},
-      {path: "groups/new", element:<Create_Group/>},
+      { path: "plans", element: <Plans /> },
+      { path: "groups", element: <Groups /> },
+      { path: "groups/new", element: <Create_Group /> },
     ],
   },
   {
