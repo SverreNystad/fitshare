@@ -25,6 +25,7 @@ export default function Strength_plans(){
   
   async function postLogInData(event, url="localhost:8080/api/v1/sessions"){
     event.preventDefault();
+    console.log(event.value);
   }
     
   
