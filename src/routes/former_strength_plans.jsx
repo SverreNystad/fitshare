@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import style from "./former_strength_plans.module.css"
 import weight from "../img/weight.png"
 import shoe from "../img/shoe.png"
@@ -18,15 +18,20 @@ export function Activity(props){
 
 export default function Strength_plans(){
 
-  // fetch("localhost:8080/api/v1/sessions", {
-  //   method: "GET" 
+  const [sessionList, setSessionList] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // })
-  
-  async function postLogInData(event, url="localhost:8080/api/v1/sessions"){
-    event.preventDefault();
-    console.log(event.value);
-  }
+  useEffect(() => {
+    fetch(`http://localhost:8080/api/v1/sessions`)
+      .then(res => res.json())
+      .then(type => {
+        setSessionList(type);
+        setLoading(false);
+      })
+      .catch(error => console.error(error));
+  }, []);
+
+
     
   
       
@@ -35,8 +40,16 @@ export default function Strength_plans(){
     <>
       <div className={style.former_plans}>
       <h1 className={style.headline}>Tidligere økter</h1>
+
       <form method="post" className={style.form}>
       </form>
+      {/* <div>
+        {data.map((item) => (
+        <div key={item.id}>{item.type}</div>
+      ))}
+      </div> */}
+      {/* <form onSubmit={fetchData} className={style.form}>
+      </form> */}
       </div>
       <Activity type={"power"} image={weight} alt="Weight"/>
       <Activity type={"power"} image={swim} alt="Swim"/>
