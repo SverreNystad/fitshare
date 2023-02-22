@@ -84,9 +84,9 @@ If you need to add a new dependecy to the project go to the 'dependencies.gradle
 
 [api/v1/exercises](http://localhost:8080/api/v1/exercises)
 
-#### Add exercise
+#### Add sessions
 
-[api/v1/exercises/{exerciseName}](http://localhost:8080/api/v1/exercises/)
+[api/v1/sessions/{sessionsName}](http://localhost:8080/api/v1/sessions/)
 
 ## Reference Documentation
 

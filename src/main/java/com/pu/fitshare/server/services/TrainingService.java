@@ -73,6 +73,7 @@ public class TrainingService {
 			// session.setExercises(exerciseRepository.findAllById(excercieIds));
 			return Optional.of(sessionRepository.insert(session));
 		} catch (IllegalArgumentException e) {
+            System.out.println("CREATE-SESSION:"+e.getLocalizedMessage());
 			return Optional.empty();
 		}
 	}

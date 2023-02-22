@@ -52,7 +52,7 @@ public class TrainingContoller {
 		return new ResponseEntity<>(getTrainingService().getExercises(), HttpStatus.OK);
 	}
 
-	@RequestMapping(path = "/exercises/{name}/{duration}/{intesity}/{description}")
+	@RequestMapping(path = "/sessions/{name}/{duration}/{intesity}/{description}")
 	public ResponseEntity<TrainingExercise> createSession(@PathVariable("name") String name, @PathVariable("duration") int duration, @PathVariable("description") String description, @PathVariable("intesity") String intesity) {
 		try {
 			
