@@ -2,33 +2,15 @@ import React, { useState, useEffect } from 'react';
 import style from "./my_groups.module.scss";
 import white_arrow from "../img/white_arrow.png";
 import { Link } from 'react-router-dom';
+import {GroupList} from '../components/GroupList';
 
 export default function Groups() {
 
-  const [groups, setGroups] = useState([]);
-
-
-  useEffect(() => {
-    const res = fetch(
-      `http://localhost:8080/api/v1/groups`)
-      .then(res => res.json())
-      .then(data => setGroups(data))
-      .catch(error => console.error(error));
-}, []);
-
-  useEffect(() => {
-    console.log(groups);
-  }, [groups]);
-  // api/v1/groups
-
-  // async function getGroups() {
-  //   const res = await fetch(
-  //     `http://localhost:8080/api/v1/groups`
-  //   ).then((groups) => groups.json());
-  //   setGroups(res);
-  // }
-
-
+  const groups = [
+    { id: 1, name: 'Group 1' },
+    { id: 2, name: 'Group 2' },
+    { id: 3, name: 'Group 3' },
+  ];
 
   return (
 
@@ -46,6 +28,9 @@ export default function Groups() {
             <img src={white_arrow} alt="Her" className={style.icon} />
           </Link>
         </button>
+      </div>
+      <div>
+        <GroupList groups={groups}/>
       </div>
     </div>
   );
