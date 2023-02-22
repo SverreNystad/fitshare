@@ -4,7 +4,7 @@ import style from "./GroupComponentStyles.module.scss";
 export function GroupItem({ group }) {
   return (
     <div className={style.groupItem}>
-      <h2>{group.name}</h2>
+      <h3>{group.name}</h3>
       <p>{group.description}</p>
     </div>
   );
