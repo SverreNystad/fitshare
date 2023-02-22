@@ -4,6 +4,7 @@ import logo from "../img/logo.png";
 import style from "./Nav.module.scss";
 
 export default function Nav() {
+
   return (
     <nav id="navigation">
       <div className={style.navContainer}>
