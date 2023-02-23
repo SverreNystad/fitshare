@@ -66,12 +66,14 @@ public class TrainingService {
 	}
 
 	public Optional<TrainingSession> createSession(final String name, final int duration, final String intensity,
-			final List<ObjectId> excercieIds) {
+			final String type, final String description) {
 		try {
-			TrainingSession session = new TrainingSession(name, duration, intensity);
-			session.setExercises(exerciseRepository.findAllById(excercieIds));
-			return Optional.of(session);
+			TrainingSession session = new TrainingSession(name, duration, intensity, type, description);
+			
+			// session.setExercises(exerciseRepository.findAllById(excercieIds));
+			return Optional.of(sessionRepository.insert(session));
 		} catch (IllegalArgumentException e) {
+            System.out.println("CREATE-SESSION:"+e.getLocalizedMessage());
 			return Optional.empty();
 		}
 	}

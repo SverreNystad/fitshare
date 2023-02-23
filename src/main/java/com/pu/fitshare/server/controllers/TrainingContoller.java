@@ -1,7 +1,10 @@
 package com.pu.fitshare.server.controllers;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -49,8 +52,36 @@ public class TrainingContoller {
 		return new ResponseEntity<>(getTrainingService().getExercises(), HttpStatus.OK);
 	}
 
-	@RequestMapping(path = "/exercises/{exerciseName}")
-	public ResponseEntity<TrainingExercise> addExercise(@PathVariable("exerciseName") String exerciseName) {
+	@RequestMapping(path = "/sessions/{name}/{duration}/{intesity}/{type}/{description}")
+	public ResponseEntity<TrainingExercise> createSession(@PathVariable("name") String name, @PathVariable("duration") int duration, @PathVariable("intesity") String intesity, @PathVariable("type") String type, @PathVariable("description") String description){
+		try {
+			
+			Optional<TrainingSession> session = getTrainingService().createSession(name, duration, intesity, type, description);
+			if (session.isPresent()) {
+				return new ResponseEntity(session.get(), HttpStatus.OK);
+			}
+			else {
+				return new ResponseEntity(session.empty(), HttpStatus.BAD_REQUEST);
+			}
+		} catch (IllegalArgumentException e) {
+			System.out.println("The input was bad: " + e.getLocalizedMessage());
+            return new ResponseEntity(null, HttpStatus.BAD_REQUEST);
+		}
+	}
+
+	@RequestMapping(path = "/goal/{userId}/{goalName}/{description}/{dueDate}/{type}")
+	public ResponseEntity<TrainingGoal> addGoal(@PathVariable("userId") ObjectId userId, @PathVariable("goalName") String goalName, @PathVariable("description") String description, @PathVariable("dueDate") Date dueDate, @PathVariable("type") String type) {
+
+		Optional<TrainingGoal> goal = getTrainingService().createGoal(goalName, description, dueDate, type);
+
+		if (goal.isPresent()) {
+			return new ResponseEntity<>(goal.get(), HttpStatus.OK);
+		}
+		return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+	@RequestMapping(path = "/plans/{userId}/{plan}")
+	public ResponseEntity<TrainingExercise> addPlanToUser(@PathVariable("userId") ObjectId userId ) {
 		return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
