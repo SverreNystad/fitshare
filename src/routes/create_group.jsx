@@ -5,7 +5,7 @@ import bike from "../img/bike.png"
 import swim from "../img/swim.png"
 import weight from "../img/weight.png"
 import shoe from "../img/shoe.png"
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Create_Group() {
 
@@ -13,6 +13,8 @@ export default function Create_Group() {
   const [selectedButtonIndex, setSelectedButtonIndex] = useState(-1);
   const [type, setType] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+
+  const navigate= useNavigate();
 
   const handleButtonClick = (buttonIndex) => {
     setSelectedButtonIndex(buttonIndex);
@@ -49,11 +51,11 @@ export default function Create_Group() {
       })
       .then(data => {
         console.log(data);
+        navigate("/groups/mygroups");
       })
       .catch(error => {
         console.error('There was a problem with the fetch operation:', error);
       });
-    navigate("/groups/mygroups");
   }
 
   return (
