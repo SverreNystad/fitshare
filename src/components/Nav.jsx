@@ -3,6 +3,12 @@ import { Link } from "react-router-dom";
 import logo from "../img/logo.png";
 import { UserContext } from "../UserContext";
 import style from "./Nav.module.scss";
+import groupLogo1 from "../img/group.png";
+import groupLogo2 from "../img/group2.png";
+import profileLogo from "../img/profile_black.png";
+import dotImg from "../img/dot.png";
+import runLogo from "../img/run.png";
+import bookLogo from "../img/book.png";
 
 export default function Nav() {
   const { user, setUser } = useContext(UserContext) || false;
@@ -20,28 +26,28 @@ export default function Nav() {
           <span>FitShare</span>
         </Link>
         <ul className={style.ul}>
-          <li className={style.li}>
-            <Link to={defined ? "/profile" : "/login"}>Profil</Link>
-          </li>
-          <li className={style.li}>
-            <Link to={"/friends"}>Venner</Link>
-          </li>
-          <li className={style.li}>
-            <Link to={"/groups/mygroups"}>Grupper</Link>
-          </li>
-          <li className={style.li}>
-            <Link to={"/plans/new"}>Ny trening</Link>
-          </li>
+          <NavLi to={defined ? "/profile" : "/login"} img={profileLogo}>
+            Profil
+          </NavLi>
+          {/* <NavLi to={"/friends"} img={groupLogo1}>
+            Venner
+          </NavLi> */}
+          <NavLi to="/groups/mygroups" img={groupLogo2} alt="Grupper">
+            Grupper
+          </NavLi>
+          <NavLi to={"/plans/new"} img={dotImg}>
+            Ny trening
+          </NavLi>
         </ul>
         <div>
           <span className={style.shortcut}>Snarveier</span>
           <ul className={style.ul}>
-            <li className={style.li}>
-              <Link to={"#"}>Progresjon</Link>
-            </li>
-            <li className={style.li}>
-              <Link to={"/plans"}>Tidligere økter</Link>
-            </li>
+            {/* <NavLi to={"#"} img={runLogo}>
+              Progresjon
+            </NavLi> */}
+            <NavLi to={"/plans"} img={bookLogo}>
+              Tidligere økter
+            </NavLi>
           </ul>
         </div>
         <Link className={style.login} to={"/login"}>
@@ -49,5 +55,16 @@ export default function Nav() {
         </Link>
       </div>
     </nav>
+  );
+}
+
+function NavLi(props) {
+  return (
+    <li className={style.li}>
+      <Link to={props.to}>
+        <img width="40px" src={props.img} alt={props.alt} />
+        <span>{props.children}</span>
+      </Link>
+    </li>
   );
 }
