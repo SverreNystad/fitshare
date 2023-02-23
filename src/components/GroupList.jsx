@@ -18,7 +18,7 @@ export function GroupList() {
 
   return (
     <div>
-      <h1 className={style.header}>Group List</h1>
+      <h2 className={style.header}>Mine Grupper</h2>
       {loading ? (
         <p>Loading...</p>
       ) : (
