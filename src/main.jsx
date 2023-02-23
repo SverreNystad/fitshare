@@ -11,9 +11,9 @@ import Create_Group from "./routes/create_group";
 import Signin from "./routes/signin";
 import Login from "./routes/login";
 import NewPlan from "./routes/plans/newplan";
-import Plans from "./routes/former_plans";
+import Plans from "./routes/former_strength_plans";
 import "./index.scss";
-import Strength_plans from "./routes/former_strength_plans";
+// import Strength_plans from "./routes/former_strength_plans";
 
 const router = createBrowserRouter([
   {
@@ -27,9 +27,9 @@ const router = createBrowserRouter([
       { path: "plans", element: <Plans />},
       { path: "groups", element: <Groups />},
       { path: "groups/new", element:<Create_Group/>},
-      { path: "plans/strength", element: <Strength_plans/>},
+      // { path: "plans/strength", element: <Strength_plans/>},
       { path: "groups/new", element: <Create_Group /> },
-      { path: "plans", element: <Plans /> },
+      { path: "plans", element: <Plans/> },
       { path: "plans/new", element: <NewPlan /> },
     ],
   },

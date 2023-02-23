@@ -18,7 +18,7 @@ export default function NewPlan() {
       name: "type",
       img: weightImg,
       label: "Styrke",
-      value: "endurance",
+      value: "power",
     },
     {
       key: 1,
@@ -32,7 +32,7 @@ export default function NewPlan() {
       name: "type",
       img: bikeImg,
       label: "Sykling",
-      value: "cycling",
+      value: "endurance",
     },
     {
       key: 3,

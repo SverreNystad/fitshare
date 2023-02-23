@@ -6,7 +6,7 @@ import bike from "../img/bike.png";
 import swim from "../img/swim.png";
 import { Link } from "react-router-dom";
 
-export default function Plans() {
+export default function Eroor_plans() {
   return (
     <>
       <main className={style.former_plans}>
