@@ -15,9 +15,11 @@ export default function Groups() {
       </div>
       <div className={style.field}>
         <text>Aktiviteter i nærheten av deg:</text>
+        <text>  Coming soon...</text>
       </div>
       <div className={style.field}>
         <text>Aktiviteter som vennene dine deltar på:</text>
+        <text>  Coming soon...</text>
       </div>
 
       </div>
