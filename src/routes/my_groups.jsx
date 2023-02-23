@@ -41,7 +41,11 @@ export default function Groups() {
         </button>
       </div>
       <div className={style.newgrouprow}>
-        <h3 className={style.opprettgruppetext}>Opprett ny gruppe</h3>
+        <h3 className={style.opprettgruppetext}>
+          <Link to="/groups/new" style={{ textDecoration: "none", color: "white" }}>
+            Opprett ny gruppe
+          </Link>
+        </h3>
         <button className={style.creategroupbutton}>
           <Link to="/groups/new">
             <img src={white_arrow} alt="Her" className={style.icon} />
