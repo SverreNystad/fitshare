@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../img/logo.png";
+import { UserContext } from "../UserContext";
 import style from "./Nav.module.scss";
 
 export default function Nav() {
+  const { user, setUser } = useContext(UserContext) || {}; // throws error if user is undefined "|| {}" fixes this https://stackoverflow.com/questions/48433008/js-es6-destructuring-of-undefined
+
   return (
     <nav id="navigation">
       <div className={style.navContainer}>
@@ -13,7 +16,7 @@ export default function Nav() {
         </Link>
         <ul className={style.ul}>
           <li className={style.li}>
-            <Link to={"/profile"}>Profil</Link>
+            <Link to={user ? "/profile" : "/login"}>Profil</Link>
           </li>
           <li className={style.li}>
             <Link to={"/friends"}>Venner</Link>

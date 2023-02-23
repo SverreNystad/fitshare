@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { GroupItem } from './GroupItem';
+import React, { useState, useEffect } from "react";
+import { GroupItem } from "./GroupItem";
 import style from "./GroupComponentStyles.module.scss";
 
 export function GroupList() {
@@ -8,29 +8,30 @@ export function GroupList() {
 
   useEffect(() => {
     fetch(`http://localhost:8080/api/v1/groups`)
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         setGroupList(data);
         setLoading(false);
       })
-      .catch(error => console.error(error));
+      .catch((error) => console.error(error));
   }, []);
 
   return (
-    <div >
+    <div>
       <h1 className={style.header}>Group List</h1>
       {loading ? (
         <p>Loading...</p>
       ) : (
         <ul className={style.groupsList}>
-          {groupList.map(group => (
-            <GroupItem key={group.id} group={group} className={style.groupItem}/>
+          {groupList.map((group) => (
+            <GroupItem
+              key={group.id}
+              group={group}
+              className={style.groupItem}
+            />
           ))}
         </ul>
       )}
     </div>
   );
 }
-
-
-

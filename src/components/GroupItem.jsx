@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import style from "./GroupComponentStyles.module.scss";
 
 export function GroupItem({ group }) {
