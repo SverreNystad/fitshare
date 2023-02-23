@@ -1,21 +1,34 @@
 // import React from "react";
 import style from "./signin.module.scss";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
 
 export default function Signin() {
   const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
+  const [passwordMessage, setPasswordMessage] = useState("");
+
 
   async function postSingIn(event) {
     event.preventDefault();
     const username = event.target[0].value;
     const password = event.target[1].value;
+    const confirmPassword = event.target[2].value;
+
+    if (password != confirmPassword) {
+      setPasswordMessage("Passordet og bekreft passord er ulike.");
+      return;
+    }
+    if (password.length <= 8 || password == "") {
+      setPasswordMessage("Passordet er mindre enn 8 tegn");
+      return;
+    }
     const res = await fetch(
       `http://localhost:8080/api/v1/users/signup/${username}/${password}`
     ).then((user) => user.json());
     setUser(res);
+    setPasswordMessage("");
     navigate("/profile");
   }
 
@@ -35,6 +48,7 @@ export default function Signin() {
             placeholder="Bekreft passord"
             className={style.field}
           />
+          <div className={style.submitError}>{passwordMessage}</div>
           <button type="submit" className={style.submitbutton}>
             Registrer deg
           </button>
