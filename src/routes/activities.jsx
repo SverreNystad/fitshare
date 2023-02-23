@@ -33,11 +33,11 @@ export default function Groups() {
           </Link>
         </button>
       </div>
-      <div className={style.field}>
+      <div className={style.comingsoontext}>
         <text>Aktiviteter i nærheten av deg:</text>
         <text> Coming soon...</text>
       </div>
-      <div className={style.field}>
+      <div className={style.comingsoontext}>
         <text>Aktiviteter som vennene dine deltar på:</text>
         <text> Coming soon...</text>
       </div>
