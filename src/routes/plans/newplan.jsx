@@ -46,15 +46,18 @@ export default function NewPlan() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));
-    console.log(data);
-    const res = await fetch(
-      `http://localhost:8080/api/v1/sessions/${data.name}/${data.duration}/${data.intensity}/${data.type}/${data.description}`,
-      {
-        method: "POST",
-        body: JSON.stringify(data),
-      }
-    ).then((res) => res.json());
-    console.log(res);
+    try {
+      const res = await fetch(
+        `http://localhost:8080/api/v1/sessions/${data.name}/${data.duration}/${data.intensity}/${data.type}/${data.description}`,
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+        }
+      ).then((res) => res.json());
+      alert(`Laget økten ${res.name}`);
+    } catch (error) {
+      alert(`Oops! Det oppstod en feil, prøv igjen.\n\n${error}`);
+    }
   };
 
   return (
