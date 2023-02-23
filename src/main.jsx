@@ -46,7 +46,7 @@ const router = createBrowserRouter([
 ]);
 
 export default function Main() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const storedUser = JSON.parse(sessionStorage.getItem("USER"));
