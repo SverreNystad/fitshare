@@ -4,6 +4,7 @@
   height: 100%;
   padding-left: var(--padding_left);
 }
+
 .form {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -60,4 +61,8 @@
 .icon {
   height: 50px;
   width: 50px;
+}
+
+.submitError {
+  color: red;
 }
