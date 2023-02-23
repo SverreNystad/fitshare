@@ -9,6 +9,7 @@
   align-items: center;
   position: relative;
   isolation: isolate;
+
   &::after {
     content: "";
     background-image: url("../img/logo.png");
@@ -65,8 +66,11 @@
   text-decoration: none;
 }
 
+.submitError {
+  color: red;
+}
+
 .submitbutton {
   @extend .button;
   margin-top: 50px;
 }
-

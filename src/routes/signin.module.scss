@@ -9,6 +9,7 @@
   align-items: center;
   position: relative;
   isolation: isolate;
+
   &::after {
     content: "";
     background-image: url("../img/logo.png");
@@ -21,6 +22,7 @@
     opacity: 0.35;
   }
 }
+
 .form {
   display: flex;
   flex-direction: column;
@@ -28,11 +30,13 @@
   height: 45%;
   justify-content: space-evenly;
 }
+
 .headline {
   font-weight: 400;
   color: #23395d;
   margin-bottom: 40px;
 }
+
 .field {
   padding: 12px 0;
   background-color: #51679c;
@@ -42,12 +46,14 @@
   padding-left: 15px;
   color: #ffffff;
 }
+
 .image {
   position: absolute;
   opacity: 0.3;
   width: 530px;
   height: 530px;
 }
+
 .button {
   background-color: #d0c8b6;
   padding: 10px 0;
@@ -59,7 +65,12 @@
   text-align: center;
   text-decoration: none;
 }
+
 .submitbutton {
   @extend .button;
   margin-top: 50px;
+}
+
+.submitError {
+  color: red;
 }
