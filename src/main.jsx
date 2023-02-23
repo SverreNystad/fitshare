@@ -10,6 +10,7 @@ import My_Groups from "./routes/my_groups";
 import Create_Group from "./routes/create_group";
 import Signin from "./routes/signin";
 import Login from "./routes/login";
+import Groups from "./routes/my_groups";
 
 import Groups_Activities from "./routes/activities";
 import Groups_Challenges from './routes/challenges'
