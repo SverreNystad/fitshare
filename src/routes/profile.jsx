@@ -1,9 +1,7 @@
 import React, { useContext } from "react";
 import { UserContext } from "../UserContext";
-import style from "./profile.module.css"
-import profile from "../img/profile.png"
-
-
+import style from "./profile.module.css";
+import profile from "../img/profile.png";
 
 export default function Profile() {
   const { user, setUser } = useContext(UserContext);
@@ -16,26 +14,40 @@ export default function Profile() {
     month = "0" + (convetDate.getMonth() + 1).toString();
   }
 
-
   return (
     <>
       <div className={style.profile}>
         <h1>Profil</h1>
         <img src={profile} alt="Profile" className={style.icon} />
-        <tr className={style.fields}>
-          <tr>
-            <td>Navn</td>
-            <td><input type="text" disabled className={style.field} value={user.username} /></td>
-          </tr>
-          <tr>
-            <td>Fødselsdato</td>
-            <td><input type="text" disabled className={style.field} value={year + "-" + month + "-" + date} /></td>
-          </tr>
-          <tr>
-            <td>Biografi</td>
-            <td><input type="text" disabled className={style.field} value={user.description} /></td>
-          </tr>
-        </tr>
+        <div className={style.fields}>
+          <div className={style.inputContainer}>
+            <span>Navn</span>
+            <input
+              type="text"
+              disabled
+              className={style.field}
+              value={user.username}
+            />
+          </div>
+          <div className={style.inputContainer}>
+            <span>Fødselsdato</span>
+            <input
+              type="text"
+              disabled
+              className={style.field}
+              value={year + "-" + month + "-" + date}
+            />
+          </div>
+          <div className={style.inputContainer}>
+            <span>Biografi</span>
+            <input
+              type="text"
+              disabled
+              className={style.field}
+              value={user.description}
+            />
+          </div>
+        </div>
       </div>
     </>
   );
