@@ -10,16 +10,22 @@
 .field {
   height: 50px;
   width: 450px;
-  padding-top: 7px;
-  padding-bottom: 7px;
+  padding: 7px 16px;
   margin-top: 20px;
   border-radius: 10px;
   border: none;
   margin-left: 20px;
+  color: black;
 }
 
 .fields {
-  display: grid;
+  margin-left: -6em;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .header1 {
