@@ -10,8 +10,12 @@ import My_Groups from "./routes/my_groups";
 import Create_Group from "./routes/create_group";
 import Signin from "./routes/signin";
 import Login from "./routes/login";
-import NewPlan from "./routes/plans/newplan";
+import Groups from "./routes/my_groups";
+import Groups_Activities from "./routes/activities";
+import Groups_Challenges from "./routes/challenges";
 import Plans from "./routes/former_strength_plans";
+import NewPlan from "./routes/plans/newplan";
+
 import "./index.scss";
 // import Strength_plans from "./routes/former_strength_plans";
 
@@ -24,12 +28,11 @@ const router = createBrowserRouter([
       { path: "profile", element: <Profile /> },
       { path: "friends", element: <Friends /> },
       { path: "groups", element: <Groups /> },
-      { path: "plans", element: <Plans />},
-      { path: "groups", element: <Groups />},
-      { path: "groups/new", element:<Create_Group/>},
-      // { path: "plans/strength", element: <Strength_plans/>},
+      { path: "groups/mygroups", element: <My_Groups /> },
       { path: "groups/new", element: <Create_Group /> },
-      { path: "plans", element: <Plans/> },
+      { path: "groups/activities", element: <Groups_Activities /> },
+      { path: "groups/challenges", element: <Groups_Challenges /> },
+      { path: "plans", element: <Plans /> },
       { path: "plans/new", element: <NewPlan /> },
     ],
   },
@@ -44,7 +47,7 @@ const router = createBrowserRouter([
 ]);
 
 export default function Main() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const storedUser = JSON.parse(sessionStorage.getItem("USER"));
