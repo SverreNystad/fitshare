@@ -42,9 +42,15 @@
 
 .li {
   list-style: none;
+  margin-top: 12px;
   a {
+    display: flex;
+    align-items: center;
     text-decoration: none;
     color: black;
+    span {
+      padding-left: 10px;
+    }
     &:hover {
       color: #555;
       text-decoration: underline;
