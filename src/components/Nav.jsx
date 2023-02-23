@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../img/logo.png";
+import { UserContext } from "../UserContext";
 import style from "./Nav.module.scss";
 
 export default function Nav() {
+  const { user, setUser } = useContext(UserContext) || false;
+  const [defined, setDefined] = useState(false);
+  console.log(user);
+  useEffect(() => {
+    user ? setDefined(true) : setDefined(false);
+  }, []);
+
   return (
     <nav id="navigation">
       <div className={style.navContainer}>
@@ -13,13 +21,13 @@ export default function Nav() {
         </Link>
         <ul className={style.ul}>
           <li className={style.li}>
-            <Link to={"/profile"}>Profil</Link>
+            <Link to={defined ? "/profile" : "/login"}>Profil</Link>
           </li>
           <li className={style.li}>
             <Link to={"/friends"}>Venner</Link>
           </li>
           <li className={style.li}>
-            <Link to={"/groups"}>Grupper</Link>
+            <Link to={"/groups/mygroups"}>Grupper</Link>
           </li>
           <li className={style.li}>
             <Link to={"/plans/new"}>Ny trening</Link>
