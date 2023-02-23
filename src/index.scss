@@ -23,10 +23,12 @@ body {
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: var(--navbar-width) 1fr var(--navbar-width);
+  // grid-template-columns: var(--navbar-width) 1fr var(--navbar-width);
+  grid-template-columns: var(--navbar-width) 1fr;
   grid-template-rows: 1fr;
   gap: 0px 0px;
-  grid-template-areas: ". . .";
+  // grid-template-areas: ". . .";
+  grid-template-areas: ". .";
 }
 
 main {

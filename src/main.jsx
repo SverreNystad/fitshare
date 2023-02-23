@@ -11,13 +11,13 @@ import Create_Group from "./routes/create_group";
 import Signin from "./routes/signin";
 import Login from "./routes/login";
 import Groups from "./routes/my_groups";
-
 import Groups_Activities from "./routes/activities";
 import Groups_Challenges from "./routes/challenges";
-
-import Plans from "./routes/former_plans";
+import Plans from "./routes/former_strength_plans";
+import NewPlan from "./routes/plans/newplan";
 
 import "./index.scss";
+// import Strength_plans from "./routes/former_strength_plans";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +33,7 @@ const router = createBrowserRouter([
       { path: "groups/activities", element: <Groups_Activities /> },
       { path: "groups/challenges", element: <Groups_Challenges /> },
       { path: "plans", element: <Plans /> },
+      { path: "plans/new", element: <NewPlan /> },
     ],
   },
   {
