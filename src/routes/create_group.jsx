@@ -15,6 +15,25 @@ export default function Create_Group() {
   const handleButtonClick = (buttonIndex) => {
     setSelectedButtonIndex(buttonIndex);
   };
+
+  function handleSubmit(event) {
+    
+    event.preventDefault();
+  
+    fetch('api/v1/groups/${name}/${goal}/${type}')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+    })
+    .catch(error => {
+      console.error('There was a problem with the fetch operation:', error);
+    });
+  }
   
   return (
     <>
@@ -23,7 +42,7 @@ export default function Create_Group() {
         <div className={style.create_group}>
         
         <h1>Opprett Gruppe</h1>
-        <form method="post" className={style. form}>
+        <form method="post" className={style. form} onSubmit={handleSubmit}>
         <text>Gi gruppen et navn:</text>
         <input type="text" className={style.field}/>
         <text>Legg til medlemmer:</text>
@@ -79,3 +98,8 @@ export default function Create_Group() {
     </>
   );
 }
+
+
+
+
+//api/v1/groups/{name}/{goal}/{type}
