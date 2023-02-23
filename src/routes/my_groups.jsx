@@ -41,7 +41,7 @@ export default function Groups() {
         </button>
       </div>
       <div className={style.newgrouprow}>
-        <text className={style.opprettgruppetext}>Opprett ny gruppe</text>
+        <h3 className={style.opprettgruppetext}>Opprett ny gruppe</h3>
         <button className={style.creategroupbutton}>
           <Link to="/groups/new">
             <img src={white_arrow} alt="Her" className={style.icon} />
