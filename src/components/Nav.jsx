@@ -42,9 +42,9 @@ export default function Nav() {
         <div>
           <span className={style.shortcut}>Snarveier</span>
           <ul className={style.ul}>
-            {/* <NavLi to={"#"} img={runLogo}>
-              Progresjon
-            </NavLi> */}
+            <NavLi className={style.goal} to={"/goals"} img={runLogo}>
+              Mine mål
+            </NavLi>
             <NavLi to={"/plans"} img={bookLogo}>
               Tidligere økter
             </NavLi>
