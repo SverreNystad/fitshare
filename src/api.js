@@ -29,17 +29,10 @@ export async function getSessions() {
   }
 }
 
-export async function postNewPlan(
-  name,
-  duration,
-  intensity,
-  type,
-  description
-) {
+export async function postNewPlan(name, dur, int, type, desc) {
   try {
     const res = await axios.post(
-      baseURL +
-        `/sessions/${name}/${duration}/${intensity}/${type}/${description}`
+      baseURL + `/sessions/${name}/${dur}/${int}/${type}/${desc}`
     );
     return res.data;
   } catch (error) {
