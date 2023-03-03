@@ -4,6 +4,7 @@ import power from "../img/weight.png";
 import running from "../img/shoe.png";
 import endurance from "../img/bike.png";
 import swimming from "../img/swim.png";
+import { getSessions } from "../api";
 
 export function Activity(props) {
   return (
@@ -20,7 +21,6 @@ export function Activity(props) {
 }
 
 function getImageByName(imgName) {
-  console.log(imgName);
   switch (imgName) {
     case "power":
       return power;
@@ -30,9 +30,6 @@ function getImageByName(imgName) {
       return endurance;
     case "running":
       return running;
-
-    default:
-      break;
   }
 }
 export default function Plans() {
@@ -40,41 +37,24 @@ export default function Plans() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/v1/sessions`)
-      .then((res) => res.json())
-      .then((type) => {
-        setSessionList(type);
-        setLoading(false);
-      })
-      .catch((error) => console.error(error));
+    async function getData() {
+      const sessions = await getSessions();
+      console.log(sessions);
+      setSessionList(sessions);
+      setLoading(false);
+    }
+    getData();
   }, []);
-
-  useEffect(() => {
-    console.log(sessionList);
-    sessionList.map((session) => {
-      session.type == "running"
-        ? console.log("hei dette er running")
-        : console.log("Den var: " + session.type);
-      session.type == "power"
-        ? console.log("hei dette var weight")
-        : console.log("Den var: " + session.type);
-      session.type == "endurance"
-        ? console.log("hei dette er cycling")
-        : console.log("Den var: " + session.type);
-      session.type == "swimming"
-        ? console.log("hei dette er swimming")
-        : console.log("Den var: " + session.type);
-    });
-  }, [sessionList]);
 
   return (
     <>
       <div className={style.former_plans}>
         <h1 className={style.headline}>Tidligere økter</h1>
         <div className={style.session_container}>
-          {sessionList.map((session) => {
+          {sessionList.map((session, idx) => {
             return (
               <Activity
+                key={idx}
                 type={session.type}
                 name={session.name}
                 intensity={session.intensity}
