@@ -29,6 +29,7 @@ public class StreakHandler {
 
 		if (daysSinceLastLogin >= 2) {
 			u.setStreak(0);
+			u.setLastLogin(new Date());
 		}
 		return u;
 	}
