@@ -41,7 +41,7 @@ public class ServerController {
      * @param password to searche the database with
      * @return first user to correspond with given credentials
      */
-    @GetMapping(path = "/users/login/{username}/{password}")
+    @RequestMapping(path = "/users/login/{username}/{password}")
     public ResponseEntity<User> getUser(@PathVariable("username") String username,
             @PathVariable("password") String password) {
         try {
