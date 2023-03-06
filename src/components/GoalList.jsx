@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { GoalItem } from "./GoalItem";
-import style from "./GoalComponentStyles.module.scss";
+import style from "./GoalComponentStyles.module.css";
 
 export function GoalList() {
   const [goalList, setGoalList] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/v1/groups`)
+    fetch(`http://localhost:8080/api/v1/goals`)
       .then((res) => res.json())
       .then((data) => {
         setGoalList(data);

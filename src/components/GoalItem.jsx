@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./GoalComponentStyles.module.scss";
+import style from "./GoalComponentStyles.module.css";
 
 export function GoalItem({ goal }) {
   return (
