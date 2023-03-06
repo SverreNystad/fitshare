@@ -37,3 +37,14 @@
   width: 200px;
   height: 200px;
 }
+
+.smallIcon {
+  width: 40px;
+  height: 40px;
+}
+
+.imageStreak {
+  display: flex;
+  flex-direction: row;
+  margin-top: auto;
+}
