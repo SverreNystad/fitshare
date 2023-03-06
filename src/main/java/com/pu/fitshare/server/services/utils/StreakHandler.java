@@ -15,10 +15,16 @@ public class StreakHandler {
 	public static User handleStreak(User u) {
 		Date currenDate = new Date();
 		Date lastLogin = u.getLastLogin();
+		if (u.getLastLogin() == null) {
+			lastLogin = new Date();
+			u.setLastLogin(new Date());
+		}
+
 		int daysSinceLastLogin = findDifferenceInDays(currenDate, lastLogin);
 
 		if (daysSinceLastLogin >= 1) {
 			u.setStreak(u.getStreak() + 1);
+			u.setLastLogin(new Date());
 		}
 
 		if (daysSinceLastLogin >= 2) {
