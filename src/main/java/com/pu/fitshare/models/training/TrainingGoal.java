@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
  * The {@code TrainingGoal} class shall keep a goal and the progression towards
  * it and its duedate.
  */
-@Document(collection = "trainingGoals")
+@Document(collection = "trainingGoal")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
