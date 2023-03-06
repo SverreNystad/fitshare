@@ -1,4 +1,4 @@
-package com.pu.fitshare.persistence.users;
+package com.pu.fitshare.models.users;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -19,7 +19,7 @@ public class UserTest {
 	public void setup() {
 		user1 = new User("Ola", "password");
 		user2 = new User("Kari", "password");
-		userWithObjectID = new User(new ObjectId(), "Ola", "password", null, null, null, null);
+		userWithObjectID = new User(new ObjectId(), "Ola", "password", null, null, 0, null, null, null, null);
 
 	}
 

@@ -11,6 +11,7 @@ import com.pu.fitshare.models.training.TrainingPlan;
 import com.pu.fitshare.models.users.LoginAttempt;
 import com.pu.fitshare.models.users.User;
 import com.pu.fitshare.server.UserRepository;
+import com.pu.fitshare.server.services.utils.StreakHandler;
 
 @Service
 public class UserService {
@@ -23,7 +24,13 @@ public class UserService {
 	}
 
 	public Optional<User> logIn(final LoginAttempt loginAttempt) {
-		return findUser(loginAttempt.getUsername(), loginAttempt.getPassword());
+		Optional<User> user = findUser(loginAttempt.getUsername(), loginAttempt.getPassword());
+		if (user.isPresent()) {
+			User updatedStreakUser = StreakHandler.handleStreak(user.get());
+			userRepository.save(updatedStreakUser);
+			user = Optional.of(updatedStreakUser);
+		}
+		return user;
 	}
 
 	public Optional<User> signUp(final LoginAttempt loginAttempt) {
