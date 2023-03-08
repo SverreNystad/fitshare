@@ -5,6 +5,7 @@ import bikeImg from "../../img/bike.png";
 import shoeImg from "../../img/shoe.png";
 import swimImg from "../../img/swim.png";
 import weightImg from "../../img/weight.png";
+import { postNewPlan } from "../../api";
 
 export default function NewPlan() {
   const intensity = [
@@ -46,18 +47,14 @@ export default function NewPlan() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));
-    try {
-      const res = await fetch(
-        `http://localhost:8080/api/v1/sessions/${data.name}/${data.duration}/${data.intensity}/${data.type}/${data.description}`,
-        {
-          method: "POST",
-          body: JSON.stringify(data),
-        }
-      ).then((res) => res.json());
-      alert(`Laget økten ${res.name}`);
-    } catch (error) {
-      alert(`Oops! Det oppstod en feil, prøv igjen.\n\n${error}`);
-    }
+    const res = await postNewPlan(
+      data.name,
+      data.duration,
+      data.intensity,
+      data.type,
+      data.description
+    );
+    alert(`Laget økten ${res.name}`);
   };
 
   return (

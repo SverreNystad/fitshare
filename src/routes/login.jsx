@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import style from "./login.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
+import { logIn } from "../api";
 
 export default function Login() {
   const { user, setUser } = useContext(UserContext);
@@ -13,13 +14,9 @@ export default function Login() {
       new FormData(event.target)
     );
 
-    const res = await fetch(
-      `http://localhost:8080/api/v1/users/login/${username}/${password}`
-    ).then((user) => user.json()).catch((error) => console.error("Could not log in due to: " + error));
+    const res = await logIn(username, password);
     setUser(res);
-    if (user) {
-      navigate("/profile");
-    }
+    if (user) navigate("/profile");
     setUserNotFoundMessage("Feil passord eller brukernavn");
   }
 

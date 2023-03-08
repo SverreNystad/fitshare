@@ -3,12 +3,12 @@ import style from "./signin.module.scss";
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
+import { signIn } from "../api";
 
 export default function Signin() {
   const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
   const [passwordMessage, setPasswordMessage] = useState("");
-
 
   async function postSingIn(event) {
     event.preventDefault();
@@ -24,9 +24,7 @@ export default function Signin() {
       setPasswordMessage("Passordet er mindre enn 8 tegn");
       return;
     }
-    const res = await fetch(
-      `http://localhost:8080/api/v1/users/signup/${username}/${password}`
-    ).then((user) => user.json());
+    const res = await signIn(username, password);
     setUser(res);
     setPasswordMessage("");
     navigate("/profile");
