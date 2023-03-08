@@ -46,7 +46,7 @@ export default function NewPlan() {
     try {
       var goalDate=data.date.toString();
       const res = await fetch(
-        `http://localhost:8080/api/v1/goal/${JSON.stringify(user.id)}/${data.name}/${data.description}/${goalDate}/${data.type}`,
+        `http://localhost:8080/api/v1/goal/${user.id}/${data.name}/${data.description}/${goalDate}/${data.type}`,
         {
           method: "POST",
           body: JSON.stringify(data)
