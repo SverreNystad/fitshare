@@ -4,6 +4,8 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.pu.fitshare.models.training.TrainingGoal;
 import com.pu.fitshare.models.training.TrainingType;
 
@@ -18,6 +20,7 @@ import lombok.NoArgsConstructor;
 public class Group {
     
     @Id
+    @JsonSerialize(using= ToStringSerializer.class)
     private ObjectId id;
     private String name;
     private TrainingGoal goal;

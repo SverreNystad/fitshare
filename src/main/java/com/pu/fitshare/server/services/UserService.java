@@ -1,8 +1,12 @@
 package com.pu.fitshare.server.services;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +25,11 @@ public class UserService {
 
 	public List<User> getUsers() {
 		return userRepository.findAll();
+	}
+
+	public Optional<User> getUser(String id) {
+		ObjectId userId = new ObjectId(id);
+        return userRepository.findById(userId);
 	}
 
 	public Optional<User> logIn(final LoginAttempt loginAttempt) {

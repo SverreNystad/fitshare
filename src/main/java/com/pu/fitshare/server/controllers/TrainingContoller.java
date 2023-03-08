@@ -1,7 +1,11 @@
 package com.pu.fitshare.server.controllers;
 
+import java.io.Console;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 import org.bson.types.ObjectId;
@@ -19,7 +23,9 @@ import com.pu.fitshare.models.training.TrainingExercise;
 import com.pu.fitshare.models.training.TrainingGoal;
 import com.pu.fitshare.models.training.TrainingPlan;
 import com.pu.fitshare.models.training.TrainingSession;
+import com.pu.fitshare.models.users.User;
 import com.pu.fitshare.server.services.TrainingService;
+import com.pu.fitshare.server.services.UserService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:5173")
@@ -27,6 +33,8 @@ public class TrainingContoller {
 
 	@Autowired
 	private TrainingService trainingService;
+	@Autowired
+	private UserService userService;
 
 	public TrainingService getTrainingService() {
 		return trainingService;
@@ -55,7 +63,6 @@ public class TrainingContoller {
 	@RequestMapping(path = "/sessions/{name}/{duration}/{intesity}/{type}/{description}")
 	public ResponseEntity<TrainingExercise> createSession(@PathVariable("name") String name, @PathVariable("duration") int duration, @PathVariable("intesity") String intesity, @PathVariable("type") String type, @PathVariable("description") String description){
 		try {
-			
 			Optional<TrainingSession> session = getTrainingService().createSession(name, duration, intesity, type, description);
 			if (session.isPresent()) {
 				return new ResponseEntity(session.get(), HttpStatus.OK);
@@ -70,11 +77,26 @@ public class TrainingContoller {
 	}
 
 	@RequestMapping(path = "/goal/{userId}/{goalName}/{description}/{dueDate}/{type}")
-	public ResponseEntity<TrainingGoal> addGoal(@PathVariable("userId") ObjectId userId, @PathVariable("goalName") String goalName, @PathVariable("description") String description, @PathVariable("dueDate") Date dueDate, @PathVariable("type") String type) {
+	public ResponseEntity<TrainingGoal> addGoal(@PathVariable("userId") String userId, @PathVariable("goalName") String goalName, @PathVariable("description") String description, @PathVariable("dueDate") String dueDate, @PathVariable("type") String type) {
+		String pattern = "MM-dd-yyyy";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, Locale.ENGLISH);
+		Date newdate;
 
-		Optional<TrainingGoal> goal = getTrainingService().createGoal(goalName, description, dueDate, type);
+		try {
+			newdate = simpleDateFormat.parse(dueDate);
+		} catch (ParseException e) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
 
+		Optional<TrainingGoal> goal = getTrainingService().createGoal(goalName, description, newdate, type);
+		
 		if (goal.isPresent()) {
+			Optional<User> user = userService.getUser(userId);
+			if(user.isPresent()){
+				userService.addGoalToUser(user.get(), goal.get());
+			}else{
+				return new ResponseEntity<>(goal.get(), HttpStatus.INTERNAL_SERVER_ERROR);
+			}
 			return new ResponseEntity<>(goal.get(), HttpStatus.OK);
 		}
 		return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
