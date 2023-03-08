@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.pu.fitshare.models.training.TrainingGoal;
 import com.pu.fitshare.models.training.TrainingPlan;
+import com.pu.fitshare.models.training.TrainingSession;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,11 +32,14 @@ public class User {
     private ObjectId id;
     private String username;
     private String password;
-
     private Date birthday;
     private String description;
 
+    private int streak;
+    private Date lastLogin;
+
     private List<TrainingPlan> plans;
+    private List<TrainingSession> sessions;
     private List<TrainingGoal> goals;
 
     public User(final String username, final String password) {
