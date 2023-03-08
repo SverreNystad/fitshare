@@ -26,7 +26,7 @@ export function GoalList() {
           {goalList.map((goal) => (
             <GoalItem
               key={goal.id}
-              group={goal}
+              goal={goal}
               className={style.goalItem}
             />
           ))}
