@@ -76,8 +76,14 @@ public class TrainingContoller {
 		}
 	}
 
-	@RequestMapping(path = "/goal/{userId}/{goalName}/{description}/{dueDate}/{type}")
-	public ResponseEntity<TrainingGoal> addGoal(@PathVariable("userId") String userId, @PathVariable("goalName") String goalName, @PathVariable("description") String description, @PathVariable("dueDate") String dueDate, @PathVariable("type") String type) {
+	@RequestMapping(path = "/goal/{userId}/{goalName}/{description}/{dueDate}/{type}/{targetUnit}/{targetValue}")
+	public ResponseEntity<TrainingGoal> addGoal(@PathVariable("userId") String userId,
+	 @PathVariable("goalName") String goalName,
+	 @PathVariable("description") String description,
+	 @PathVariable("dueDate") String dueDate,
+	 @PathVariable("type") String type,
+	 @PathVariable("targetUnit") String targetUnit,
+	 @PathVariable("targetValue") String targetValue) {
 		String pattern = "MM-dd-yyyy";
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, Locale.ENGLISH);
 		Date newdate;
