@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.pu.fitshare.models.users.LoginAttempt;
 import com.pu.fitshare.models.users.User;
 import com.pu.fitshare.server.services.UserService;
@@ -57,10 +58,10 @@ public class ServerController {
         }
     }
 
-    @RequestMapping(path = "/user")
-    public ResponseEntity<User> getUser(@RequestBody String userId) {
+    @GetMapping(path = "/user")
+    public ResponseEntity<User> getUser(@RequestBody JsonNode userId) {
         try {
-            Optional<User> user = getUserService().getUser(userId);
+            Optional<User> user = getUserService().getUser(userId.get("id").asText());
             return presentCheck(user);
 
         } catch (IllegalArgumentException e) {
