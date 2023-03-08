@@ -1,5 +1,8 @@
 package com.pu.fitshare.server.services;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,7 +27,7 @@ public class UserService {
 	}
 
 	public Optional<User> getUser(String id) {
-        ObjectId userId = new ObjectId(id);
+		ObjectId userId = new ObjectId(id);
         return userRepository.findById(userId);
 	}
 

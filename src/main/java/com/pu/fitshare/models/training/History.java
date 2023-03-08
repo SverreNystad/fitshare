@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 /**
  * The {@code History} class shall keep all the progression and keep the dates

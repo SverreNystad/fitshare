@@ -23,7 +23,9 @@ import com.pu.fitshare.models.training.TrainingExercise;
 import com.pu.fitshare.models.training.TrainingGoal;
 import com.pu.fitshare.models.training.TrainingPlan;
 import com.pu.fitshare.models.training.TrainingSession;
+import com.pu.fitshare.models.users.User;
 import com.pu.fitshare.server.services.TrainingService;
+import com.pu.fitshare.server.services.UserService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:5173")
@@ -31,6 +33,8 @@ public class TrainingContoller {
 
 	@Autowired
 	private TrainingService trainingService;
+	@Autowired
+	private UserService userService;
 
 	public TrainingService getTrainingService() {
 		return trainingService;
@@ -59,7 +63,6 @@ public class TrainingContoller {
 	@RequestMapping(path = "/sessions/{name}/{duration}/{intesity}/{type}/{description}")
 	public ResponseEntity<TrainingExercise> createSession(@PathVariable("name") String name, @PathVariable("duration") int duration, @PathVariable("intesity") String intesity, @PathVariable("type") String type, @PathVariable("description") String description){
 		try {
-			
 			Optional<TrainingSession> session = getTrainingService().createSession(name, duration, intesity, type, description);
 			if (session.isPresent()) {
 				return new ResponseEntity(session.get(), HttpStatus.OK);
@@ -86,8 +89,14 @@ public class TrainingContoller {
 		}
 
 		Optional<TrainingGoal> goal = getTrainingService().createGoal(goalName, description, newdate, type);
-
+		
 		if (goal.isPresent()) {
+			Optional<User> user = userService.getUser(userId);
+			if(user.isPresent()){
+				userService.addGoalToUser(user.get(), goal.get());
+			}else{
+				return new ResponseEntity<>(goal.get(), HttpStatus.INTERNAL_SERVER_ERROR);
+			}
 			return new ResponseEntity<>(goal.get(), HttpStatus.OK);
 		}
 		return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);

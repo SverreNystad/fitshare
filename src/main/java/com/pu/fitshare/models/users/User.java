@@ -1,5 +1,6 @@
 package com.pu.fitshare.models.users;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -7,6 +8,8 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.pu.fitshare.models.training.TrainingGoal;
 import com.pu.fitshare.models.training.TrainingPlan;
 
@@ -24,6 +27,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class User {
     @Id
+    @JsonSerialize(using= ToStringSerializer.class)
     private ObjectId id;
     private String username;
     private String password;
@@ -37,6 +41,8 @@ public class User {
     public User(final String username, final String password) {
         this.username = username;
         this.password = password;
+        this.plans = new ArrayList<TrainingPlan>();
+        this.goals = new ArrayList<TrainingGoal>();
     }
 
     public boolean equals(final String username, final String password) {
@@ -47,7 +53,9 @@ public class User {
         this.plans.add(plan);
     }
 
-    public void addGoal(TrainingGoal plan) {
-        this.goals.add(plan);
+    public void addGoal(TrainingGoal goal) {
+        System.out.println(this.goals);
+        System.out.println(this.username);
+        this.goals.add(goal);
     }
 }
