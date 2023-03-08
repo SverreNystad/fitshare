@@ -54,8 +54,6 @@ public class User {
     }
 
     public void addGoal(TrainingGoal goal) {
-        System.out.println(this.goals);
-        System.out.println(this.username);
         this.goals.add(goal);
     }
 }
