@@ -46,7 +46,7 @@ export default function NewPlan() {
     try {
       var goalDate=data.date.toString();
       const res = await fetch(
-        `http://localhost:8080/api/v1/goal/${user.id}/${data.name}/${data.description}/${goalDate}/${data.type}`,
+        `http://localhost:8080/api/v1/goal/${user.id}/${data.name}/${data.description}/${goalDate}/${data.type}/${data.targetUnit}/${data.targetValue}`,
         {
           method: "POST",
           body: JSON.stringify(data)
@@ -86,6 +86,12 @@ export default function NewPlan() {
           <div>Beskrivelse:</div>
           <Textarea name="description" id="description"></Textarea>
         </div>
+        <p>Mål i tall:</p>
+        <Input type="number" name="targetValue" id="targetValue"/>
+        <p>Mål enhet:</p>
+        <Input type="text" name="targetUnit" id="targetUnit" placeholder="Timer"/>
+        <p>Start verdi:</p>
+        <Input type="number" name="currentValue" id="currentValue"/>
         <Button type="submit">Opprett</Button>
       </form>
     </div>
