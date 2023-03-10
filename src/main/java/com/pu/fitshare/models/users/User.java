@@ -60,4 +60,8 @@ public class User {
     public void addGoal(TrainingGoal goal) {
         this.goals.add(goal);
     }
+
+    public List<TrainingGoal> getGoals(){
+        return this.goals;
+    }
 }

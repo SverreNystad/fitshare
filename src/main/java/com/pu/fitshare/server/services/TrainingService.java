@@ -46,9 +46,9 @@ public class TrainingService {
 	}
 
 	public Optional<TrainingGoal> createGoal(final String name, final String description, final Date dueDate,
-			final String type) {
+			final String type, final String targetUnit, final int targetValue) {
 		try {
-			TrainingGoal goal = new TrainingGoal(name, description, dueDate, type);
+			TrainingGoal goal = new TrainingGoal(name, description, dueDate, type, targetUnit, targetValue);
 			return Optional.of(goalRepository.insert(goal));
 		} catch (IllegalArgumentException e) {
 			return Optional.empty();

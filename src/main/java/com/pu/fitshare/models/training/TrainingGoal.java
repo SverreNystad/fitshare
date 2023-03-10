@@ -34,12 +34,14 @@ public class TrainingGoal {
 	private String targetUnit;
 	private History history;
 
-	public TrainingGoal(final String name, final String description, final Date dueDate, final String type) {
+	public TrainingGoal(final String name, final String description, final Date dueDate, final String type, final String targetUnit, final int targetValue) {
 		this.name = name;
 		this.description = description;
 		this.dueDate = dueDate;
 		this.trainingType = TrainingType.valueOf(type);
 		this.history = new History();
-	}
+		this.targetUnit=targetUnit;
+		this.targetValue=targetValue;
+	}	
 
 }
