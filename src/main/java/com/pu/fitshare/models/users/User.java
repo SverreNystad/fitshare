@@ -61,7 +61,4 @@ public class User {
         this.goals.add(goal);
     }
 
-    public List<TrainingGoal> getGoals(){
-        return this.goals;
-    }
 }

@@ -1,5 +1,7 @@
 package com.pu.fitshare.models.group;
 
+import java.util.List;
+
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -8,6 +10,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.pu.fitshare.models.training.TrainingGoal;
 import com.pu.fitshare.models.training.TrainingType;
+import com.pu.fitshare.models.users.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,6 +29,7 @@ public class Group {
     private TrainingGoal goal;
     private String description;
     private TrainingType type;
+    private List<User> users;
 
     public Group(final String name, final String description, final String type) {
       this.name = name;
