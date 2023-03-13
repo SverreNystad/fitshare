@@ -62,13 +62,19 @@ export default function NewPlan() {
     <div className={style.container}>
       <h1 className={style.header}>Lag et nytt mål</h1>
       <form className={style.activityForm} onSubmit={handleSubmit}>
-        <Input type="text" name="name" id="name" placeholder="Navn" />
-        <Input
-        type="date"
-        name="date"
-        id="date"
-        placeholder="Dato"
-      />
+        
+        <div className={style.inputContainer}>
+          <Input type="text" name="name" id="name" placeholder="Navn på mål" />
+          
+          <div>Frist:</div>
+          <Input
+          type="date"
+          name="date"
+          id="date"
+          placeholder="Frist"
+          />
+        </div>
+
         <div className={style.inputContainer}>
           <div>Kategori:</div>
           {activity.map((item) => (
@@ -89,7 +95,14 @@ export default function NewPlan() {
         <p>Mål i tall:</p>
         <Input type="number" name="targetValue" id="targetValue"/>
         <p>Mål enhet:</p>
-        <Input type="text" name="targetUnit" id="targetUnit" placeholder="Timer"/>
+        <select name="targetUnit" id="targetUnit">
+        <option value="km">km</option>
+        <option value="kg">kg</option>
+        <option value="minutter">minutter</option>
+        <option value="sekunder">sekunder</option>
+        <option value="repetisjoner">repetisjoner</option>
+        <option value="annet (presiser i beskrivelse)">annet (presiser i beskrivelse)</option>
+        </select>
         <p>Start verdi:</p>
         <Input type="number" name="currentValue" id="currentValue"/>
         <Button type="submit">Opprett</Button>
