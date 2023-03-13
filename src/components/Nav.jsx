@@ -42,7 +42,7 @@ export default function Nav() {
         <div>
           <span className={style.shortcut}>Snarveier</span>
           <ul className={style.ul}>
-            <NavLi className={style.goal} to={"/goals"} img={runLogo}>
+            <NavLi className={style.goal} to={defined ? "/goals" : "/login"} img={runLogo}>
               Mine mål
             </NavLi>
             <NavLi to={"/plans"} img={bookLogo}>
