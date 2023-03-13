@@ -20,7 +20,7 @@ export default function Signin() {
       setPasswordMessage("Passordet og bekreft passord er ulike.");
       return;
     }
-    if (password.length <= 8 || password == "") {
+    if (password.length < 8 || password == "") {
       setPasswordMessage("Passordet er mindre enn 8 tegn");
       return;
     }
