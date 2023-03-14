@@ -5,6 +5,9 @@ import bikeImg from "../img/bike.png";
 import shoeImg from "../img/shoe.png";
 import swimImg from "../img/swim.png";
 import weightImg from "../img/weight.png";
+import { CChartLine } from '@coreui/react-chartjs';
+
+
 
 export default function NewPlan() {
   const intensity = [
@@ -56,10 +59,39 @@ export default function NewPlan() {
     alert(`Laget økten ${res.name}`);
   };
 
+  
+    const chartData = {
+      labels: ["January", "February", "March", "April", "May", "June", "July"],
+      datasets:[
+        {
+          label: "My First dataset",
+          backgroundColor: "rgba(220, 220, 220, 0.2)",
+          borderColor: "rgba(220, 220, 220, 1)",
+          pointBackgroundColor: "rgba(220, 220, 220, 1)",
+          pointBorderColor: "#fff",
+          data: [40, 20, 12, 39, 10, 40, 39, 80, 40]
+        },
+        {
+          label: "My Second dataset",
+          backgroundColor: "rgba(151, 187, 205, 0.2)",
+          borderColor: "rgba(151, 187, 205, 1)",
+          pointBackgroundColor: "rgba(151, 187, 205, 1)",
+          pointBorderColor: "#fff",
+          data: [50, 12, 28, 29, 7, 25, 12, 70, 60]
+        },
+      ],
+    };
+  
+
   return (
     <div className={style.container}>
-      <h1 className={style.header}>Lag ny økt</h1>
-      <form className={style.activityForm} onSubmit={handleSubmit}>
+      <h1 className={style.header}>[Mål tittel]</h1>
+      
+      <CChartLine type="line" data={chartData.datasets} labels={chartData.labels} />
+        
+      <div className={style.activityForm} onSubmit={handleSubmit}>
+      
+      
         <Input type="text" name="name" id="name" placeholder="Navn" />
         <Input
           type="number"
@@ -97,7 +129,7 @@ export default function NewPlan() {
           <Textarea name="description" id="description"></Textarea>
         </div>
         <Button type="submit">Send</Button>
-      </form>
+      </div>
     </div>
   );
 }
