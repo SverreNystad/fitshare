@@ -32,9 +32,8 @@ export function FeedComponent() {
           {sessionList.map((session) => (
             <FeedItem
               key={JSON.stringify(session.id)}
-              group={session}
+              session={session}
               className={style.sessionItem}
-              name= {session.name}
             />
           ))}
         </ul>
