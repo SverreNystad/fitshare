@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Radio, Input, Button, Textarea } from "../components/Inputs";
 import style from "./plans/newplan.module.scss";
 import bikeImg from "../img/bike.png";
@@ -9,6 +9,12 @@ import { UserContext } from "../UserContext";
 
 export default function NewPlan() {
   const { user, setUser } = useContext(UserContext);
+  const { errorGoalName, setErrorGoalName } = useState("");
+  const { errorDate, setErrorDate } = useState("");
+  const { errorCatagory, setErrorCatagory } = useState("");
+  const { errorGoalTarget, setErrorGoalTarget } = useState("");
+  const { errorCurrentValue, setErrorCurrentValue } = useState("");
+
   const activity = [
     {
       key: 0,
@@ -44,14 +50,30 @@ export default function NewPlan() {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));
     try {
-      var goalDate=data.date.toString();
+      var goalDate = data.date.toString();
+      if (data.name == "") {
+        setErrorGoalName("Må ha et navn på målet!");
+        return;
+      }
+      if (data.type == "") {
+        setErrorCatagory("Må velge en kategori!");
+        return;
+      }
+      if (data.targetUnit < 0) {
+        setErrorGoalTarget("Kan ikke ha negativ verdi!");
+        return;
+      }
+      if (data.targetUnit < 0) {
+        setErrorGoalTarget("Kan ikke ha negativ verdi!");
+        return;
+      }
       const res = await fetch(
         `http://localhost:8080/api/v1/goal/${user.id}/${data.name}/${data.description}/${goalDate}/${data.type}/${data.targetUnit}/${data.targetValue}`,
         {
           method: "POST",
           body: JSON.stringify(data)
         }
-      ).then((res) => res.json()).catch((error)=> console.log(error));
+      ).then((res) => res.json()).catch((error) => console.log(error));
       alert(`Laget målet ${res.name}`);
     } catch (error) {
       alert(`Oops! Det oppstod en feil, prøv igjen.\n\n${error}`);
@@ -64,11 +86,11 @@ export default function NewPlan() {
       <form className={style.activityForm} onSubmit={handleSubmit}>
         <Input type="text" name="name" id="name" placeholder="Navn" />
         <Input
-        type="date"
-        name="date"
-        id="date"
-        placeholder="Dato"
-      />
+          type="date"
+          name="date"
+          id="date"
+          placeholder="Dato"
+        />
         <div className={style.inputContainer}>
           <div>Kategori:</div>
           {activity.map((item) => (
@@ -87,11 +109,11 @@ export default function NewPlan() {
           <Textarea name="description" id="description"></Textarea>
         </div>
         <p>Mål i tall:</p>
-        <Input type="number" name="targetValue" id="targetValue"/>
+        <Input type="number" name="targetValue" id="targetValue" min="0" />
         <p>Mål enhet:</p>
-        <Input type="text" name="targetUnit" id="targetUnit" placeholder="Timer"/>
+        <Input type="text" name="targetUnit" id="targetUnit" placeholder="Timer" />
         <p>Start verdi:</p>
-        <Input type="number" name="currentValue" id="currentValue"/>
+        <Input type="number" name="currentValue" id="currentValue" />
         <Button type="submit">Opprett</Button>
       </form>
     </div>
