@@ -16,7 +16,8 @@ import Groups_Challenges from "./routes/challenges";
 import Plans from "./routes/former_strength_plans";
 import NewPlan from "./routes/plans/newplan";
 import My_goals from "./routes/my_goals";
-import NewGoal from "./routes/newgoal"
+import NewGoal from "./routes/newgoal";
+import ViewGoal from "./routes/viewgoal",
 
 import "./index.scss";
 // import Strength_plans from "./routes/former_strength_plans";
@@ -39,6 +40,7 @@ const router = createBrowserRouter([
       { path: "plans/new", element: <NewPlan /> },
       { path: "goals", element: <My_goals /> },
       { path: "goals/newgoal", element: <NewGoal /> },
+      { path: "goals/viewgoal", element: <ViewGoal /> }
     ],
   },
   {
