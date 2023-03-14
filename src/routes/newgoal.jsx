@@ -84,13 +84,19 @@ export default function NewPlan() {
     <div className={style.container}>
       <h1 className={style.header}>Lag et nytt mål</h1>
       <form className={style.activityForm} onSubmit={handleSubmit}>
-        <Input type="text" name="name" id="name" placeholder="Navn" />
-        <Input
-          type="date"
-          name="date"
-          id="date"
-          placeholder="Dato"
-        />
+
+        <div className={style.inputContainer}>
+          <Input type="text" name="name" id="name" placeholder="Navn på mål" />
+
+          <div>Frist:</div>
+          <Input
+            type="date"
+            name="date"
+            id="date"
+            placeholder="Frist"
+          />
+        </div>
+
         <div className={style.inputContainer}>
           <div>Kategori:</div>
           {activity.map((item) => (
