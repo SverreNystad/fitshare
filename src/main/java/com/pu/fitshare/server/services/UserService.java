@@ -73,4 +73,9 @@ public class UserService {
 		user.addGoal(goal);
 		return userRepository.save(user);
 	}
+
+	public User updateGoalToUser(User user, TrainingGoal goal) {
+		return userRepository.save(user);
+	}
+
 }
