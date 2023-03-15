@@ -1,6 +1,5 @@
-.trainingItem{
+.pageContainer{
     display: flex;
-    width: 100%;
     height: 100%;
     flex-direction: column;
     background-color: #d9d9d9;
@@ -10,10 +9,39 @@
 }
 
 .sessionComponent{
-    display: flex;
-
+    flex-direction: column;
+    width: 1000px;
 }
 
 .sessionItem{
     background-color: #23395d;
+    color: white;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 30px;
+    font-size: 15px;
+}
+
+/* .sessionItem:hover{
+    background-color: #7b96bf;
+    color: white;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    cursor: pointer;
+} */
+
+.infoContainer{
+    background-color: #586c8b;
+    margin-top:20px;
+    padding: 10px;
+    width: 600px;
+}
+
+.h{
+    font-size: 20px;
+    font-weight: bold;
+
 }

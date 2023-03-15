@@ -24,7 +24,7 @@ export function FeedComponent() {
 
 
   return (
-    <div className={style.trainingItem}>
+    <div className={style.pageContainer}>
         {loading ? (
         <p>Loading...</p>
         ) : (
