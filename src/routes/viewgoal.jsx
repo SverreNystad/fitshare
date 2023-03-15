@@ -10,48 +10,13 @@ import { registerPR } from "../api";
 
 
 
-export default function NewPlan() {
+export default function goalChart() {
   const [showcasedGoal, setShowcasedGoal] = useState({});
-  const intensity = [
-    { key: 0, name: "intensity", label: "Lett", value: "low" },
-    { key: 1, name: "intensity", label: "Meduim", value: "medium" },
-    { key: 2, name: "intensity", label: "Hard", value: "high" },
-  ];
-  const activity = [
-    {
-      key: 0,
-      name: "type",
-      img: weightImg,
-      label: "Styrke",
-      value: "power",
-    },
-    {
-      key: 1,
-      name: "type",
-      img: shoeImg,
-      label: "Løping",
-      value: "running",
-    },
-    {
-      key: 2,
-      name: "type",
-      img: bikeImg,
-      label: "Sykling",
-      value: "endurance",
-    },
-    {
-      key: 3,
-      name: "type",
-      img: swimImg,
-      label: "Svømming",
-      value: "swimming",
-    },
-  ];
 
   const handleRegisterPR = async (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));
-    data.PR=calculateMax(data.weight, data.reps);
+    data.PR = calculateMax(data.weight, data.reps);
     const res = await registerPR(
       data.userId,
       data.goalId,
@@ -90,7 +55,7 @@ export default function NewPlan() {
       <div className={style.chartAndPR}>
         <CChartLine className={style.chart} type="line" data={chartData} />
 
-        <form className={style.PR} onSubmit={handleSubmit}>
+        <form className={style.PR} onSubmit={handleRegisterPR}>
 
           <div>Registrer ny PR</div>
           <Input type="text" name="weight" placeholder="Vekt"></Input>
@@ -98,51 +63,8 @@ export default function NewPlan() {
           <Input type="date" name="date" placeholder="Dato"></Input>
           <Button type="submit">Registrer</Button>
         </form>
-
-
-
       </div>
-      <div className={style.activityForm} onSubmit={handleSubmit}>
 
-
-        <Input type="text" name="name" id="name" placeholder="Navn" />
-        <Input
-          type="number"
-          name="duration"
-          id="duration"
-          placeholder="Varighet"
-        />
-        <div className={style.inputContainer}>
-          <div>Intensitet:</div>
-          {intensity.map((item) => (
-            <Radio
-              key={item.key}
-              name={item.name}
-              id={item.name}
-              value={item.value}
-              label={item.label}
-            />
-          ))}
-        </div>
-        <div className={style.inputContainer}>
-          <div>Type økt:</div>
-          {activity.map((item) => (
-            <Radio
-              key={item.key}
-              name={item.name}
-              id={item.name}
-              value={item.value}
-              img={item.img}
-              alt={item.label}
-            />
-          ))}
-        </div>
-        <div className={style.inputContainer}>
-          <div>Beskrivelse:</div>
-          <Textarea name="description" id="description"></Textarea>
-        </div>
-        <Button type="submit">Send</Button>
-      </div>
     </div>
   );
 }
