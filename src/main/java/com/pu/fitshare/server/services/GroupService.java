@@ -1,5 +1,6 @@
 package com.pu.fitshare.server.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,25 +9,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pu.fitshare.models.group.Group;
-import com.pu.fitshare.models.group.GroupUserRelation;
 import com.pu.fitshare.models.users.User;
 import com.pu.fitshare.server.GroupRepository;
-import com.pu.fitshare.server.GroupUserRelationRepository;
 
 @Service
 public class GroupService {
     
     @Autowired
 	private GroupRepository groupRepository;
-    @Autowired
-	private GroupUserRelationRepository groupUserRelationRepository;
+	@Autowired
+	private UserService userService;
 
 	public List<Group> getGroups() {
 		return groupRepository.findAll();
-	}
-
-    public List<GroupUserRelation> getGroupUserRelations() {
-		return groupUserRelationRepository.findAll();
 	}
     
     public Optional<Group> createGroup(final String name, final String description, final String type) {
@@ -38,21 +33,20 @@ public class GroupService {
 		}
 	}
 
-    public Optional<GroupUserRelation> createGroupUserRelation(final User user, final Group group) {
-		try {
-			GroupUserRelation groupUserRelation = new GroupUserRelation(user, group);
-			return Optional.of(groupUserRelationRepository.insert(groupUserRelation));
-		} catch (IllegalArgumentException e) {
-			return Optional.empty();
+	public Group getGroup(final String groupId) throws Exception{
+		for (Group group:getGroups()){
+			if (group.getId().toString()==groupId){
+				return group;
+			}
 		}
+		throw new Exception("Group not found");
 	}
 
-    public Optional<GroupUserRelation> createGroupUserRelation(final ObjectId userId, final ObjectId groupId) {
-		try {
-			GroupUserRelation groupUserRelation = new GroupUserRelation(userId, groupId);
-			return Optional.of(groupUserRelationRepository.insert(groupUserRelation));
-		} catch (IllegalArgumentException e) {
-			return Optional.empty();
+    public List<User> getUsers(final String groupId) throws Exception {
+		List<User> users=new ArrayList<User>();
+		for (ObjectId userId:getGroup(groupId).getUsers()){
+			users.add(userService.getUser(userId).get());
 		}
+		return users;
 	}
 }

@@ -32,6 +32,10 @@ public class UserService {
         return userRepository.findById(userId);
 	}
 
+	public Optional<User> getUser(ObjectId id) {
+        return userRepository.findById(id);
+	}
+
 	public Optional<User> logIn(final LoginAttempt loginAttempt) {
 		Optional<User> user = findUser(loginAttempt.getUsername(), loginAttempt.getPassword());
 		if (user.isPresent()) {

@@ -4,6 +4,7 @@ package com.pu.fitshare.server.controllers;
 import java.util.List;
 import java.util.Optional;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pu.fitshare.models.group.Group;
 import com.pu.fitshare.models.training.TrainingType;
+import com.pu.fitshare.models.users.User;
 import com.pu.fitshare.server.services.GroupService;
+import com.pu.fitshare.server.services.UserService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:5173")
@@ -23,6 +26,8 @@ public class GroupController {
     
     @Autowired
     private GroupService groupService;
+    @Autowired
+    private UserService userService;
 
     /**
      * The {@code GroupService} that provide the {@code ServerController} with
@@ -32,6 +37,10 @@ public class GroupController {
      */
     public GroupService getGroupService() {
         return groupService;
+    }
+
+    public UserService getUserService() {
+        return userService;
     }
 
     private ResponseEntity<Group> presentCheck(Optional<Group> group) {
@@ -60,6 +69,35 @@ public class GroupController {
             System.out.println("The input was bad: " + e.getLocalizedMessage());
             return new ResponseEntity(null, HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @RequestMapping(path = "/group/users/{groupId}")
+    public ResponseEntity<List<User>> getUsers(@PathVariable("groupId") String groupId){
+        try {
+            ResponseEntity<List<User>> response = new ResponseEntity(getGroupService().getUsers(groupId), HttpStatus.OK);
+            return response;
+        } catch (Exception e) {
+            return new ResponseEntity(null, HttpStatus.NOT_FOUND);
+        }
+        
+    }
+
+    @RequestMapping(path = "/group/addUser/{groupId}/{userId}")
+    public ResponseEntity<Group> addUser(@PathVariable("groupId") String groupId, @PathVariable("userId") String userId){
+        try {
+            ObjectId userObjectId = new ObjectId(userId);
+            Optional<User> user = getUserService().getUser(userObjectId);
+            if(user.get()==null){
+                return new ResponseEntity(null, HttpStatus.NOT_FOUND);
+            }
+            Group group = getGroupService().getGroup(groupId);
+            group.addUser(userObjectId);
+            ResponseEntity<Group> response = new ResponseEntity(group, HttpStatus.OK);
+            return response;
+        } catch (Exception e) {
+            return new ResponseEntity(null, HttpStatus.NOT_FOUND);
+        }
+        
     }
     
 }
