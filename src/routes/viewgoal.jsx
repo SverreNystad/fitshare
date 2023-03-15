@@ -1,6 +1,6 @@
 import React from "react";
 import { Radio, Input, Button, Textarea } from "../components/Inputs";
-import style from "./plans/newplan.module.scss";
+import style from "./viewgoal.module.scss";
 import bikeImg from "../img/bike.png";
 import shoeImg from "../img/shoe.png";
 import swimImg from "../img/swim.png";
@@ -64,20 +64,13 @@ export default function NewPlan() {
       labels: ["January", "February", "March", "April", "May", "June", "July"],
       datasets:[
         {
-          label: "My First dataset",
-          backgroundColor: "rgba(220, 220, 220, 0.2)",
+          label: "Progresjon",
+          backgroundColor: "rgba(0,0,0,0,0)",
           borderColor: "rgba(220, 220, 220, 1)",
-          pointBackgroundColor: "rgba(220, 220, 220, 1)",
+          pointBackgroundColor: "fff",
           pointBorderColor: "#fff",
-          data: [40, 20, 12, 39, 10, 40, 39, 80, 40]
-        },
-        {
-          label: "My Second dataset",
-          backgroundColor: "rgba(151, 187, 205, 0.2)",
-          borderColor: "rgba(151, 187, 205, 1)",
-          pointBackgroundColor: "rgba(151, 187, 205, 1)",
-          pointBorderColor: "#fff",
-          data: [50, 12, 28, 29, 7, 25, 12, 70, 60]
+          data: [60,65,69,75,85,90,95,100],
+  
         },
       ],
     };
@@ -86,9 +79,22 @@ export default function NewPlan() {
   return (
     <div className={style.container}>
       <h1 className={style.header}>[Mål tittel]</h1>
+    
+      <div className={style.chartAndPR}>
+        <CChartLine className={style.chart} type="line" data={chartData} />
+
+        <form className={style.PR} onSubmit={handleSubmit}>
+          
+          <div>Registrer ny PR</div>
+          <Input type="text" name="vekt" placeholder="Vekt"></Input>
+          <Input type="text" name="reps" placeholder="Reps"></Input>
+          <Input type="date" name="dato" placeholder="Dato"></Input>
+          <Button type="submit">Registrer</Button>
+        </form>
       
-      <CChartLine type="line" data={chartData.datasets} labels={chartData.labels} />
         
+
+      </div>
       <div className={style.activityForm} onSubmit={handleSubmit}>
       
       
