@@ -2,6 +2,7 @@ package com.pu.fitshare.server.services;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -10,10 +11,12 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pu.fitshare.models.group.Group;
 import com.pu.fitshare.models.training.TrainingGoal;
 import com.pu.fitshare.models.training.TrainingPlan;
 import com.pu.fitshare.models.users.LoginAttempt;
 import com.pu.fitshare.models.users.User;
+import com.pu.fitshare.server.GroupRepository;
 import com.pu.fitshare.server.UserRepository;
 import com.pu.fitshare.server.services.utils.StreakHandler;
 
@@ -22,6 +25,8 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private GroupService groupService;
 
 	public List<User> getUsers() {
 		return userRepository.findAll();
@@ -76,5 +81,16 @@ public class UserService {
 	public User addGoalToUser(User user, TrainingGoal goal) {
 		user.addGoal(goal);
 		return userRepository.save(user);
+	}
+
+	public List<Group> getGroups(String id) {
+		ObjectId userId = new ObjectId(id);
+		List<Group> groups = new ArrayList<Group>(groupService.getGroups());
+		for (Group group:groups){
+			if(!group.getUsers().contains(userId)){
+				groups.remove(group);
+			}
+		}
+        return groups;
 	}
 }
