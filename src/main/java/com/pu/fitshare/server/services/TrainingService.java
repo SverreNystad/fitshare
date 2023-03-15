@@ -66,9 +66,9 @@ public class TrainingService {
 	}
 
 	public Optional<TrainingSession> createSession(final String name, final int duration, final String intensity,
-			final String type, final String description) {
+			final String type, final String description, final String userName) {
 		try {
-			TrainingSession session = new TrainingSession(name, duration, intensity, type, description);
+			TrainingSession session = new TrainingSession(name, duration, intensity, type, description, userName);
 			
 			// session.setExercises(exerciseRepository.findAllById(excercieIds));
 			return Optional.of(sessionRepository.insert(session));

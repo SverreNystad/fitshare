@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.pu.fitshare.models.training.TrainingGoal;
 import com.pu.fitshare.models.training.TrainingPlan;
+import com.pu.fitshare.models.training.TrainingSession;
 import com.pu.fitshare.models.users.LoginAttempt;
 import com.pu.fitshare.models.users.User;
 import com.pu.fitshare.server.UserRepository;
@@ -71,6 +72,11 @@ public class UserService {
 
 	public User addGoalToUser(User user, TrainingGoal goal) {
 		user.addGoal(goal);
+		return userRepository.save(user);
+	}
+
+	public User addSessionToUser(User user, TrainingSession session) {
+		user.addSession(session);
 		return userRepository.save(user);
 	}
 }

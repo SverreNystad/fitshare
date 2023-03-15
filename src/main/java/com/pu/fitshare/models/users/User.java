@@ -60,4 +60,8 @@ public class User {
     public void addGoal(TrainingGoal goal) {
         this.goals.add(goal);
     }
+
+    public void addSession(TrainingSession session) {
+        this.sessions.add(session);
+    }
 }
