@@ -100,6 +100,10 @@ If you need to add a new dependecy to the project go to the 'dependencies.gradle
 
 [api/v1/groups/{name}/{goal}/{type}](http://localhost:8080/api/v1/groups/)
 
+#### Add session to group
+
+[api/v1/groups/{groupID}/session/{sessionID}](http://localhost:8080/api/v1/groups/{groupID}/session/{sessionID})
+
 ## Reference Documentation
 
 For further reference, please consider the following sections:
