@@ -62,3 +62,12 @@ export async function signIn(username, password) {
     console.log(error);
   }
 }
+
+export async function registerPR(userId,goalId,date,currentValue){
+  try {
+    const res = await axios.post(baseURL + `/user/${userId}/${goalId}/${date}/${currentValue}`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+}

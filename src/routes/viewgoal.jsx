@@ -6,6 +6,7 @@ import shoeImg from "../img/shoe.png";
 import swimImg from "../img/swim.png";
 import weightImg from "../img/weight.png";
 import { CChartLine } from '@coreui/react-chartjs';
+import { registerPR } from "../api";
 
 
 
@@ -47,17 +48,18 @@ export default function NewPlan() {
     },
   ];
 
-  const handleSubmit = async (e) => {
+  const handleRegisterPR = async (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));
-    const res = await postNewPlan(
-      data.name,
-      data.duration,
-      data.intensity,
-      data.type,
-      data.description
+    data.PR=calculateMax(data.weight, data.reps);
+    const res = await registerPR(
+      data.userId,
+      data.goalId,
+      data.date,
+      data.PR,
+
     );
-    alert(`Laget økten ${res.name}`);
+    alert(`Registrert ny PR ${res.PR}`);
   };
 
 
@@ -76,6 +78,10 @@ export default function NewPlan() {
     ],
   };
 
+  function calculateMax(weight, reps) {
+    return weight / ((1.0278) - (0.0278 * reps));
+  }
+
 
   return (
     <div className={style.container}>
@@ -87,9 +93,9 @@ export default function NewPlan() {
         <form className={style.PR} onSubmit={handleSubmit}>
 
           <div>Registrer ny PR</div>
-          <Input type="text" name="vekt" placeholder="Vekt"></Input>
+          <Input type="text" name="weight" placeholder="Vekt"></Input>
           <Input type="text" name="reps" placeholder="Reps"></Input>
-          <Input type="date" name="dato" placeholder="Dato"></Input>
+          <Input type="date" name="date" placeholder="Dato"></Input>
           <Button type="submit">Registrer</Button>
         </form>
 
