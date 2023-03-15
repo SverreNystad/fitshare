@@ -5,7 +5,7 @@ import style from "./FeedComponentStyles.module.css";
 export function FeedItem({ session }) {
   return (
   <div className={style.sessionItem}>
-    <p1 className={style.h}>Navn til bruker</p1>
+    <h3>{session.userName}</h3>
     <div className={style.infoContainer}>
       <h3>{session.name}</h3>
       <p>Varighet: {session.duration}</p>

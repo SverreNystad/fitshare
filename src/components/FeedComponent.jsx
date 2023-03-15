@@ -6,21 +6,22 @@ import { getSessions } from "../api";
 
 export function FeedComponent() {
 
-    const [sessionList, setSessionList] = useState([]);
-    const [loading, setLoading] = useState(true);
+  const [sessionList, setSessionList] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        async function getData() {
-          const sessions = await getSessions();
-          setSessionList(sessions);
-          setLoading(false);
-    
-        }
-        getData();
-    }, []);
-    console.log(sessionList);
+  useEffect(() => {
+      async function getData() {
+        const sessions = await getSessions();
+        setSessionList(sessions);
+        setLoading(false);
+
+      }
+      getData();
+  }, []);
+  console.log(sessionList);
 
 
+  
 
 
   return (

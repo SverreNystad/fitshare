@@ -6,6 +6,8 @@ import shoeImg from "../../img/shoe.png";
 import swimImg from "../../img/swim.png";
 import weightImg from "../../img/weight.png";
 import { postNewPlan } from "../../api";
+import { UserContext } from "../../UserContext";
+import { useContext } from "react";
 
 export default function NewPlan() {
   const intensity = [
@@ -44,16 +46,24 @@ export default function NewPlan() {
     },
   ];
 
+  //get userContext
+  const { user }  = useContext(UserContext);
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));
+    data.userName= user.username;
     const res = await postNewPlan(
       data.name,
       data.duration,
       data.intensity,
       data.type,
-      data.description
+      data.description,
+      data.userName
+      
     );
+    console.log(data);
     alert(`Laget økten ${res.name}`);
   };
 

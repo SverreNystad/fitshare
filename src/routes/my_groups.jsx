@@ -11,6 +11,12 @@ export default function Groups() {
     { id: 3, name: "Group 3" },
   ];
 
+  // const checkifUserIsInGroup = (group) => {
+  //   return group.id === 1;
+  // };
+  // const userGroups = groups.filter(checkifUserIsInGroup);
+  // console.log(userGroups);
+
   return (
     <div className={style.groups}>
       <h1 className={style.header1}>Grupper</h1>
