@@ -9,7 +9,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.pu.fitshare.models.training.TrainingGoal;
-import com.pu.fitshare.models.training.TrainingSession;
 import com.pu.fitshare.models.training.TrainingType;
 
 import lombok.AllArgsConstructor;
@@ -29,35 +28,35 @@ public class Group {
     private TrainingGoal goal;
     private String description;
     private TrainingType type;
-    private ArrayList<ObjectId> sessions;
+    private ArrayList<String> sessions;
 
     public Group(final String name, final String description, final String type) {
         this.name = name;
         this.description = description;
         this.goal = new TrainingGoal();
         this.type = TrainingType.valueOf(type);
-        this.sessions = new ArrayList<ObjectId>();
+        this.sessions = new ArrayList<String>();
     }
 
     public Group(final String name, final TrainingGoal goal) {
         this.name = name;
         this.description = "What seems impossible today will one day be your warmup";
         this.goal = goal;
-        this.sessions = new ArrayList<ObjectId>();
+        this.sessions = new ArrayList<String>();
     }
 
     public Group(final String nameString) {
         this.name = nameString;
         this.description = "What seems impossible today will one day be your warmup";
         this.goal = new TrainingGoal();
-        this.sessions = new ArrayList<ObjectId>();
+        this.sessions = new ArrayList<String>();
     }
 
     public Boolean isSession(final String id) {
         ObjectId sessionId = new ObjectId(id);
         boolean isInSessions = false;
-        for (ObjectId session : sessions) {
-            if (sessionId.equals(session)) {
+        for (String session : sessions) {
+            if (sessionId.toHexString().equals(session)) {
                 isInSessions = true;
             }
         }
@@ -65,8 +64,8 @@ public class Group {
     }
 
     public void addSession(final String id) {
-        ObjectId sessionId = new ObjectId(id);
-        this.sessions.add(sessionId);
+        String sessionID = new ObjectId(id).toHexString(); // serialization would be better but it works
+        this.sessions.add(sessionID);
     }
 
 }
