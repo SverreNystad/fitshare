@@ -10,9 +10,7 @@ import { registerPR } from "../api";
 
 
 
-export default function goalChart() {
-  const [showcasedGoal, setShowcasedGoal] = useState({});
-
+export default function GoalChart({ showcasedGoal }) {
   const handleRegisterPR = async (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));
