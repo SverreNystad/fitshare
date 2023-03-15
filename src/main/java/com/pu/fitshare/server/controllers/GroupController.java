@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pu.fitshare.models.group.Group;
 import com.pu.fitshare.models.training.TrainingType;
+import com.pu.fitshare.models.users.User;
 import com.pu.fitshare.server.services.GroupService;
 
 @RestController
@@ -48,11 +49,11 @@ public class GroupController {
         return response;
     }
 
-    @RequestMapping(path = "/groups/{name}/{goal}/{type}")
-    public ResponseEntity<Group> createGroup(@PathVariable("name") String name, @PathVariable("goal") String goal, @PathVariable("type") String type){
+    @RequestMapping(path = "/groups/{name}/{goal}/{type}/{user}")
+    public ResponseEntity<Group> createGroup(@PathVariable("name") String name, @PathVariable("goal") String goal, @PathVariable("type") String type, @PathVariable("user") User user){
         try {
             
-            Optional<Group> createdGroup = getGroupService().createGroup(name, goal, type);
+            Optional<Group> createdGroup = getGroupService().createGroup(name, goal, type, user);
 
             return presentCheck(createdGroup);
 

@@ -29,9 +29,9 @@ public class GroupService {
 		return groupUserRelationRepository.findAll();
 	}
     
-    public Optional<Group> createGroup(final String name, final String description, final String type) {
+    public Optional<Group> createGroup(final String name, final String description, final String type, final User user) {
 		try {
-			Group group = new Group(name,description,type);
+			Group group = new Group(name,description,type,user);
 			return Optional.of(groupRepository.insert(group));
 		} catch (IllegalArgumentException e) {
 			return Optional.empty();
@@ -55,4 +55,14 @@ public class GroupService {
 			return Optional.empty();
 		}
 	}
+
+	public Optional<Group> addMemberToGroup(final User user, final Group group) {
+		try {
+			group.addMemeber(user);
+		} catch (IllegalArgumentException e) {
+			return Optional.empty();
+		}
+		return null;
+	}
+	
 }
