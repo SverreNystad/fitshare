@@ -84,5 +84,4 @@ public class ServerController {
             return new ResponseEntity(null, HttpStatus.BAD_REQUEST);
         }
     }
-
 }

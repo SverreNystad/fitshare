@@ -93,4 +93,15 @@ public class UserService {
 		}
         return groups;
 	}
+
+	public List<TrainingGoal> getGroupGoals(String userId){
+		List<Group> groups = getGroups(userId);
+		List<TrainingGoal> goals = new ArrayList<TrainingGoal>();
+		for (Group group:groups){
+			if (group.getGoal()!=null){
+				goals.add(group.getGoal());
+			}
+		}
+		return goals;
+	}
 }
