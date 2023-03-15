@@ -24,14 +24,14 @@
     font-size: 15px;
 }
 
-/* .sessionItem:hover{
+.sessionItem:hover{
     background-color: #7b96bf;
     color: white;
     width: 100%;
     height: auto;
     align-items: center;
     cursor: pointer;
-} */
+}
 
 .infoContainer{
     background-color: #586c8b;
