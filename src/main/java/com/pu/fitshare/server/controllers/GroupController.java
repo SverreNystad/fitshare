@@ -47,6 +47,11 @@ public class GroupController {
         return response;
     }
 
+    @GetMapping(path = "/groups/{ID}")
+    public ResponseEntity<Group> getGroupById(@PathVariable("ID") String ID) {
+        return presentCheck(getGroupService().getGroup(ID));
+    }
+
     @PostMapping(path = "/groups/{groupID}/session/{sessionID}")
     public ResponseEntity<Group> addSessionToGroup(@PathVariable("groupID") String groupID,
             @PathVariable("sessionID") String sessionID) {
