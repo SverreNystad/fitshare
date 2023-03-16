@@ -11,6 +11,16 @@ export async function getGroups() {
   }
 }
 
+export async function getGroupById(groupID) {
+  try {
+    const res = await axios.get(baseURL + `/groups/${groupID}`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
+
 export async function createGroups(name, goal, type) {
   try {
     const res = await axios.post(baseURL + `/groups/${name}/${goal}/${type}`);
@@ -23,6 +33,15 @@ export async function createGroups(name, goal, type) {
 export async function getSessions() {
   try {
     const res = await axios.get(baseURL + "/sessions");
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getSessionById(sessionID) {
+  try {
+    const res = await axios.get(baseURL + `/session/${sessionID}`);
     return res.data;
   } catch (error) {
     console.log(error);
