@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import style from "./login.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
@@ -16,9 +16,13 @@ export default function Login() {
 
     const res = await logIn(username, password);
     setUser(res);
-    if (user) navigate("/profile");
+    // if (user) navigate("/profile");
     setUserNotFoundMessage("Feil passord eller brukernavn");
   }
+
+  useEffect(() => {
+    if (user) navigate("/profile");
+  }, [user]);
 
   return (
     <>
