@@ -45,6 +45,11 @@ public class TrainingService {
 		return sessionRepository.findAll();
 	}
 
+	public Optional<TrainingSession> getSessionById(final String id) {
+        ObjectId sessionId = new ObjectId(id);
+		return sessionRepository.findById(sessionId);
+	}
+
 	public Optional<TrainingGoal> createGoal(final String name, final String description, final Date dueDate,
 			final String type) {
 		try {

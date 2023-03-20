@@ -55,6 +55,11 @@ public class TrainingContoller {
 		return new ResponseEntity<>(getTrainingService().getSessions(), HttpStatus.OK);
 	}
 
+	@GetMapping(path = "/session/{id}")
+	public ResponseEntity<TrainingSession> getSessionById(@PathVariable String id) {
+		return new ResponseEntity<>(getTrainingService().getSessionById(id).get(), HttpStatus.OK);
+	}
+
 	@GetMapping(path = "/exercises")
 	public ResponseEntity<List<TrainingExercise>> getExercises() {
 		return new ResponseEntity<>(getTrainingService().getExercises(), HttpStatus.OK);
