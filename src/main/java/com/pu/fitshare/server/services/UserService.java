@@ -26,7 +26,7 @@ public class UserService {
 
 	public Optional<List<TrainingGoal>> getGoalsOfUser(String userId) {
 		Optional<User> userInDB = getUser(userId);
-		Optional<List<TrainingGoal>> goalList;
+		Optional<List<TrainingGoal>> goalList /*= Optional.of(getGroupGoals(userId)) */;
 		if (!userInDB.isPresent()) {
 			return Optional.empty();
 		} else {
