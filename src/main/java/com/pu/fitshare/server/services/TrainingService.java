@@ -45,6 +45,11 @@ public class TrainingService {
 		return sessionRepository.findAll();
 	}
 
+	public Optional<TrainingSession> getSessionById(final String id) {
+        ObjectId sessionId = new ObjectId(id);
+		return sessionRepository.findById(sessionId);
+	}
+
 	public Optional<TrainingGoal> createGoal(final String name, final String description, final Date dueDate,
 			final String type) {
 		try {
@@ -85,6 +90,22 @@ public class TrainingService {
 		} catch (IllegalArgumentException e) {
 			return Optional.empty();
 		}
+	}
+
+	public Optional<TrainingGoal> logWorkout(final String goalId, final Date workoutDate, final int maxReached) {
+		// Need to find user
+		// Need to find goal
+		// Add workout to gaol and change history
+		// Save this new gaol 
+		// Save goal in User.
+		ObjectId id = new ObjectId(goalId);
+		Optional<TrainingGoal> DBGoal = goalRepository.findById(id);
+		if (DBGoal.isPresent()) {
+			TrainingGoal goal = DBGoal.get();
+			goal.addWorkout(workoutDate, maxReached);
+			return Optional.of(goalRepository.save(goal));
+		} 
+		return Optional.empty();
 	}
 
 }

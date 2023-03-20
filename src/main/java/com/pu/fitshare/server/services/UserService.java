@@ -109,4 +109,7 @@ public class UserService {
 		}
 		return goals;
 	}
+	public User updateGoalToUser(User user, TrainingGoal goal) {
+		return userRepository.save(user);
+	}
 }

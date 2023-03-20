@@ -1,6 +1,10 @@
 package com.pu.fitshare.server.controllers;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +14,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pu.fitshare.models.training.TrainingGoal;
 import com.pu.fitshare.models.users.LoginAttempt;
 import com.pu.fitshare.models.users.User;
+import com.pu.fitshare.server.services.TrainingService;
 import com.pu.fitshare.server.services.UserService;
 
 @RestController
@@ -23,6 +30,9 @@ public class ServerController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private TrainingService trainingService;
+
     /**
      * The {@code UserService} that provide the {@code ServerController} with
      * logic for getting, updating, deleting and adding {@link User}s to database.
@@ -31,6 +41,10 @@ public class ServerController {
      */
     public UserService getUserService() {
         return userService;
+    }
+
+    public TrainingService getTrainingService() {
+        return trainingService;
     }
 
     /**
@@ -84,4 +98,37 @@ public class ServerController {
             return new ResponseEntity(null, HttpStatus.BAD_REQUEST);
         }
     }
+
+    @RequestMapping(path = "/user/{userID}/{goalID}/{date}/{currentValue}")
+    public ResponseEntity<User> updateUserGoal(@RequestParam("userID") String userId, @RequestParam("goalID") String goalId, @RequestParam("date") String date, @RequestParam("currentValue") int currentValue) {
+        String pattern = "MM-dd-yyyy";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, Locale.ENGLISH);
+		Date newdate;
+
+		try {
+			newdate = simpleDateFormat.parse(date);
+		} catch (ParseException e) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+
+        try {
+            Optional<User> userInDB = getUserService().getUser(userId);
+            Optional<TrainingGoal> goalInDB = getTrainingService().logWorkout(goalId, newdate, currentValue);
+
+            if (userInDB.isPresent()) {
+                User user = userInDB.get();
+                if (goalInDB.isPresent()) {
+                    User savedUser = getUserService().updateGoalToUser(user, goalInDB.get());
+                    return new ResponseEntity<>(savedUser, HttpStatus.OK);
+                }
+                return new ResponseEntity<>(user, HttpStatus.BAD_REQUEST);
+            }
+
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+
+    }
+
 }
