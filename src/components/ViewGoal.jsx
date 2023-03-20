@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Radio, Input, Button, Textarea } from "./Inputs";
 import style from "./ViewGoal.module.scss";
 import bikeImg from "../img/bike.png";
@@ -9,20 +9,22 @@ import { CChartLine } from '@coreui/react-chartjs';
 import { registerPR } from "../api";
 
 
-
-export function GoalChart({ showcasedGoal }) {
+export function GoalChart({ showcasedGoal, userId }) {
   const handleRegisterPR = async (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));
-    data.PR = calculateMax(data.weight, data.reps);
+    console.log(data);
+    data.currentValue = calculateMax(data.weight, data.reps).toString();
+    console.log(data);
+
     const res = await registerPR(
-      data.userId,
-      data.goalId,
+      userId,
+      showcasedGoal,
       data.date,
-      data.PR,
+      data.currentValue,
 
     );
-    alert(`Registrert ny PR ${res.PR}`);
+    alert(`Registrert ny PR ${res}`);
   };
 
 

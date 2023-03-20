@@ -3,7 +3,7 @@ import { GoalItem } from "./GoalItem";
 import style from "./GoalComponentStyles.module.css";
 import { UserContext } from "../UserContext";
 
-export function GoalList(userId) {
+export function GoalList() {
   const { user, setUser } = useContext(UserContext);
   const [goalList, setGoalList] = useState([]);
   const [showcasedGoal, setShowcasedGoal] = useState({});
