@@ -49,18 +49,18 @@ public class GroupService {
 		}
 	}
 
-	public Group getGroup(final String groupId) throws Exception{
-		for (Group group:getGroups()){
-			if (group.getId().toString()==groupId){
-				return group;
+	public Optional<Group> getGroup(final String groupId) throws Exception{
+		for (Group group : getGroups()){
+			if (group.getId().toString() == groupId){
+				return Optional.of(group);
 			}
 		}
-		throw new Exception("Group not found");
+		return Optional.empty();
 	}
 
     public List<User> getUsers(final String groupId) throws Exception {
-		List<User> users=new ArrayList<User>();
-		for (ObjectId userId:getGroup(groupId).getUsers()){
+		List<User> users =new ArrayList<User>();
+		for (ObjectId userId : getGroup(groupId).getUsers()){
 			users.add(userService.getUser(userId).get());
 		}
 		return users;
