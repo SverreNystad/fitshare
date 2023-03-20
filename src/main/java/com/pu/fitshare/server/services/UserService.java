@@ -1,9 +1,6 @@
 package com.pu.fitshare.server.services;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,7 +13,6 @@ import com.pu.fitshare.models.training.TrainingGoal;
 import com.pu.fitshare.models.training.TrainingPlan;
 import com.pu.fitshare.models.users.LoginAttempt;
 import com.pu.fitshare.models.users.User;
-import com.pu.fitshare.server.GroupRepository;
 import com.pu.fitshare.server.UserRepository;
 import com.pu.fitshare.server.services.utils.StreakHandler;
 
@@ -83,6 +79,11 @@ public class UserService {
 		return userRepository.save(user);
 	}
 
+	/**
+	 * Finds all groups the user is part of
+	 * @param id
+	 * @return List of groups
+	 */
 	public List<Group> getGroups(String id) {
 		ObjectId userId = new ObjectId(id);
 		List<Group> groups = new ArrayList<Group>(groupService.getGroups());
@@ -93,7 +94,11 @@ public class UserService {
 		}
         return groups;
 	}
-
+	/**
+	 * Takes in the userId of a user and returns all the goals the groups of that user has.
+	 * @param userId
+	 * @return List of goals from various groups
+	 */
 	public List<TrainingGoal> getGroupGoals(String userId){
 		List<Group> groups = getGroups(userId);
 		List<TrainingGoal> goals = new ArrayList<TrainingGoal>();
