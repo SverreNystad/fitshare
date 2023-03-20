@@ -22,4 +22,8 @@ public class History {
 	public Collection<Integer> getProgression() {
 		return history.values();
 	}
+
+	public void insertValue(final Date day, final int value) {
+		history.put(day, (Integer) value);
+	}
 }

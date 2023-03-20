@@ -80,6 +80,10 @@ If you need to add a new dependecy to the project go to the 'dependencies.gradle
 
 [api/v1/sessions](http://localhost:8080/api/v1/sessions)
 
+#### Get session by id
+
+[api/v1/session/{id}](http://localhost:8080/api/v1/session/)
+
 #### Get all exercises
 
 [api/v1/exercises](http://localhost:8080/api/v1/exercises)
@@ -92,9 +96,17 @@ If you need to add a new dependecy to the project go to the 'dependencies.gradle
 
 [api/v1/groups/](http://localhost:8080/api/v1/groups/)
 
+#### Get group by id
+
+[api/v1/groups/{id}](http://localhost:8080/api/v1/groups/{id})
+
 #### Add groups
 
 [api/v1/groups/{name}/{goal}/{type}](http://localhost:8080/api/v1/groups/)
+
+#### Add session to group
+
+[api/v1/groups/{groupID}/session/{sessionID}](http://localhost:8080/api/v1/groups/{groupID}/session/{sessionID})
 
 ## Reference Documentation
 

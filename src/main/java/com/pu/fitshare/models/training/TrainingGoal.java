@@ -44,4 +44,7 @@ public class TrainingGoal {
 		this.targetValue=targetValue;
 	}	
 
+	public void addWorkout(final Date date, final int reachedValue) {
+		history.insertValue(date, reachedValue);
+	}
 }
