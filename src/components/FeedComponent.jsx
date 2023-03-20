@@ -21,9 +21,6 @@ export function FeedComponent() {
   console.log(sessionList);
 
 
-  
-
-
   return (
     <div className={style.pageContainer}>
         {loading ? (

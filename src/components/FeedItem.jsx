@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./FeedComponentStyles.module.css";
-
+import {Button} from "./Inputs.jsx";
 
 export function FeedItem({ session }) {
   return (
@@ -18,6 +18,11 @@ export function FeedItem({ session }) {
       <p> Beskrivelse: {session.description}</p>
     </div>
 
+    <div className={style.button}>
+      <Button type="submit" className={style.button}> Liker </Button>
+    </div>
+
   </div>
+
   );
 }
