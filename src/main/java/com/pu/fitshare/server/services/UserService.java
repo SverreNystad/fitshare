@@ -83,6 +83,12 @@ public class UserService {
 	}
 
 	public User updateGoalToUser(User user, TrainingGoal goal) {
+		
+		for (TrainingGoal userGoal : user.getGoals()) {
+			if (userGoal.getId().equals(goal.getId())) {
+				userGoal = goal;
+			}
+		}
 		return userRepository.save(user);
 	}
 
