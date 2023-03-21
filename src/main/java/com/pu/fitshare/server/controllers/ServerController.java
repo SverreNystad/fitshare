@@ -100,10 +100,12 @@ public class ServerController {
     }
 
     @RequestMapping(path = "/user/{userID}/{goalID}/{date}/{currentValue}")
-    public ResponseEntity<User> updateUserGoal(@RequestParam("userID") String userId, @RequestParam("goalID") String goalId, @RequestParam("date") String date, @RequestParam("currentValue") int currentValue) {
+    public ResponseEntity<User> updateUserGoal(@PathVariable("userID") String userId, @PathVariable("goalID") String goalId, @PathVariable("date") String date, @PathVariable("currentValue") String currentValue) {
         String pattern = "MM-dd-yyyy";
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, Locale.ENGLISH);
 		Date newdate;
+
+        int achivedValue = Integer.parseInt(currentValue);
 
 		try {
 			newdate = simpleDateFormat.parse(date);
@@ -113,7 +115,7 @@ public class ServerController {
 
         try {
             Optional<User> userInDB = getUserService().getUser(userId);
-            Optional<TrainingGoal> goalInDB = getTrainingService().logWorkout(goalId, newdate, currentValue);
+            Optional<TrainingGoal> goalInDB = getTrainingService().logWorkout(goalId, newdate, achivedValue);
 
             if (userInDB.isPresent()) {
                 User user = userInDB.get();
