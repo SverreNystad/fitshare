@@ -8,10 +8,10 @@ import { GoalChart } from "../components/ViewGoal";
 import { getGoals } from "../api";
 
 export default function My_goals() {
-  
+
   const [showcasedGoal, setShowcasedGoal] = useState({});
 
-  useEffect(() => {console.log(showcasedGoal)}, [showcasedGoal])
+  useEffect(() => { console.log(showcasedGoal) }, [showcasedGoal])
 
   const { user, setUser } = useContext(UserContext);
   const [goalList, setGoalList] = useState([]);
@@ -26,6 +26,10 @@ export default function My_goals() {
     });
     setLoading(false);
   }, []);
+
+  useEffect(() => {
+    console.log("The showcased Goal: " + showcasedGoal);
+  }, [showcasedGoal]);
   //hente alle personlige mål, usercontext.goals, hente ut alle mål til gruppene som man er med i
 
   return (
@@ -51,7 +55,7 @@ export default function My_goals() {
         <GoalList
           goalList={user.goals}
           loading={loading}
-        setShowcasedGoal={setShowcasedGoal}/>
+          setShowcasedGoal={setShowcasedGoal} />
       </div>
     </div>
   );
