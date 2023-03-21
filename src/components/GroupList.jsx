@@ -22,7 +22,7 @@ export function GroupList() {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <ul className={style.groupsList}>
+        <div className={style.groupsList}>
           {groupList.map((group) => (
             <GroupItem
               key={JSON.stringify(group.id)}
@@ -30,7 +30,7 @@ export function GroupList() {
               className={style.groupItem}
             />
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

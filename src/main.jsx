@@ -38,7 +38,7 @@ const router = createBrowserRouter([
       { path: "plans", element: <Plans /> },
       { path: "plans/new", element: <NewPlan /> },
       { path: "goals", element: <My_goals /> },
-      { path: "group_feed", element: <Group_Feed /> },
+      { path: "group_feed/:id", element: <Group_Feed /> },
     ],
   },
   {
