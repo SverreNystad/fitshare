@@ -16,7 +16,7 @@ export function GoalChart({ showcasedGoal, userId }) {
 
     const res = await registerPR(
       userId,
-      showcasedGoal,
+      showcasedGoal.id,
       data.date,
       data.currentValue,
 
@@ -26,14 +26,14 @@ export function GoalChart({ showcasedGoal, userId }) {
 
 
   const chartData = {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    labels: ["1", "2", "3", "4", "5", "6", "7", "8"],
     datasets: [
       {
         label: "Progresjon",
         backgroundColor: "rgba(0,0,0,0,0)",
-        borderColor: "rgba(220, 220, 220, 1)",
+        borderColor: "#a0dbcc",
         pointBackgroundColor: "fff",
-        pointBorderColor: "#fff",
+        pointBorderColor: "#a0dbcc",
         data: [60, 65, 69, 75, 85, 90, 95, 100],
 
       },
