@@ -47,4 +47,8 @@ public class TrainingGoal {
 	public void addWorkout(final Date date, final int reachedValue) {
 		history.insertValue(date, reachedValue);
 	}
+
+	public boolean equals(final TrainingGoal trainingGoal){
+		return this.getId().equals(trainingGoal.getId());
+	}
 }

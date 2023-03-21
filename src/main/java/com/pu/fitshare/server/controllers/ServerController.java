@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -114,14 +115,19 @@ public class ServerController {
 
         try {
             Optional<User> userInDB = getUserService().getUser(userId);
-            Optional<TrainingGoal> goalInDB = getTrainingService().logWorkout(goalId, newdate, achivedValue);
+
 
             if (userInDB.isPresent()) {
                 User user = userInDB.get();
-                if (goalInDB.isPresent()) {
-                    User savedUser = getUserService().updateGoalToUser(user, goalInDB.get());
-                    return new ResponseEntity<>(savedUser, HttpStatus.OK);
+                List<TrainingGoal> userGoals = user.getGoals();
+                for (TrainingGoal goal:userGoals){
+                    if (goal.getId().equals(new ObjectId(goalId))) {
+                        goal.addWorkout(newdate, achivedValue);
+                        User savedUser = getUserService().updateGoalToUser(user, goal);
+                        return new ResponseEntity<>(savedUser, HttpStatus.OK);
+                    }
                 }
+                
                 return new ResponseEntity<>(user, HttpStatus.BAD_REQUEST);
             }
 
