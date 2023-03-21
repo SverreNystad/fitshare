@@ -10,16 +10,17 @@ import { getGoals } from "../api";
 export default function My_goals() {
 
   const [showcasedGoal, setShowcasedGoal] = useState({});
-
-  useEffect(() => { console.log(showcasedGoal) }, [showcasedGoal])
-
   const { user, setUser } = useContext(UserContext);
   const [goalList, setGoalList] = useState([]);
   const [loading, setLoading] = useState(true);
+  
+  useEffect(() => { console.log(showcasedGoal) }, [showcasedGoal])
+
 
   useEffect(() => {
     getGoals().then((res) => {
       setGoalList(res);
+      //setShowcasedGoal(goalList[0]);
       console.log(res);
     }).catch((err) => {
       console.log(err);

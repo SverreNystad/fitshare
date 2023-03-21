@@ -49,7 +49,7 @@ export function GoalChart({ showcasedGoal, userId }) {
 
   return (
     <div className={style.container}>
-      <h1 className={style.header}>[Mål tittel]</h1>
+      <h2 className={style.header}>{(showcasedGoal) ? showcasedGoal.name : "Velg et mål"}</h2>
 
       <div className={style.chartAndPR}>
         <CChartLine className={style.chart} type="line" data={chartData} />
