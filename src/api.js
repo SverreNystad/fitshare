@@ -81,3 +81,16 @@ export async function signIn(username, password) {
     console.log(error);
   }
 }
+
+export async function handleJoinGroup(e) {
+  e.preventDefault();
+  const url = `/group/addUser/${group.id}/${user.id}`;
+  axios
+    .post(url)
+    .then((response) => {
+      setIsMember(true);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
