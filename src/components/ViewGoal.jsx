@@ -1,10 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Radio, Input, Button, Textarea } from "./Inputs";
 import style from "./ViewGoal.module.scss";
-import bikeImg from "../img/bike.png";
-import shoeImg from "../img/shoe.png";
-import swimImg from "../img/swim.png";
-import weightImg from "../img/weight.png";
 import { CChartLine } from '@coreui/react-chartjs';
 import { registerPR } from "../api";
 
@@ -44,7 +40,9 @@ export function GoalChart({ showcasedGoal, userId }) {
   };
 
   function calculateMax(weight, reps) {
-    return weight / ((1.0278) - (0.0278 * reps));
+    result = weight / ((1.0278) - (0.0278 * reps));
+    roundedResult = Math.ceil(result);
+    return roundedResult;
   }
 
 
