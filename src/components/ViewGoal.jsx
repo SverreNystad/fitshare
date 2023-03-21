@@ -10,9 +10,7 @@ export function GoalChart({ showcasedGoal, userId }) {
   const handleRegisterPR = async (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));
-    console.log(data);
-    data.currentValue = calculateMax(data.weight, data.reps).toString();
-    console.log(data);
+    data.currentValue = calculateMax(parseInt(data.weight), parseInt(data.reps)).toString();
 
     const res = await registerPR(
       userId,
@@ -41,8 +39,8 @@ export function GoalChart({ showcasedGoal, userId }) {
   };
 
   function calculateMax(weight, reps) {
-    result = weight / ((1.0278) - (0.0278 * reps));
-    roundedResult = Math.ceil(result);
+    let result = weight / ((1.0278) - (0.0278 * reps));
+    let roundedResult = Math.ceil(result);
     return roundedResult;
   }
 
