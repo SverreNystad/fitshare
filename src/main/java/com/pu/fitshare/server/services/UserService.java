@@ -28,6 +28,17 @@ public class UserService {
 		return userRepository.findAll();
 	}
 
+	public Optional<List<TrainingGoal>> getGoalsOfUser(String userId) {
+		Optional<User> userInDB = getUser(userId);
+		Optional<List<TrainingGoal>> goalList /*= Optional.of(getGroupGoals(userId)) */;
+		if (!userInDB.isPresent()) {
+			return Optional.empty();
+		} else {
+			goalList = Optional.of(userInDB.get().getGoals());
+		}
+		return goalList;
+	}
+
 	public Optional<User> getUser(String id) {
 		ObjectId userId = new ObjectId(id);
         return userRepository.findById(userId);

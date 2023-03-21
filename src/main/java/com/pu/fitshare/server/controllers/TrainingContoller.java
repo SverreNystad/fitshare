@@ -40,9 +40,19 @@ public class TrainingContoller {
 		return trainingService;
 	}
 
+	public UserService getUserService() {
+		return userService;
+	}
+
 	@GetMapping(path = "/goals")
 	public ResponseEntity<List<TrainingGoal>> getGoals() {
 		return new ResponseEntity<>(getTrainingService().getGoals(), HttpStatus.OK);
+	}
+
+	@GetMapping(path = "/goals/{userId}")
+	public ResponseEntity<List<TrainingGoal>> getGoals(@PathVariable("userId") String userId) {
+		List<TrainingGoal> goalList = getUserService().getGoalsOfUser(userId).get();
+		return new ResponseEntity<>(goalList, HttpStatus.OK);
 	}
 
 	@GetMapping(path = "/plans")
@@ -81,8 +91,14 @@ public class TrainingContoller {
 		}
 	}
 
-	@RequestMapping(path = "/goal/{userId}/{goalName}/{description}/{dueDate}/{type}")
-	public ResponseEntity<TrainingGoal> addGoal(@PathVariable("userId") String userId, @PathVariable("goalName") String goalName, @PathVariable("description") String description, @PathVariable("dueDate") String dueDate, @PathVariable("type") String type) {
+	@RequestMapping(path = "/goal/{userId}/{goalName}/{description}/{dueDate}/{type}/{targetUnit}/{targetValue}")
+	public ResponseEntity<TrainingGoal> addGoal(@PathVariable("userId") String userId,
+	 @PathVariable("goalName") String goalName,
+	 @PathVariable("description") String description,
+	 @PathVariable("dueDate") String dueDate,
+	 @PathVariable("type") String type,
+	 @PathVariable("targetUnit") String targetUnit,
+	 @PathVariable("targetValue") String targetValue) {
 		String pattern = "MM-dd-yyyy";
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, Locale.ENGLISH);
 		Date newdate;
@@ -93,12 +109,13 @@ public class TrainingContoller {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 
-		Optional<TrainingGoal> goal = getTrainingService().createGoal(goalName, description, newdate, type);
+		int targetNumber=Integer.parseInt(targetValue);
+		Optional<TrainingGoal> goal = getTrainingService().createGoal(goalName, description, newdate, type, targetUnit, targetNumber);
 		
 		if (goal.isPresent()) {
-			Optional<User> user = userService.getUser(userId);
+			Optional<User> user = getUserService().getUser(userId);
 			if(user.isPresent()){
-				userService.addGoalToUser(user.get(), goal.get());
+				getUserService().addGoalToUser(user.get(), goal.get());
 			}else{
 				return new ResponseEntity<>(goal.get(), HttpStatus.INTERNAL_SERVER_ERROR);
 			}
