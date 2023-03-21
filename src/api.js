@@ -71,3 +71,13 @@ export async function registerPR(userId,goalId,date,currentValue){
     console.log(error);
   }
 }
+
+export async function getGoals(userId){
+
+  try {
+    const res = await axios.get(baseURL + `/goals/${userId}`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+}

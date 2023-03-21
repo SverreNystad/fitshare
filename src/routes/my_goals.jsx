@@ -5,11 +5,23 @@ import white_arrow from "../img/white_arrow.png";
 import { Link } from "react-router-dom";
 import { GoalList } from "../components/GoalList";
 import { GoalChart } from "../components/ViewGoal";
+import { getGoals } from "../api";
 
 export default function My_goals() {
 
   const { user, setUser } = useContext(UserContext);
-  console.log(user.goal)
+  const [goalList, setGoalList] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getGoals().then((res) => {
+      setGoalList(res);
+      console.log(res);
+    }).catch((err) => {
+      console.log(err);
+    });
+    setLoading(false);
+  }, []);
   //hente alle personlige mål, usercontext.goals, hente ut alle mål til gruppene som man er med i
 
   return (
@@ -32,7 +44,10 @@ export default function My_goals() {
           showcasedGoal={null}
           userId={user.id}
         />
-        <GoalList />
+        <GoalList
+          goalList={user.goals}
+          loading={loading}
+        />
       </div>
     </div>
   );

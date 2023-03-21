@@ -3,32 +3,12 @@ import { GoalItem } from "./GoalItem";
 import style from "./GoalComponentStyles.module.css";
 import { UserContext } from "../UserContext";
 
-export function GoalList() {
-  const { user, setUser } = useContext(UserContext);
-  const [goalList, setGoalList] = useState([]);
+export function GoalList({ goalList, loading }) {
   const [showcasedGoal, setShowcasedGoal] = useState({});
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (user.id == null) {
-      fetch(`http://localhost:8080/api/v1/goals`)
-        .then((res) => res.json())
-        .then((data) => {
-          setGoalList(data);
-          setLoading(false);
-        })
-        .catch((error) => console.error(error));
-    }
-    else {
-      fetch(`http://localhost:8080/api/v1/goals/${user.id}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setGoalList(data);
-          setLoading(false);
-        })
-        .catch((error) => console.error(error));
-    }
-  }, []);
+    console.log(showcasedGoal);
+  }, [showcasedGoal]);
 
   return (
     <div>
@@ -46,6 +26,7 @@ export function GoalList() {
               key={goal.id}
               goal={goal}
               className={style.goalItem}
+            // onClick={setShowcasedGoal(goal)}
             />
           ))}
         </ul>
