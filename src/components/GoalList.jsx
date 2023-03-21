@@ -3,7 +3,7 @@ import { GoalItem } from "./GoalItem";
 import style from "./GoalComponentStyles.module.css";
 import { UserContext } from "../UserContext";
 
-export function GoalList({ goalList, loading }) {
+export function GoalList({ goalList, loading, setShowcasedGoal }) {
   const [showcasedGoal, setShowcasedGoal] = useState({});
 
   useEffect(() => {
@@ -22,7 +22,8 @@ export function GoalList({ goalList, loading }) {
         // </GoalChart>
         <ul className={style.goalList}>
           {goalList.map((goal) => (
-            <GoalItem
+            <GoalItem 
+              setShowcasedGoal={setShowcasedGoal}
               key={goal.id}
               goal={goal}
               className={style.goalItem}

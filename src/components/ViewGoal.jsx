@@ -6,6 +6,7 @@ import { registerPR } from "../api";
 
 
 export function GoalChart({ showcasedGoal, userId }) {
+  
   const handleRegisterPR = async (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));

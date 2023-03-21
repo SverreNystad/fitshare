@@ -8,6 +8,10 @@ import { GoalChart } from "../components/ViewGoal";
 import { getGoals } from "../api";
 
 export default function My_goals() {
+  
+  const [showcasedGoal, setShowcasedGoal] = useState({});
+
+  useEffect(() => {console.log(showcasedGoal)}, [showcasedGoal])
 
   const { user, setUser } = useContext(UserContext);
   const [goalList, setGoalList] = useState([]);
@@ -41,13 +45,13 @@ export default function My_goals() {
       </div>
       <div>
         <GoalChart
-          showcasedGoal={null}
+          showcasedGoal={showcasedGoal}
           userId={user.id}
         />
         <GoalList
           goalList={user.goals}
           loading={loading}
-        />
+        setShowcasedGoal={setShowcasedGoal}/>
       </div>
     </div>
   );
