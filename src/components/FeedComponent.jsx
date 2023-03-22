@@ -12,9 +12,12 @@ export function FeedComponent({ sessionID }) {
       const data = await getSessionById(sessionID);
       setSession(data);
       setLoading(false);
+      console.log(data);
     }
     getData();
+
   }, []);
+
 
   return (
     <div className={style.trainingItem}>
