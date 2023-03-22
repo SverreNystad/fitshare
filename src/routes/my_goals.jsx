@@ -20,8 +20,6 @@ export default function My_goals() {
   useEffect(() => {
     getGoals(user.id).then((res) => {
       setGoalList(res);
-      //setShowcasedGoal(goalList[0]);
-      console.log("THE GOAL LIST IS UPDATED: " + res);
     }).catch((err) => {
       console.log(err);
     });

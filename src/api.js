@@ -79,7 +79,6 @@ export async function getGoals(userId){
   }
   try {
     const res = await axios.get(baseURL + `/goals/${userId}`);
-    console.log(res.data);
     return res.data;
   } catch (error) {
     console.log(error);

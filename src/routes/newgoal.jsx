@@ -1,4 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { Radio, Input, Button, Textarea } from "../components/Inputs";
 import style from "./plans/newplan.module.scss";
 import bikeImg from "../img/bike.png";
@@ -9,11 +11,14 @@ import { UserContext } from "../UserContext";
 
 export default function NewPlan() {
   const { user, setUser } = useContext(UserContext);
-  const { errorGoalName, setErrorGoalName } = useState("");
-  const { errorDate, setErrorDate } = useState("");
-  const { errorCatagory, setErrorCatagory } = useState("");
-  const { errorGoalTarget, setErrorGoalTarget } = useState("");
-  const { errorCurrentValue, setErrorCurrentValue } = useState("");
+  const navigate = useNavigate();
+
+  const [newGoal, setNewGoal] = useState();
+  const [errorGoalName, setErrorGoalName] = useState("");
+  const [errorDate, setErrorDate] = useState("");
+  const [errorCatagory, setErrorCatagory] = useState("");
+  const [errorGoalTarget, setErrorGoalTarget] = useState("");
+  const [errorCurrentValue, setErrorCurrentValue] = useState("");
 
   const activity = [
     {
@@ -46,6 +51,13 @@ export default function NewPlan() {
     },
   ];
 
+
+  useEffect(() => {
+    if (newGoal) {
+      navigate("/goals");
+    }
+  }, [newGoal]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));
@@ -73,8 +85,11 @@ export default function NewPlan() {
           method: "POST",
           body: JSON.stringify(data)
         }
-      ).then((res) => res.json()).catch((error) => console.log(error));
-      alert(`Laget målet ${res.name}`);
+      ).then((res) => {
+        res.json();
+        setNewGoal(res);
+      })
+        .catch((error) => console.log(error));
 
     } catch (error) {
       alert(`Oops! Det oppstod en feil, prøv igjen.\n\n${error}`);
