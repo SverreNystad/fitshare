@@ -15,22 +15,20 @@ export function FeedComponent({ sessionID }) {
       console.log(data);
     }
     getData();
-
   }, []);
-
 
   return (
     <div className={style.trainingItem}>
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <ul className={style.sessionComponent}>
+        <div className={style.sessionComponent}>
           <FeedItem
             key={JSON.stringify(session.id)}
             session={session}
             className={style.sessionItem}
           />
-        </ul>
+        </div>
       )}
     </div>
   );
