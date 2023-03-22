@@ -3,7 +3,6 @@ import { FeedItem } from "./FeedItem";
 import style from "./FeedComponentStyles.module.css";
 import { getSessions } from "../api";
 
-
 export function FeedComponent() {
 
   const [sessionList, setSessionList] = useState([]);
