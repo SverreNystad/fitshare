@@ -21,8 +21,6 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
-	@Autowired
-	private GroupService groupService;
 
 	public List<User> getUsers() {
 		return userRepository.findAll();
@@ -84,9 +82,8 @@ public class UserService {
 	 * @param id
 	 * @return List of groups
 	 */
-	public List<Group> getGroups(String id) {
+	public List<Group> getGroups(String id, List<Group> groups) {
 		ObjectId userId = new ObjectId(id);
-		List<Group> groups = new ArrayList<Group>(groupService.getGroups());
 		for (Group group:groups){
 			if(!group.getUsers().contains(userId)){
 				groups.remove(group);
@@ -99,8 +96,7 @@ public class UserService {
 	 * @param userId
 	 * @return List of goals from various groups
 	 */
-	public List<TrainingGoal> getGroupGoals(String userId){
-		List<Group> groups = getGroups(userId);
+	public List<TrainingGoal> getGroupGoals(String userId, List<Group> groups){
 		List<TrainingGoal> goals = new ArrayList<TrainingGoal>();
 		for (Group group:groups){
 			if (group.getGoal()!=null){

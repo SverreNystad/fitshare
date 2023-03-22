@@ -17,8 +17,6 @@ public class GroupService {
     
     @Autowired
 	private GroupRepository groupRepository;
-	@Autowired
-	private UserService userService;
 
 	public List<Group> getGroups() {
 		return groupRepository.findAll();
@@ -42,11 +40,4 @@ public class GroupService {
 		throw new Exception("Group not found");
 	}
 
-    public List<User> getUsers(final String groupId) throws Exception {
-		List<User> users=new ArrayList<User>();
-		for (ObjectId userId:getGroup(groupId).getUsers()){
-			users.add(userService.getUser(userId).get());
-		}
-		return users;
-	}
 }

@@ -1,6 +1,7 @@
 package com.pu.fitshare.server.controllers;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -74,7 +75,11 @@ public class GroupController {
     @RequestMapping(path = "/group/users/{groupId}")
     public ResponseEntity<List<User>> getUsers(@PathVariable("groupId") String groupId){
         try {
-            ResponseEntity<List<User>> response = new ResponseEntity(getGroupService().getUsers(groupId), HttpStatus.OK);
+            List<User> users=new ArrayList<User>();
+            for (ObjectId userId:getGroupService().getGroup(groupId).getUsers()){
+                users.add(userService.getUser(userId).get());
+            }
+            ResponseEntity<List<User>> response = new ResponseEntity(users, HttpStatus.OK);
             return response;
         } catch (Exception e) {
             return new ResponseEntity(null, HttpStatus.NOT_FOUND);
