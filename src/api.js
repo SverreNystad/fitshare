@@ -81,3 +81,15 @@ export async function signIn(username, password) {
     console.log(error);
   }
 }
+
+
+export async function handleJoinGroup(groupID, userID) {
+  try {
+    const res = await axios.post(
+      baseURL + `/group/addUser/${groupID}/${userID}`
+    );
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
