@@ -32,7 +32,7 @@ export default function Nav() {
           {/* <NavLi to={"/friends"} img={groupLogo1}>
             Venner
           </NavLi> */}
-          <NavLi to="/groups/mygroups" img={groupLogo2} alt="Grupper">
+          <NavLi to={defined ? "/groups/mygroups" : "/login"} img={groupLogo2} alt="Grupper">
             Grupper
           </NavLi>
           <NavLi to={"/plans/new"} img={dotImg}>

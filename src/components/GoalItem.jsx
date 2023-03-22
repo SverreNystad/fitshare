@@ -10,8 +10,8 @@ export function GoalItem({ goal, setShowcasedGoal }) {
   }
 
   return (
-    <div  onClick={handleClick} className={style.goalItem}>
-      <h3 className={style.goalText} onClick={console.log("I WAS CLICKED")}>{goal.name}</h3>
+    <div onClick={handleClick} className={style.goalItem}>
+      <h3 className={style.goalText}>{goal.name}</h3>
       <p>{goal.description}</p>
     </div>
   );

@@ -75,6 +75,7 @@ export default function NewPlan() {
         }
       ).then((res) => res.json()).catch((error) => console.log(error));
       alert(`Laget målet ${res.name}`);
+
     } catch (error) {
       alert(`Oops! Det oppstod en feil, prøv igjen.\n\n${error}`);
     }

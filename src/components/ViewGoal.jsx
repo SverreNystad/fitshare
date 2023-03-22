@@ -6,11 +6,11 @@ import { registerPR } from "../api";
 
 
 export function GoalChart({ showcasedGoal, userId }) {
-  
+
   useEffect(() => {
     console.log("showcasedGoal", showcasedGoal);
   }, [showcasedGoal]);
-  
+
   const handleRegisterPR = async (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));
@@ -25,6 +25,20 @@ export function GoalChart({ showcasedGoal, userId }) {
     );
     alert(`Registrert ny PR ${res}`);
   };
+
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    const niceFormat = date.toLocaleDateString('nb-NO', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+      timeZone: 'UTC'
+    });
+    return niceFormat;
+  }
 
 
   const chartData = {
@@ -69,22 +83,22 @@ export function GoalChart({ showcasedGoal, userId }) {
       <div className={style.infoUnderChart}>
         <div>Beskrivelse av målet</div>
         <div className={style.backgroundBox}>{(showcasedGoal) ? showcasedGoal.description : "Velg et mål"}</div>
-        
+
         <div className={style.numbersRow}>
 
-        <div className={style.column}>Mål:
-        <div className={style.backgroundBox}>{(showcasedGoal) ? showcasedGoal.targetValue : "Velg et mål"}</div>
+          <div className={style.column}>Mål:
+            <div className={style.backgroundBox}>{(showcasedGoal) ? showcasedGoal.targetValue : "Velg et mål"}</div>
+          </div>
+
+          <div className={style.column}>Enhet:
+            <div className={style.backgroundBox}>{(showcasedGoal) ? showcasedGoal.targetUnit : "Velg et mål"}</div>
+          </div>
         </div>
-        
-        <div className={style.column}>Enhet:
-        <div className={style.backgroundBox}>{(showcasedGoal) ? showcasedGoal.targetUnit : "Velg et mål"}</div>
-        </div>
+
+        <div className={style.column}>Frist for å nå målet:</div>
+        <div className={style.backgroundBox}>{(showcasedGoal) ? formatDate(showcasedGoal.dueDate) : "Velg et mål"}</div>
+
       </div>
-
-      <div className={style.column}>Frist for å nå målet:</div>
-        <div className={style.backgroundBox}>{(showcasedGoal) ? showcasedGoal.dueDate : "Velg et mål"}</div>
-
-    </div>
     </div>
   );
 }

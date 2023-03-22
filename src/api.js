@@ -73,9 +73,11 @@ export async function registerPR(userId,goalId,date,currentValue){
 }
 
 export async function getGoals(userId){
-
+  if (userId === undefined) return;
+   console.log("No user id provided");
   try {
     const res = await axios.get(baseURL + `/goals/${userId}`);
+    console.log(res.data);
     return res.data;
   } catch (error) {
     console.log(error);

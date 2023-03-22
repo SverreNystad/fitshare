@@ -13,7 +13,7 @@ export default function My_goals() {
   const { user, setUser } = useContext(UserContext);
   const [goalList, setGoalList] = useState([]);
   const [loading, setLoading] = useState(true);
-  
+
   useEffect(() => { console.log(showcasedGoal) }, [showcasedGoal])
 
 
@@ -21,6 +21,7 @@ export default function My_goals() {
     getGoals().then((res) => {
       setGoalList(res);
       //setShowcasedGoal(goalList[0]);
+      console.log("THE GOAL LIST IS UPDATED: " + goalList);
       console.log(res);
     }).catch((err) => {
       console.log(err);
@@ -55,7 +56,7 @@ export default function My_goals() {
         />
       </div>
       <div className={style.goalList}>
-      <GoalList
+        <GoalList
           goalList={user.goals}
           loading={loading}
           setShowcasedGoal={setShowcasedGoal} />
