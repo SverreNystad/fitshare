@@ -1,7 +1,6 @@
 package com.pu.fitshare.models.training;
 
 import java.util.Collection;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,7 +13,7 @@ import lombok.AllArgsConstructor;
  */
 @AllArgsConstructor
 public class History {
-	private Map<Date, Integer> history;
+	private Map<String, Integer> history;
 
 	public History() {
 		this.history = new HashMap<>();
@@ -23,7 +22,7 @@ public class History {
 		return history.values();
 	}
 
-	public void insertValue(final Date day, final int value) {
+	public void insertValue(final String day, final int value) {
 		history.put(day, (Integer) value);
 	}
 }

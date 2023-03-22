@@ -92,7 +92,7 @@ public class TrainingService {
 		}
 	}
 
-	public Optional<TrainingGoal> logWorkout(final String goalId, final Date workoutDate, final int maxReached) {
+	public Optional<TrainingGoal> logWorkout(final String goalId, final String workoutDate, final int maxReached) {
 		ObjectId id = new ObjectId(goalId);
 		
 		Optional<TrainingGoal> DBGoal = goalRepository.findById(id);

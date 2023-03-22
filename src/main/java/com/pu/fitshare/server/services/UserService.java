@@ -36,6 +36,7 @@ public class UserService {
 	}
 
 	public Optional<User> getUser(String id) {
+		System.out.println(id);
 		ObjectId userId = new ObjectId(id);
         return userRepository.findById(userId);
 	}
