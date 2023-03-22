@@ -3,10 +3,11 @@ import style from "./Inputs.module.scss";
 
 export function Button(props) {
   return (
-    <button className={style.button} type={props.type}>
+    <button onClick={props.onClick} className={style.button} type={props.type}>
       {props.children}
     </button>
   );
+  
 }
 
 export function Input(props) {

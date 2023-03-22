@@ -98,6 +98,7 @@ export default function Create_Group() {
                 setType("running");
               }}
             >
+              
               <img src={shoe} alt="Running" className={style.icon} />
             </button>
             <button

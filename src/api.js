@@ -62,7 +62,7 @@ export async function addSessionToGroup(groupID, sessionID) {
 export async function postNewPlan(name, dur, int, type, desc) {
   try {
     const res = await axios.post(
-      baseURL + `/sessions/${name}/${dur}/${int}/${type}/${desc}`
+      baseURL + `/sessions/${name}/${dur}/${int}/${type}/${desc}/${userName}`
     );
     return res.data;
   } catch (error) {
