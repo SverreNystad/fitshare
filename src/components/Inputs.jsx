@@ -22,6 +22,23 @@ export function Input(props) {
   );
 }
 
+export function Select(props) {
+  return (
+    <select
+      className={style.select}
+      ref={props.reference}
+      name={props.name}
+      id={props.id}
+    >
+      {props.options.map((option, idx) => (
+        <option key={idx} value={option.id || option}>
+          {option.name || option}
+        </option>
+      ))}
+    </select>
+  );
+}
+
 export function Radio(props) {
   return (
     <label className={style.radioContainer}>

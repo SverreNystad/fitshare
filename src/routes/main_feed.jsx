@@ -1,11 +1,9 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { getSessions } from "../api";
 import { FeedComponent } from "../components/FeedComponent";
 
-
 export default function Main_Feed() {
-
-    const [sessions, setSession] = useState([]);
+  const [sessions, setSession] = useState([]);
 
   useEffect(() => {
     async function getData() {
@@ -14,7 +12,6 @@ export default function Main_Feed() {
       console.log(session);
     }
     getData();
-
   }, []);
 
   return (
@@ -22,7 +19,7 @@ export default function Main_Feed() {
       <h1>Feed </h1>
       <div>
         {sessions.map((session) => (
-            <FeedComponent sessionID={session.id}/>
+          <FeedComponent key={session.id} sessionID={session.id} />
         ))}
       </div>
     </>
