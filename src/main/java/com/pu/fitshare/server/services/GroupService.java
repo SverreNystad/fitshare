@@ -21,6 +21,19 @@ public class GroupService {
 	public List<Group> getGroups() {
 		return groupRepository.findAll();
 	}
+
+    public Optional<Group> getGroup(final String id) {
+        ObjectId groupId = new ObjectId(id);
+        return groupRepository.findById(groupId);
+    }
+
+    public Optional<Group> updateGroup(final Group group) {
+        ObjectId groupId = group.getId();
+        groupRepository.deleteById(groupId);
+        groupRepository.insert(group);
+        return groupRepository.findById(groupId);
+    }
+
     
     public Optional<Group> createGroup(final String name, final String description, final String type) {
 		try {
