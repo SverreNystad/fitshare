@@ -14,7 +14,7 @@ export function GroupItem({ group }) {
 
   return (
     <div className={style.groupItem} >
-      <h3 onClick={() => navigateToGroup(group.id)}>{group.name}</h3>
+      <h3 className={style.text} onClick={() => navigateToGroup(group.id)}>{group.name}</h3>
       <p>{group.description}</p>
       {isMember ? (
         <p>Du er nå medlem av denne gruppen!</p>
