@@ -1,8 +1,5 @@
 package com.pu.fitshare.server.services;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +23,17 @@ public class UserService {
 
 	public List<User> getUsers() {
 		return userRepository.findAll();
+	}
+
+	public Optional<List<TrainingGoal>> getGoalsOfUser(String userId) {
+		Optional<User> userInDB = getUser(userId);
+		Optional<List<TrainingGoal>> goalList /*= Optional.of(getGroupGoals(userId)) */;
+		if (!userInDB.isPresent()) {
+			return Optional.empty();
+		} else {
+			goalList = Optional.of(userInDB.get().getGoals());
+		}
+		return goalList;
 	}
 
 	public Optional<User> getUser(String id) {
