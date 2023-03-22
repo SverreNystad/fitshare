@@ -46,7 +46,7 @@ public class GroupService {
 
 
 
-	public Optional<Group> addUserToGroup(final ObjectId userId, final Group group) {
+	public Optional<Group> addUserToGroup(final String userId, final Group group) {
 		try {
 			group.addUser(userId);
 			groupRepository.save(group);
