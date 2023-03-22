@@ -35,7 +35,7 @@ export default function Group_Feed() {
   return (
     <>
       <h1>Feed for {group.name}</h1>
-      <form onSubmit={handleAddSessionToGroup} style={{ padding: "4px 0" }}>
+      <form onSubmit={handleAddSessionToGroup} style={{ marginBottom: "4em" }}>
         <Select
           reference={selectedSession}
           name={"session"}
@@ -45,8 +45,8 @@ export default function Group_Feed() {
         <Button type="submit">Legg ut</Button>
       </form>
       {groupSessions
-        ? groupSessions.map((session, idx) => (
-            <FeedComponent key={idx} sessionID={session} />
+        ? groupSessions.map((sessionID) => (
+            <FeedComponent key={sessionID} sessionID={sessionID} />
           ))
         : null}
     </>
