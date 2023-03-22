@@ -1,10 +1,6 @@
 package com.pu.fitshare.server.controllers;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Optional;
 
 import org.bson.types.ObjectId;
@@ -116,9 +112,9 @@ public class ServerController {
     @RequestMapping(path = "/user/{userID}/{goalID}/{date}/{currentValue}")
     public ResponseEntity<User> updateUserGoal(@PathVariable("userID") String userId, @PathVariable("goalID") String goalId, @PathVariable("date") String date, @PathVariable("currentValue") String currentValue) {
 
-        int achivedValue = Integer.parseInt(currentValue);
-
+        
         try {
+            int achivedValue = Integer.parseInt(currentValue);
             Optional<User> userInDB = getUserService().getUser(userId);
 
 

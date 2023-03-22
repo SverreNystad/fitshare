@@ -119,6 +119,12 @@ public class UserService {
 		return goals;
 	}
 	public User updateGoalToUser(User user, TrainingGoal goal) {
+		for (TrainingGoal g : user.getGoals()){
+			if (g.getId().equals(goal.getId())){
+				user.getGoals().remove(g);
+				break;
+			}
+		}
 		user.addGoal(goal);
 		return userRepository.save(user);
 	}
