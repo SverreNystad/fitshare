@@ -18,11 +18,10 @@ export default function My_goals() {
 
 
   useEffect(() => {
-    getGoals().then((res) => {
+    getGoals(user.id).then((res) => {
       setGoalList(res);
       //setShowcasedGoal(goalList[0]);
-      console.log("THE GOAL LIST IS UPDATED: " + goalList);
-      console.log(res);
+      console.log("THE GOAL LIST IS UPDATED: " + res);
     }).catch((err) => {
       console.log(err);
     });
@@ -57,7 +56,7 @@ export default function My_goals() {
       </div>
       <div className={style.goalList}>
         <GoalList
-          goalList={user.goals}
+          goalList={goalList}
           loading={loading}
           setShowcasedGoal={setShowcasedGoal} />
       </div>
