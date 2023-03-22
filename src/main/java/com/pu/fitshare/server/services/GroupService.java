@@ -44,13 +44,4 @@ public class GroupService {
 		}
 	}
 
-	public Group getGroup(final String groupId) throws Exception{
-		for (Group group:getGroups()){
-			if (group.getId().toString()==groupId){
-				return group;
-			}
-		}
-		throw new Exception("Group not found");
-	}
-
 }

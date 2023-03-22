@@ -3,10 +3,6 @@ package com.pu.fitshare.models.group;
 
 import java.util.List;
 import java.util.ArrayList;
-<<<<<<< src/main/java/com/pu/fitshare/models/group/Group.java
-import java.util.List;
-=======
->>>>>>> src/main/java/com/pu/fitshare/models/group/Group.java
 
 
 import org.bson.types.ObjectId;
@@ -36,9 +32,6 @@ public class Group {
     private TrainingGoal goal;
     private String description;
     private TrainingType type;
-
-    private List<User> users;
-
     private ArrayList<String> sessions;
     private List<ObjectId> users;
 
