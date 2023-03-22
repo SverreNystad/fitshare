@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Radio, Input, Button, Textarea } from "./Inputs";
 import style from "./ViewGoal.module.scss";
 import { CChartLine } from '@coreui/react-chartjs';
@@ -6,6 +6,10 @@ import { registerPR } from "../api";
 
 
 export function GoalChart({ showcasedGoal, userId }) {
+  
+  useEffect(() => {
+    console.log("showcasedGoal", showcasedGoal);
+  }, [showcasedGoal]);
   
   const handleRegisterPR = async (e) => {
     e.preventDefault();
@@ -60,8 +64,27 @@ export function GoalChart({ showcasedGoal, userId }) {
           <Input type="date" name="date" placeholder="Dato"></Input>
           <Button type="submit">Registrer</Button>
         </form>
+
+      </div>
+      <div className={style.infoUnderChart}>
+        <div>Beskrivelse av målet</div>
+        <div className={style.backgroundBox}>{(showcasedGoal) ? showcasedGoal.description : "Velg et mål"}</div>
+        
+        <div className={style.numbersRow}>
+
+        <div className={style.column}>Mål:
+        <div className={style.backgroundBox}>{(showcasedGoal) ? showcasedGoal.targetValue : "Velg et mål"}</div>
+        </div>
+        
+        <div className={style.column}>Enhet:
+        <div className={style.backgroundBox}>{(showcasedGoal) ? showcasedGoal.targetUnit : "Velg et mål"}</div>
+        </div>
       </div>
 
+      <div className={style.column}>Frist for å nå målet:</div>
+        <div className={style.backgroundBox}>{(showcasedGoal) ? showcasedGoal.dueDate : "Velg et mål"}</div>
+
+    </div>
     </div>
   );
 }

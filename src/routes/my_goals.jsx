@@ -48,12 +48,14 @@ export default function My_goals() {
           </Link>
         </button>
       </div>
-      <div>
+      <div className={style.chartAndText}>
         <GoalChart
           showcasedGoal={showcasedGoal}
           userId={user.id}
         />
-        <GoalList
+      </div>
+      <div className={style.goalList}>
+      <GoalList
           goalList={user.goals}
           loading={loading}
           setShowcasedGoal={setShowcasedGoal} />

@@ -117,7 +117,7 @@ export default function NewPlan() {
         <p>Mål i tall:</p>
         <Input type="number" name="targetValue" id="targetValue" min="0" />
         <p>Mål enhet:</p>
-        <Input type="text" name="targetUnit" id="targetUnit" placeholder="Timer" />
+        <Input type="text" name="targetUnit" id="targetUnit" placeholder="Enhet" />
         <p>Start verdi:</p>
         <Input type="number" name="currentValue" id="currentValue" />
         <Button type="submit">Opprett</Button>

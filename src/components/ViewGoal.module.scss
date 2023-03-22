@@ -49,3 +49,39 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+.infoUnderChart {
+  padding-top: 20px;;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  width: 80%;
+}
+
+.numbersRow{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+
+}
+
+.backgroundBox {
+  background-color: white;
+  border-color: #51679C;
+  padding: 10px;
+  border-style: solid;
+  border-width: 1.5px;
+  height: 10px;
+
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 10px;
+  
+}

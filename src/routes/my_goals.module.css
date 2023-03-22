@@ -154,4 +154,21 @@
   padding-top: 100px;
   padding-left:10px;
 }
+
+.chartAndText{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: fit-content;
+  justify-content: space-evenly;
+  align-items: center;
+}
   
+
+.goalList{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 80%;
+  padding-top: 10px;
+}
