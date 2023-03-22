@@ -82,15 +82,25 @@ export async function signIn(username, password) {
   }
 }
 
-export async function handleJoinGroup(e) {
-  e.preventDefault();
-  const url = `/group/addUser/${group.id}/${user.id}`;
-  axios
-    .post(url)
-    .then((response) => {
-      setIsMember(true);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+// export async function handleJoinGroup(groupID, userID) {
+//   const url = baseURL + `/group/addUser/${groupID}/${userID}`;
+//   axios
+//     .post(url)
+//     .then((response) => {
+//       console.log(response);
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
+// }
+
+export async function handleJoinGroup(groupID, userID) {
+  try {
+    const res = await axios.post(
+      baseURL + `/group/addUser/${groupID}/${userID}`
+    );
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
 }

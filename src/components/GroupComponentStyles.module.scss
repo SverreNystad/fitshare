@@ -25,12 +25,12 @@
   padding-left: 10px;
 }
 
-.text:hover{
+.text:hover {
   color: #f5f5f5;
   text-decoration: underline;
 }
 
-.boxedtext{
+.boxedtext {
   padding: 10px;
   border: 1px solid #f5f5f5;
   border-radius: 2px;
@@ -45,16 +45,37 @@
   color: #fff;
   border-radius: 40px;
   text-align: center;
-  
+
   position: relative;
   overflow: hidden;
   cursor: pointer;
+
+  &[type="submit"] {
+    background: #a0dbcc;
+    color: #000;
+  }
+
+}
+
+.joinedButton {
+  padding: 12px 24px;
+  border: none;
+  outline: none;
+  background: #51679c;
+  color: #fff;
+  border-radius: 40px;
+  text-align: center;
+
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+
   &[type="submit"] {
     background: #a0dbcc;
     color: #000;
   }
 }
 
-.buttonbox{
+.buttonbox {
   padding-bottom: 10%;
 }
