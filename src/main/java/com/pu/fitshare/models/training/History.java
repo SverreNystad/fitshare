@@ -1,28 +1,30 @@
 package com.pu.fitshare.models.training;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 
 /**
  * The {@code History} class shall keep all the progression and keep the dates
  * with the entries.
  * 
  */
+@Data
 @AllArgsConstructor
 public class History {
-	private Map<String, Integer> history;
+	private List<String> dates;
+	private List<Integer> workouts;
+
 
 	public History() {
-		this.history = new HashMap<>();
-	}
-	public Collection<Integer> getProgression() {
-		return history.values();
+		this.dates = new ArrayList<>();
+		this.workouts = new ArrayList<>();
 	}
 
 	public void insertValue(final String day, final int value) {
-		history.put(day, (Integer) value);
+		this.dates.add(day);
+		this.workouts.add((Integer) value);
 	}
 }
