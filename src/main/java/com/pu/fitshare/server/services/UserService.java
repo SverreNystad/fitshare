@@ -1,5 +1,6 @@
 package com.pu.fitshare.server.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,6 +8,7 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pu.fitshare.models.group.Group;
 import com.pu.fitshare.models.training.TrainingGoal;
 import com.pu.fitshare.models.training.TrainingPlan;
 import com.pu.fitshare.models.training.TrainingSession;
@@ -39,6 +41,10 @@ public class UserService {
 	public Optional<User> getUser(String id) {
 		ObjectId userId = new ObjectId(id);
         return userRepository.findById(userId);
+	}
+
+	public Optional<User> getUser(ObjectId id) {
+        return userRepository.findById(id);
 	}
 
 	public Optional<User> logIn(final LoginAttempt loginAttempt) {
@@ -83,8 +89,43 @@ public class UserService {
 		return userRepository.save(user);
 	}
 
+	/**
+	 * Finds all groups the user is part of
+	 * @param id
+	 * @return List of groups
+	 */
+	public List<Group> getGroups(String id, List<Group> groups) {
+		ObjectId userId = new ObjectId(id);
+		for (Group group:groups){
+			if(!group.getUsers().contains(userId)){
+				groups.remove(group);
+			}
+		}
+        return groups;
+	}
+	/**
+	 * Takes in the userId of a user and returns all the goals the groups of that user has.
+	 * @param userId
+	 * @return List of goals from various groups
+	 */
+	public List<TrainingGoal> getGroupGoals(String userId, List<Group> groups){
+		List<TrainingGoal> goals = new ArrayList<TrainingGoal>();
+		for (Group group:groups){
+			if (group.getGoal()!=null){
+				goals.add(group.getGoal());
+			}
+		}
+		return goals;
+	}
+	public User updateGoalToUser(User user, TrainingGoal goal) {
+		user.addGoal(goal);
+		return userRepository.save(user);
+	}
+		
+
 	public User addSessionToUser(User user, TrainingSession session) {
 		user.addSession(session);
 		return userRepository.save(user);
 	}
+		
 }

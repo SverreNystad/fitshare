@@ -32,11 +32,8 @@ public class Group {
     private TrainingGoal goal;
     private String description;
     private TrainingType type;
-    private List<User> members;
-
-    private List<User> users;
-
     private ArrayList<String> sessions;
+    private List<ObjectId> users;
 
 
     public Group(final String name, final String description, final String type) {
@@ -45,6 +42,7 @@ public class Group {
         this.goal = new TrainingGoal();
         this.type = TrainingType.valueOf(type);
         this.sessions = new ArrayList<String>();
+        this.users = new ArrayList<ObjectId>();
     }
 
     public Group(final String name, final TrainingGoal goal) {
@@ -52,6 +50,7 @@ public class Group {
         this.description = "What seems impossible today will one day be your warmup";
         this.goal = goal;
         this.sessions = new ArrayList<String>();
+        this.users = new ArrayList<ObjectId>();
     }
 
     public Group(final String nameString) {
@@ -59,6 +58,7 @@ public class Group {
         this.description = "What seems impossible today will one day be your warmup";
         this.goal = new TrainingGoal();
         this.sessions = new ArrayList<String>();
+        this.users = new ArrayList<ObjectId>();
     }
 
     public Boolean isSession(final String id) {
@@ -77,8 +77,11 @@ public class Group {
         this.sessions.add(sessionID);
     }
 
-    public void addMemeber(User user){
-      members.add(user);
+    public void addUser(final ObjectId userId) {
+      this.users.add(userId);
     }
 
+    public void removeUser(final ObjectId userId){
+      this.users.remove(userId);
+    }
 }
