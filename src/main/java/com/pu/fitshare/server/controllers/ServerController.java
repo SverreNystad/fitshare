@@ -99,36 +99,4 @@ public class ServerController {
         }
     }
 
-    @RequestMapping(path = "/user/{userID}/{goalID}/{date}/{currentValue}")
-    public ResponseEntity<User> updateUserGoal(@RequestParam("userID") String userId, @RequestParam("goalID") String goalId, @RequestParam("date") String date, @RequestParam("currentValue") int currentValue) {
-        String pattern = "MM-dd-yyyy";
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, Locale.ENGLISH);
-		Date newdate;
-
-		try {
-			newdate = simpleDateFormat.parse(date);
-		} catch (ParseException e) {
-			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-		}
-
-        try {
-            Optional<User> userInDB = getUserService().getUser(userId);
-            Optional<TrainingGoal> goalInDB = getTrainingService().logWorkout(goalId, newdate, currentValue);
-
-            if (userInDB.isPresent()) {
-                User user = userInDB.get();
-                if (goalInDB.isPresent()) {
-                    User savedUser = getUserService().updateGoalToUser(user, goalInDB.get());
-                    return new ResponseEntity<>(savedUser, HttpStatus.OK);
-                }
-                return new ResponseEntity<>(user, HttpStatus.BAD_REQUEST);
-            }
-
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-        }
-        return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-
-    }
-
 }

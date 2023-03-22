@@ -41,9 +41,9 @@ public class GroupService {
 		return groupUserRelationRepository.findAll();
 	}
     
-    public Optional<Group> createGroup(final String name, final String description, final String type, final User user) {
+    public Optional<Group> createGroup(final String name, final String description, final String type) {
 		try {
-			Group group = new Group(name,description,type,user);
+			Group group = new Group(name,description,type);
 			return Optional.of(groupRepository.insert(group));
 		} catch (IllegalArgumentException e) {
 			return Optional.empty();
