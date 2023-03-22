@@ -65,7 +65,7 @@ export async function signIn(username, password) {
 
 export async function registerPR(userId,goalId,date,currentValue){
   try {
-    const res = await axios.post(baseURL + `/user/${userId}/${goalId}/${date}/${currentValue}`);
+    const res = await axios.post(baseURL + `/user/${userId}/${goalId}/${date.toString()}/${currentValue}`);
     return res.data;
   } catch (error) {
     console.log(error);
