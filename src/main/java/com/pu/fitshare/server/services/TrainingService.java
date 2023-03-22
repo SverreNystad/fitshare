@@ -92,17 +92,16 @@ public class TrainingService {
 		}
 	}
 
-	public Optional<TrainingGoal> logWorkout(final String goalId, final Date workoutDate, final int maxReached) {
-		// Need to find user
-		// Need to find goal
-		// Add workout to gaol and change history
-		// Save this new gaol 
-		// Save goal in User.
+	public Optional<TrainingGoal> logWorkout(final String goalId, final String workoutDate, final int maxReached) {
 		ObjectId id = new ObjectId(goalId);
+		
 		Optional<TrainingGoal> DBGoal = goalRepository.findById(id);
+		
 		if (DBGoal.isPresent()) {
 			TrainingGoal goal = DBGoal.get();
+			
 			goal.addWorkout(workoutDate, maxReached);
+			
 			return Optional.of(goalRepository.save(goal));
 		} 
 		return Optional.empty();

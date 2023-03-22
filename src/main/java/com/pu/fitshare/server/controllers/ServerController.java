@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pu.fitshare.models.training.TrainingGoal;
@@ -111,6 +111,37 @@ public class ServerController {
             System.out.println("The input was bad: " + e.getLocalizedMessage());
             return new ResponseEntity(null, HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @RequestMapping(path = "/user/{userID}/{goalID}/{date}/{currentValue}")
+    public ResponseEntity<User> updateUserGoal(@PathVariable("userID") String userId, @PathVariable("goalID") String goalId, @PathVariable("date") String date, @PathVariable("currentValue") String currentValue) {
+
+        int achivedValue = Integer.parseInt(currentValue);
+
+        try {
+            Optional<User> userInDB = getUserService().getUser(userId);
+
+
+            if (userInDB.isPresent()) {
+                User user = userInDB.get();
+                List<TrainingGoal> userGoals = user.getGoals();
+                for (TrainingGoal goal:userGoals){
+                    if (goal.getId().equals(new ObjectId(goalId))) {
+                        System.out.println("Controller data:"+date);
+                        goal.addWorkout(date, achivedValue);
+                        User savedUser = getUserService().updateGoalToUser(user, goal);
+                        return new ResponseEntity<>(savedUser, HttpStatus.OK);
+                    }
+                }
+                
+                return new ResponseEntity<>(user, HttpStatus.BAD_REQUEST);
+            }
+
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+
     }
 
 }
