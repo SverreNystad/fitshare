@@ -82,17 +82,6 @@ export async function signIn(username, password) {
   }
 }
 
-// export async function handleJoinGroup(groupID, userID) {
-//   const url = baseURL + `/group/addUser/${groupID}/${userID}`;
-//   axios
-//     .post(url)
-//     .then((response) => {
-//       console.log(response);
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-// }
 
 export async function handleJoinGroup(groupID, userID) {
   try {
