@@ -5,18 +5,6 @@ import { Link } from "react-router-dom";
 import { GroupList } from "../components/GroupList";
 
 export default function Groups() {
-  const groups = [
-    { id: 1, name: "Group 1" },
-    { id: 2, name: "Group 2" },
-    { id: 3, name: "Group 3" },
-  ];
-
-  // const checkifUserIsInGroup = (group) => {
-  //   return group.id === 1;
-  // };
-  // const userGroups = groups.filter(checkifUserIsInGroup);
-  // console.log(userGroups);
-
   return (
     <div className={style.groups}>
       <h1 className={style.header1}>Grupper</h1>
@@ -48,7 +36,10 @@ export default function Groups() {
       </div>
       <div className={style.newgrouprow}>
         <h3 className={style.opprettgruppetext}>
-          <Link to="/groups/new" style={{ textDecoration: "none", color: "white" }}>
+          <Link
+            to="/groups/new"
+            style={{ textDecoration: "none", color: "white" }}
+          >
             Opprett ny gruppe
           </Link>
         </h3>
@@ -58,9 +49,7 @@ export default function Groups() {
           </Link>
         </button>
       </div>
-      <div>
-        <GroupList groups={groups} />
-      </div>
+      <GroupList />
     </div>
   );
 }
