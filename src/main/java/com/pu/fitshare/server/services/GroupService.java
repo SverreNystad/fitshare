@@ -44,27 +44,11 @@ public class GroupService {
 		}
 	}
 
-    public Optional<GroupUserRelation> createGroupUserRelation(final User user, final Group group) {
-		try {
-			GroupUserRelation groupUserRelation = new GroupUserRelation(user, group);
-			return Optional.of(groupUserRelationRepository.insert(groupUserRelation));
-		} catch (IllegalArgumentException e) {
-			return Optional.empty();
-		}
-	}
 
-    public Optional<GroupUserRelation> createGroupUserRelation(final ObjectId userId, final ObjectId groupId) {
-		try {
-			GroupUserRelation groupUserRelation = new GroupUserRelation(userId, groupId);
-			return Optional.of(groupUserRelationRepository.insert(groupUserRelation));
-		} catch (IllegalArgumentException e) {
-			return Optional.empty();
-		}
-	}
 
-	public Optional<Group> addMemberToGroup(final User user, final Group group) {
+	public Optional<Group> addUserToGroup(final ObjectId userId, final Group group) {
 		try {
-			group.addMemeber(user);
+			group.addUser(userId);
 		} catch (IllegalArgumentException e) {
 			return Optional.empty();
 		}

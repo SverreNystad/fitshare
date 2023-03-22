@@ -122,6 +122,7 @@ public class GroupController {
             }
             Group group = getGroupService().getGroup(groupId).get();
             group.addUser(userObjectId);
+            getGroupService().addUserToGroup(userObjectId, group);
             ResponseEntity<Group> response = new ResponseEntity(group, HttpStatus.OK);
             return response;
         } catch (Exception e) {
