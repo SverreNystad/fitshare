@@ -101,7 +101,7 @@ public class GroupController {
     public ResponseEntity<List<User>> getUsers(@PathVariable("groupId") String groupId){
         try {
             List<User> users=new ArrayList<User>();
-            for (ObjectId userId:getGroupService().getGroup(groupId).get().getUsers()){
+            for (String userId : getGroupService().getGroup(groupId).get().getUsers()){
                 users.add(userService.getUser(userId).get());
             }
             ResponseEntity<List<User>> response = new ResponseEntity(users, HttpStatus.OK);
@@ -114,17 +114,19 @@ public class GroupController {
     @RequestMapping(path = "/group/addUser/{groupId}/{userId}")
     public ResponseEntity<Group> addUser(@PathVariable("groupId") String groupId, @PathVariable("userId") String userId){
         try {
-            ObjectId userObjectId = new ObjectId(userId);
-            Optional<User> user = getUserService().getUser(userObjectId);
-            if(user.get()==null){
+            // ObjectId userObjectId = new ObjectId(userId);
+            Optional<User> user = getUserService().getUser(userId);
+            if(user.isEmpty()) {
+                System.out.println("The input was bad: User not found");
                 return new ResponseEntity(null, HttpStatus.NOT_FOUND);
             }
             Group group = getGroupService().getGroup(groupId).get();
-            group.addUser(userObjectId);
-            getGroupService().addUserToGroup(userObjectId, group);
+            group.addUser(userId);
+            getGroupService().addUserToGroup(userId, group);
             ResponseEntity<Group> response = new ResponseEntity(group, HttpStatus.OK);
             return response;
         } catch (Exception e) {
+             System.out.println("The input was bad: " + e.getLocalizedMessage());
             return new ResponseEntity(null, HttpStatus.NOT_FOUND);
         }
         

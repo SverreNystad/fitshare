@@ -33,7 +33,7 @@ public class Group {
     private String description;
     private TrainingType type;
     private ArrayList<String> sessions;
-    private List<ObjectId> users;
+    private List<String> users;
 
 
     public Group(final String name, final String description, final String type) {
@@ -42,7 +42,7 @@ public class Group {
         this.goal = new TrainingGoal();
         this.type = TrainingType.valueOf(type);
         this.sessions = new ArrayList<String>();
-        this.users = new ArrayList<ObjectId>();
+        this.users = new ArrayList<String>();
     }
 
     public Group(final String name, final TrainingGoal goal) {
@@ -50,7 +50,7 @@ public class Group {
         this.description = "What seems impossible today will one day be your warmup";
         this.goal = goal;
         this.sessions = new ArrayList<String>();
-        this.users = new ArrayList<ObjectId>();
+        this.users = new ArrayList<String>();
     }
 
     public Group(final String nameString) {
@@ -58,7 +58,7 @@ public class Group {
         this.description = "What seems impossible today will one day be your warmup";
         this.goal = new TrainingGoal();
         this.sessions = new ArrayList<String>();
-        this.users = new ArrayList<ObjectId>();
+        this.users = new ArrayList<String>();
     }
 
     public Boolean isSession(final String id) {
@@ -77,11 +77,13 @@ public class Group {
         this.sessions.add(sessionID);
     }
 
-    public void addUser(final ObjectId userId) {
-      this.users.add(userId);
+    public void addUser(final String userId) {
+        String userID = new ObjectId(userId).toHexString(); // serialization would be better but it works
+        this.users.add(userID);
     }
 
-    public void removeUser(final ObjectId userId){
-      this.users.remove(userId);
+    public void removeUser(final String userId){
+        String userID = new ObjectId(userId).toHexString(); // serialization would be better but it works      
+        this.users.remove(userID);
     }
 }
