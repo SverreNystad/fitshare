@@ -49,6 +49,7 @@ public class GroupService {
 	public Optional<Group> addUserToGroup(final ObjectId userId, final Group group) {
 		try {
 			group.addUser(userId);
+			groupRepository.save(group);
 		} catch (IllegalArgumentException e) {
 			return Optional.empty();
 		}

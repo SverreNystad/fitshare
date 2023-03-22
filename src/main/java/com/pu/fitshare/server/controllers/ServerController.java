@@ -13,11 +13,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pu.fitshare.models.training.TrainingGoal;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.pu.fitshare.models.users.LoginAttempt;
 import com.pu.fitshare.models.users.User;
 import com.pu.fitshare.server.services.TrainingService;
@@ -62,6 +64,18 @@ public class ServerController {
             LoginAttempt loginAttempt = new LoginAttempt(username, password);
             Optional<User> user = getUserService().logIn(loginAttempt);
 
+            return presentCheck(user);
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("The input was bad: " + e.getLocalizedMessage());
+            return new ResponseEntity(null, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping(path = "/user")
+    public ResponseEntity<User> getUser(@RequestBody JsonNode userId) {
+        try {
+            Optional<User> user = getUserService().getUser(userId.get("id").asText());
             return presentCheck(user);
 
         } catch (IllegalArgumentException e) {

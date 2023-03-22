@@ -99,17 +99,16 @@ public class GroupController {
 
     @RequestMapping(path = "/group/users/{groupId}")
     public ResponseEntity<List<User>> getUsers(@PathVariable("groupId") String groupId){
-        // try {
-        //     List<User> users=new ArrayList<User>();
-        //     for (ObjectId userId:getGroupService().getGroup(groupId).getUsers()){
-        //         users.add(userService.getUser(userId).get());
-        //     }
-        //     ResponseEntity<List<User>> response = new ResponseEntity(users, HttpStatus.OK);
-        //     return response;
-        // } catch (Exception e) {
-        //     return new ResponseEntity(null, HttpStatus.NOT_FOUND);
-        // }
-        return new ResponseEntity(null, HttpStatus.NOT_FOUND);
+        try {
+            List<User> users=new ArrayList<User>();
+            for (ObjectId userId:getGroupService().getGroup(groupId).get().getUsers()){
+                users.add(userService.getUser(userId).get());
+            }
+            ResponseEntity<List<User>> response = new ResponseEntity(users, HttpStatus.OK);
+            return response;
+        } catch (Exception e) {
+            return new ResponseEntity(null, HttpStatus.NOT_FOUND);
+        }
     }
 
     @RequestMapping(path = "/group/addUser/{groupId}/{userId}")
