@@ -14,17 +14,23 @@ export function GroupItem({ group }) {
 
   return (
     <div className={style.groupItem} >
-      <h3 className={style.text} onClick={() => navigateToGroup(group.id)}>{group.name}</h3>
-      <p>{group.description}</p>
-      {isMember ? (
-        <p>Du er nå medlem av denne gruppen!</p>
+      
+    <div>
+        <h3 className={style.text} onClick={() => navigateToGroup(group.id)}>{group.name}</h3>
+        <p >{group.description}</p>
+    </div>
+  
+    <div className={style.button}>
+    {isMember ? (
+        <p className={style.boxedtext}>Du er medlem av denne gruppen!</p>
       ) : (
         <form onSubmit={handleJoinGroup}>
-          <button type="submit" disabled={isMember}>
+          <button className={style.button} type="submit" disabled={isMember}>
             Bli med
           </button>
         </form>
       )}
+    </div>
     </div>
   );
 }
