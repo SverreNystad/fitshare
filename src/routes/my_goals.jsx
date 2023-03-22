@@ -28,6 +28,7 @@ export default function My_goals() {
 
   useEffect(() => {
     console.log("The showcased Goal: " + showcasedGoal);
+    console.log(showcasedGoal?.history);
   }, [showcasedGoal]);
   //hente alle personlige mål, usercontext.goals, hente ut alle mål til gruppene som man er med i
 

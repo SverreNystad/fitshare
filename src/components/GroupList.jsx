@@ -23,7 +23,7 @@ export function GroupList() {
         <p>Loading...</p>
       ) : (
         <ul className={style.groupsList}>
-          {groupList.map((group) => (
+          {groupList?.map((group) => (
             <GroupItem
               key={JSON.stringify(group.id)}
               group={group}

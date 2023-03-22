@@ -7,8 +7,43 @@ import { registerPR } from "../api";
 
 export function GoalChart({ showcasedGoal, userId }) {
 
+  const [chartData, setChartData] = useState(
+    {
+      labels: ["jan", "feb", "mar", "apr", "mai", "jun", "jul", "aug", "sep", "okt"],
+      datasets: [
+        {
+          label: "Progresjon",
+          backgroundColor: "rgba(0,0,0,0,0)",
+          borderColor: "#a0dbcc",
+          pointBackgroundColor: "fff",
+          pointBorderColor: "#a0dbcc",
+          data: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+
+        },
+      ],
+    }
+  );
   useEffect(() => {
     console.log("showcasedGoal", showcasedGoal);
+    if (showcasedGoal !== undefined) {
+      console.log("Changing chart data");
+      console.log(showcasedGoal.dates, showcasedGoal.workouts);
+
+      setChartData({
+        labels: showcasedGoal?.dates,
+        datasets: [
+          {
+            label: "Progresjon",
+            backgroundColor: "rgba(0,0,0,0,0)",
+            borderColor: "#a0dbcc",
+            pointBackgroundColor: "fff",
+            pointBorderColor: "#a0dbcc",
+            data: showcasedGoal?.workouts,
+
+          },
+        ],
+      });
+    }
   }, [showcasedGoal]);
 
   const handleRegisterPR = async (e) => {
@@ -21,7 +56,6 @@ export function GoalChart({ showcasedGoal, userId }) {
       showcasedGoal.id,
       data.date,
       data.currentValue,
-
     );
     alert(`Registrert ny PR ${res}`);
   };
@@ -41,21 +75,6 @@ export function GoalChart({ showcasedGoal, userId }) {
   }
 
 
-  const chartData = {
-    labels: ["1", "2", "3", "4", "5", "6", "7", "8"],
-    datasets: [
-      {
-        label: "Progresjon",
-        backgroundColor: "rgba(0,0,0,0,0)",
-        borderColor: "#a0dbcc",
-        pointBackgroundColor: "fff",
-        pointBorderColor: "#a0dbcc",
-        data: [60, 65, 69, 75, 85, 90, 95, 100],
-
-      },
-    ],
-  };
-
   function calculateMax(weight, reps) {
     let result = weight / ((1.0278) - (0.0278 * reps));
     let roundedResult = Math.ceil(result);
@@ -73,8 +92,8 @@ export function GoalChart({ showcasedGoal, userId }) {
         <form className={style.PR} onSubmit={handleRegisterPR}>
 
           <div>Registrer ny PR</div>
-          <Input type="text" name="weight" placeholder="Vekt"></Input>
-          <Input type="text" name="reps" placeholder="Reps"></Input>
+          <Input type="number" name="weight" placeholder="Vekt"></Input>
+          <Input type="number" name="reps" placeholder="Reps"></Input>
           <Input type="date" name="date" placeholder="Dato"></Input>
           <Button type="submit">Registrer</Button>
         </form>
