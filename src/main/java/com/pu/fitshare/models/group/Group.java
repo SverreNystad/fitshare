@@ -32,6 +32,7 @@ public class Group {
     private TrainingGoal goal;
     private String description;
     private TrainingType type;
+    private List<User> members;
 
     private List<User> users;
 
@@ -74,6 +75,10 @@ public class Group {
     public void addSession(final String id) {
         String sessionID = new ObjectId(id).toHexString(); // serialization would be better but it works
         this.sessions.add(sessionID);
+    }
+
+    public void addMemeber(User user){
+      members.add(user);
     }
 
 }

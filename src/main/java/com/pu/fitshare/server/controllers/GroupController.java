@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pu.fitshare.models.group.Group;
+import com.pu.fitshare.models.training.TrainingType;
+import com.pu.fitshare.models.users.User;
 import com.pu.fitshare.server.services.GroupService;
 
 @RestController

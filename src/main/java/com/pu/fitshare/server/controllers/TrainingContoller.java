@@ -75,10 +75,10 @@ public class TrainingContoller {
 		return new ResponseEntity<>(getTrainingService().getExercises(), HttpStatus.OK);
 	}
 
-	@RequestMapping(path = "/sessions/{name}/{duration}/{intesity}/{type}/{description}")
-	public ResponseEntity<TrainingExercise> createSession(@PathVariable("name") String name, @PathVariable("duration") int duration, @PathVariable("intesity") String intesity, @PathVariable("type") String type, @PathVariable("description") String description){
+	@RequestMapping(path = "/sessions/{name}/{duration}/{intesity}/{type}/{description}/{userName}")
+	public ResponseEntity<TrainingExercise> createSession(@PathVariable("name") String name, @PathVariable("duration") int duration, @PathVariable("intesity") String intesity, @PathVariable("type") String type, @PathVariable("description") String description, @PathVariable("userName") String userName){
 		try {
-			Optional<TrainingSession> session = getTrainingService().createSession(name, duration, intesity, type, description);
+			Optional<TrainingSession> session = getTrainingService().createSession(name, duration, intesity, type, description, userName);
 			if (session.isPresent()) {
 				return new ResponseEntity(session.get(), HttpStatus.OK);
 			}

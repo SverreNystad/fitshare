@@ -61,4 +61,7 @@ public class User {
         this.goals.add(goal);
     }
 
+    public void addSession(TrainingSession session) {
+        this.sessions.add(session);
+    }
 }

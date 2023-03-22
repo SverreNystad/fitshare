@@ -67,4 +67,14 @@ public class GroupService {
 			return Optional.empty();
 		}
 	}
+
+	public Optional<Group> addMemberToGroup(final User user, final Group group) {
+		try {
+			group.addMemeber(user);
+		} catch (IllegalArgumentException e) {
+			return Optional.empty();
+		}
+		return null;
+	}
+	
 }

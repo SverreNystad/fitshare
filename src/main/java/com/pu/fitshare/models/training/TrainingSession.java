@@ -26,6 +26,7 @@ public class TrainingSession {
     private String type;
     // private List<TrainingExercise> exercises;
     private String description;
+    private String userName;
 
     public TrainingSession(final String name, final int duration, final String intensity) {
         this.name = name;
@@ -33,12 +34,13 @@ public class TrainingSession {
         this.intensity = TrainingIntensity.valueOf(intensity);
     }
 
-    public TrainingSession(final String name, final int duration, final String intensity, final String type, final String description) {
+    public TrainingSession(final String name, final int duration, final String intensity, final String type, final String description, final String userName) {
         this.name = name;
         this.duration = duration;
         this.intensity = TrainingIntensity.valueOf(intensity);
         this.type = type;
         this.description = description;
+        this.userName = userName;
     }
 
     public boolean idEquals(ObjectId id) {
