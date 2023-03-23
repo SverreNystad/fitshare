@@ -24,25 +24,27 @@ export function GoalChart({ showcasedGoal, userId }) {
     }
   );
   useEffect(() => {
-    console.log("showcasedGoal", showcasedGoal);
+    console.log("chartData" + JSON.stringify(chartData));
     if (showcasedGoal !== undefined) {
-      console.log("Changing chart data");
-      console.log(showcasedGoal.dates, showcasedGoal.workouts);
+      console.log("showcasedGoal: ", showcasedGoal);
+      if (showcasedGoal?.history?.workouts && showcasedGoal?.history?.dates) {
+        setChartData({
+          labels: showcasedGoal.history.dates,
+          datasets: [
+            {
+              label: "Progresjon",
+              backgroundColor: "rgba(0,0,0,0,0)",
+              borderColor: "#a0dbcc",
+              pointBackgroundColor: "fff",
+              pointBorderColor: "#a0dbcc",
+              data: showcasedGoal.history.workouts,
 
-      setChartData({
-        labels: showcasedGoal?.dates,
-        datasets: [
-          {
-            label: "Progresjon",
-            backgroundColor: "rgba(0,0,0,0,0)",
-            borderColor: "#a0dbcc",
-            pointBackgroundColor: "fff",
-            pointBorderColor: "#a0dbcc",
-            data: showcasedGoal?.workouts,
-
-          },
-        ],
-      });
+            },
+          ],
+        });
+        console.log("chartData CHANGED TO: " + JSON.stringify(chartData));
+        console.log("chartData LABELS CHANGED TO: " + chartData.labels);
+      }
     }
   }, [showcasedGoal]);
 

@@ -24,7 +24,7 @@ export default function My_goals() {
       console.log(err);
     });
     setLoading(false);
-  }, []);
+  }, [showcasedGoal]);
 
   useEffect(() => {
     console.log("The showcased Goal: " + showcasedGoal);
