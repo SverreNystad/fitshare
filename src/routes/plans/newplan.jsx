@@ -47,13 +47,13 @@ export default function NewPlan() {
   ];
 
   //get userContext
-  const { user }  = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));
-    data.userName= user.username;
+    data.userName = user.username;
     const res = await postNewPlan(
       data.name,
       data.duration,
@@ -61,7 +61,6 @@ export default function NewPlan() {
       data.type,
       data.description,
       data.userName
-      
     );
     console.log(data);
     alert(`Laget økten ${res.name}`);
