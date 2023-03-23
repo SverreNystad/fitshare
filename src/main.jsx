@@ -17,9 +17,11 @@ import Plans from "./routes/former_strength_plans";
 import NewPlan from "./routes/plans/newplan";
 import My_goals from "./routes/my_goals";
 import NewGoal from "./routes/newgoal";
+import Group_Feed from "./routes/group_feed";
+import Main_Feed from "./routes/main_feed";
+
 
 import "./index.scss";
-// import Strength_plans from "./routes/former_strength_plans";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +29,7 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
-      { path: "/", element: <Plans /> },
+      { path: "/", element: <Main_Feed /> },
       { path: "profile", element: <Profile /> },
       { path: "friends", element: <Friends /> },
       { path: "groups", element: <Groups /> },
@@ -38,7 +40,7 @@ const router = createBrowserRouter([
       { path: "plans", element: <Plans /> },
       { path: "plans/new", element: <NewPlan /> },
       { path: "goals", element: <My_goals /> },
-      { path: "goals/newgoal", element: <NewGoal /> },
+      { path: "group_feed/:id", element: <Group_Feed /> },
     ],
   },
   {

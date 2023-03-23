@@ -3,10 +3,11 @@ import style from "./Inputs.module.scss";
 
 export function Button(props) {
   return (
-    <button className={style.button} type={props.type}>
+    <button onClick={props.onClick} className={style.button} type={props.type}>
       {props.children}
     </button>
   );
+  
 }
 
 export function Input(props) {
@@ -18,6 +19,23 @@ export function Input(props) {
       id={props.name}
       placeholder={props.placeholder}
     />
+  );
+}
+
+export function Select(props) {
+  return (
+    <select
+      className={style.select}
+      ref={props.reference}
+      name={props.name}
+      id={props.id}
+    >
+      {props.options.map((option, idx) => (
+        <option key={idx} value={option.id || option}>
+          {option.name || option}
+        </option>
+      ))}
+    </select>
   );
 }
 

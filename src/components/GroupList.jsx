@@ -30,7 +30,8 @@ export function GroupList() {
               className={style.groupItem}
             />
           ))}
-        </ul>
+  
+        </div>
       )}
     </div>
   );
