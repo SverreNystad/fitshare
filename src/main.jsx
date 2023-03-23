@@ -40,6 +40,8 @@ const router = createBrowserRouter([
       { path: "plans", element: <Plans /> },
       { path: "plans/new", element: <NewPlan /> },
       { path: "goals", element: <My_goals /> },
+      { path: "goals/newgoal", element: <NewGoal /> },
+
       { path: "group_feed/:id", element: <Group_Feed /> },
     ],
   },
