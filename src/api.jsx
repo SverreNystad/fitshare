@@ -94,7 +94,7 @@ export async function signIn(username, password) {
 }
 
 
-export async function registerPR(userId,goalId,date,currentValue){
+export async function registerPR(userId, goalId, date, currentValue) {
   try {
     const res = await axios.post(baseURL + `/user/${userId}/${goalId}/${date.toString()}/${currentValue}`);
     return res.data;
@@ -103,13 +103,18 @@ export async function registerPR(userId,goalId,date,currentValue){
   }
 }
 
-export async function getGoals(userId){
+export async function getGoals(userId) {
   if (userId === undefined) {
     console.log("No user id provided");
     return;
   }
   try {
     const res = await axios.get(baseURL + `/goals/${userId}`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 export async function handleJoinGroup(groupID, userID) {
   try {

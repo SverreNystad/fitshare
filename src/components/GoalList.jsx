@@ -11,7 +11,7 @@ export function GoalList({ goalList, loading, setShowcasedGoal }) {
         <p>Loading...</p>
       ) : (
         <ul className={style.goalList}>
-          {goalList.map((goal) => (
+          {goalList?.map((goal) => (
             <GoalItem
               setShowcasedGoal={setShowcasedGoal}
               key={goal.id}
