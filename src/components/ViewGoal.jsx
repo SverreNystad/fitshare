@@ -81,18 +81,19 @@ export function GoalChart({ showcasedGoal, setShowcasedGoal, userId }) {
       setChanged(!changed);
     }
     ).catch((err) => console.log(err));
-    alert(`Registrert ny PR ${res}`);
+    // alert(`Registrert ny PR ${res}`);
   };
 
   function formatDate(dateString) {
+    // console.log(dateString);
     const date = new Date(dateString);
     const niceFormat = date.toLocaleDateString('nb-NO', {
-      year: 'numeric',
+      // year: 'numeric',
       month: 'long',
       day: 'numeric',
-      hour: 'numeric',
-      minute: 'numeric',
-      second: 'numeric',
+      // hour: 'numeric',
+      // minute: 'numeric',
+      // second: 'numeric',
       timeZone: 'UTC'
     });
     return niceFormat;
