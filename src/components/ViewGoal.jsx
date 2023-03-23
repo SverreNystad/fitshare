@@ -5,8 +5,8 @@ import { CChartLine } from '@coreui/react-chartjs';
 import { registerPR } from "../api";
 
 
-export function GoalChart({ showcasedGoal, userId }) {
-
+export function GoalChart({ showcasedGoal, setShowcasedGoal, userId }) {
+  const [changed, setChanged] = useState(false);
   const [chartData, setChartData] = useState(
     {
       labels: ["jan", "feb", "mar", "apr", "mai", "jun", "jul", "aug", "sep", "okt"],
@@ -24,9 +24,7 @@ export function GoalChart({ showcasedGoal, userId }) {
     }
   );
   useEffect(() => {
-    console.log("chartData" + JSON.stringify(chartData));
     if (showcasedGoal !== undefined) {
-      console.log("showcasedGoal: ", showcasedGoal);
       if (showcasedGoal?.history?.workouts && showcasedGoal?.history?.dates) {
         setChartData({
           labels: showcasedGoal.history.dates,
@@ -42,11 +40,30 @@ export function GoalChart({ showcasedGoal, userId }) {
             },
           ],
         });
-        console.log("chartData CHANGED TO: " + JSON.stringify(chartData));
-        console.log("chartData LABELS CHANGED TO: " + chartData.labels);
       }
     }
   }, [showcasedGoal]);
+
+  useEffect(() => {
+    if (showcasedGoal !== undefined) {
+      if (showcasedGoal?.history?.workouts && showcasedGoal?.history?.dates) {
+        setChartData({
+          labels: showcasedGoal.history.dates,
+          datasets: [
+            {
+              label: "Progresjon",
+              backgroundColor: "rgba(0,0,0,0,0)",
+              borderColor: "#a0dbcc",
+              pointBackgroundColor: "fff",
+              pointBorderColor: "#a0dbcc",
+              data: showcasedGoal.history.workouts,
+
+            },
+          ],
+        });
+      }
+    }
+  }, [changed]);
 
   const handleRegisterPR = async (e) => {
     e.preventDefault();
@@ -58,7 +75,12 @@ export function GoalChart({ showcasedGoal, userId }) {
       showcasedGoal.id,
       data.date,
       data.currentValue,
-    );
+    ).then((res) => {
+      showcasedGoal.history.workouts.push(parseInt(data.currentValue));
+      showcasedGoal.history.dates.push(data.date);
+      setChanged(!changed);
+    }
+    ).catch((err) => console.log(err));
     alert(`Registrert ny PR ${res}`);
   };
 

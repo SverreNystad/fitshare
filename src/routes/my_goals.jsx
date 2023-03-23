@@ -51,6 +51,7 @@ export default function My_goals() {
         <GoalChart
           showcasedGoal={showcasedGoal}
           userId={user.id}
+          setShowcasedGoal={setShowcasedGoal}
         />
       </div>
       <div className={style.goalList}>
