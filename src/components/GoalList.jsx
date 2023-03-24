@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { GoalItem } from "./GoalItem";
-import style from "./GoalComponentStyles.module.css";
+import style from "./GoalComponentStyles.module.scss";
 import { UserContext } from "../UserContext";
 
 export function GoalList({ goalList, loading, setShowcasedGoal }) {

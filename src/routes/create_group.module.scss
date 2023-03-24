@@ -19,11 +19,28 @@
 }
 
 .submitfield {
-  background-color: #d0c8b6;
-  color: black;
-  width: 500px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 12px 24px;
+  border: none;
+  outline: none;
+  background: #51679c;
+  color: #fff;
+  border-radius: 40px;
+  text-align: center;
+  transition-duration: 0.3s;
+  transition-property: transform;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+
+  &[type="submit"] {
+    background: #a0dbcc;
+    color: #000;
+  }
+
+  &hover {
+    background: #a0dbcc;
+    transform: scale(1.05);
+  }
 }
 
 .header1 {

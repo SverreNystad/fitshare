@@ -41,10 +41,27 @@
 .smallIcon {
   width: 40px;
   height: 40px;
+  animation: shimmy 3s infinite;
+  animation-direction: alternate;
 }
 
 .imageStreak {
   display: flex;
   flex-direction: row;
   margin-top: auto;
+}
+
+.waviy {
+  animation: shimmy 3s infinite;
+  animation-direction: alternate;
+}
+
+@keyframes shimmy {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(20px);
+  }
 }

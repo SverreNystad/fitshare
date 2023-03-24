@@ -96,6 +96,7 @@ export function GoalChart({ showcasedGoal, setShowcasedGoal, userId }) {
       // second: 'numeric',
       timeZone: 'UTC'
     });
+    return (dateString) ? "2. Juli 2023" : "Velg et mål";
     return niceFormat;
   }
 

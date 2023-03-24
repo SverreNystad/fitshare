@@ -136,7 +136,7 @@ export default function NewPlan() {
         <Input type="text" name="targetUnit" id="targetUnit" placeholder="Enhet" />
         <p>Start verdi:</p>
         <Input type="number" name="currentValue" id="currentValue" />
-        <Button type="submit">Opprett</Button>
+        <Button type="submit" >Opprett</Button>
       </form>
     </div>
   );

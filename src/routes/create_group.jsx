@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import style from "./create_group.module.css";
+import style from "./create_group.module.scss";
 import group from "../img/group.png";
 import bike from "../img/bike.png";
 import swim from "../img/swim.png";
@@ -49,8 +49,6 @@ export default function Create_Group() {
 
   return (
     <>
-      {/* Alle andre felter enn knappene */}
-
       <div className={style.create_group}>
         <h1>Opprett Gruppe</h1>
         <form method="post" className={style.form} onSubmit={handleSubmit}>
@@ -62,13 +60,11 @@ export default function Create_Group() {
           <input type="text" className={style.field} />
           <span>Gi gruppen et treningsikon for hensikten med gruppen:</span>
 
-          {/* Under følger koden for knappene med ikoner, samt opprett-knappen */}
           <div>
             <button
               type="button"
-              className={`${style.dot} ${
-                selectedButtonIndex === 0 ? style.dotselected : ""
-              }`}
+              className={`${style.dot} ${selectedButtonIndex === 0 ? style.dotselected : ""
+                }`}
               onClick={() => {
                 handleButtonClick(0);
                 setType("group");
@@ -78,9 +74,8 @@ export default function Create_Group() {
             </button>
             <button
               type="button"
-              className={`${style.dot} ${
-                selectedButtonIndex === 1 ? style.dotselected : ""
-              }`}
+              className={`${style.dot} ${selectedButtonIndex === 1 ? style.dotselected : ""
+                }`}
               onClick={() => {
                 handleButtonClick(1);
                 setType("power");
@@ -90,22 +85,20 @@ export default function Create_Group() {
             </button>
             <button
               type="button"
-              className={`${style.dot} ${
-                selectedButtonIndex === 2 ? style.dotselected : ""
-              }`}
+              className={`${style.dot} ${selectedButtonIndex === 2 ? style.dotselected : ""
+                }`}
               onClick={() => {
                 handleButtonClick(2);
                 setType("running");
               }}
             >
-              
+
               <img src={shoe} alt="Running" className={style.icon} />
             </button>
             <button
               type="button"
-              className={`${style.dot} ${
-                selectedButtonIndex === 3 ? style.dotselected : ""
-              }`}
+              className={`${style.dot} ${selectedButtonIndex === 3 ? style.dotselected : ""
+                }`}
               onClick={() => {
                 handleButtonClick(3);
                 setType("cycling");
@@ -115,9 +108,8 @@ export default function Create_Group() {
             </button>
             <button
               type="button"
-              className={`${style.dot} ${
-                selectedButtonIndex === 4 ? style.dotselected : ""
-              }`}
+              className={`${style.dot} ${selectedButtonIndex === 4 ? style.dotselected : ""
+                }`}
               onClick={() => {
                 handleButtonClick(4);
                 setType("swimming");

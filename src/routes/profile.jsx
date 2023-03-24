@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { UserContext } from "../UserContext";
-import style from "./profile.module.css";
+import style from "./profile.module.scss";
 import profile from "../img/profile.png";
 import streak from "../img/shoe.png";
 
@@ -22,7 +22,10 @@ export default function Profile() {
         <img src={profile} alt="Profile" className={style.icon} />
         <div>
           <div className={style.imageStreak}>
-            <p>Det er din <b>{user.streak}</b>-te dag på rad du har logget inn! </p>
+            <div className={style.waviy}>
+
+              <p>Det er din <b>{user.streak}</b>-te dag på rad du har logget inn! </p>
+            </div>
             <img src={streak} alt="Streak" className={style.smallIcon} />
           </div>
         </div>

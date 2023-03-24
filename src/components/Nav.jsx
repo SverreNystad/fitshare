@@ -29,9 +29,6 @@ export default function Nav() {
           <NavLi to={defined ? "/profile" : "/login"} img={profileLogo}>
             Profil
           </NavLi>
-          {/* <NavLi to={"/friends"} img={groupLogo1}>
-            Venner
-          </NavLi> */}
           <NavLi to={defined ? "/groups/mygroups" : "/login"} img={groupLogo2} alt="Grupper">
             Grupper
           </NavLi>
