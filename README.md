@@ -23,4 +23,5 @@ The team whom created Fitshare consists of:
 * Skage Klingstedt Reistad
 * Sverre Nystad
 * Vidar Selnes Lund
+  
 Thank you all for a great semester, and all the hours spent together!
