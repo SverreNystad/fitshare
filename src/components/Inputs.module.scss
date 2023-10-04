@@ -1,0 +1,55 @@
+.button {
+  padding: 12px 24px;
+  border: none;
+  outline: none;
+  background: #3e5691;
+  color: #fff;
+  border-radius: 40px;
+  text-align: center;
+  box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  &[type="submit"] {
+    background: #a0dbcc;
+    color: #000;
+  }
+  &:active {
+    box-shadow: 0 0px 4px 0px rgba(0, 0, 0, 0.4);
+    top: 1px;
+  }
+  
+}
+
+.radioContainer {
+  cursor: pointer;
+  img {
+    background-color: var(--light-blue);
+    border-radius: 100%;
+    padding: 6px;
+  }
+}
+
+.input {
+  box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.4);
+  padding: 12px 18px;
+  border: none;
+  border-radius: 10px;
+}
+
+.select {
+  box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.4);
+  padding: 12px 18px;
+  border: none;
+  margin: 0 10px;
+  border-radius: 10px;
+  min-width: 150px;
+}
+
+.textarea {
+  min-height: 4em;
+  box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.4);
+  padding: 12px 18px;
+  border: none;
+  border-radius: 10px;
+}
