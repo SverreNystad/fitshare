@@ -1,6 +1,6 @@
 <div style="display: flex; justify-content: center; align-items: center;">
 
-![Alt text](image.png)
+![Alt text](frontend/public/logo.png)
 # Fitshare - A fitness program sharing app
 </div>
 
