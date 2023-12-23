@@ -16,11 +16,11 @@ import com.pu.fitshare.server.GroupRepository;
 public class GroupService {
     
     @Autowired
-	private GroupRepository groupRepository;
+    private GroupRepository groupRepository;
 
-	public List<Group> getGroups() {
-		return groupRepository.findAll();
-	}
+    public List<Group> getGroups() {
+	return groupRepository.findAll();
+    }
 
     public Optional<Group> getGroup(final String id) {
         ObjectId groupId = new ObjectId(id);
